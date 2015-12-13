@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="row">
+
+        <header>
+            <div class="col col--1-of-6 col--centered logo-box">
+                <!--<span class="logo"></span>-->
+            </div>
+
+            <nav class="main-menu">
+
+                <div class="col col--1-of-4 menu-option"><a href="#">Menu</a></div>
+                <div class="col col--1-of-4 menu-option"><a href="#">Menu</a></div>
+                <div class="col col--1-of-4 menu-option"><a href="#">Menu</a></div>
+                <div class="col col--1-of-4 menu-option"><a href="#">Menu</a></div>
+
+            </nav>
+        </header>
+
+
+        <div id="slider" class="nivoSlider">
+            <img src="images/slider1.jpg" alt="" />
+            <img src="images/slider2.jpg" alt="" title="#htmlcaption" />
+            <img src="images/slider1.jpg" alt="" title="This is an example of a caption" />
+            <img src="images/slider2.jpg" alt="" />
+        </div>
+
+    </div>
+
+    <div class="content-container">
+
+        <div class="row">
+
+            <!--Wrapper for posts-->
+            <div class="col col--8-of-12 main-content" style="height: 200px;">
+
+                <div class="row posts-row">
+
+                    <div class="col col--2-of-3">
+                        <div class="post-box">
+
+                        </div>
+                    </div>
+
+                    <div class="col col--1-of-3">
+                        <div class="post-box">
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row posts-row">
+
+                    <div class="col col--1-of-3">
+                        <div class="post-box">
+
+                        </div>
+                    </div>
+
+                    <div class="col col--1-of-3">
+                        <div class="post-box">
+
+                        </div>
+                    </div>
+
+                    <div class="col col--1-of-3">
+                        <div class="post-box">
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row posts-row">
+
+                    <div class="col col--3-of-3">
+                        <div class="post-box">
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col col--1-of-2 col--centered pagination">
+
+                    <ul class="pagi">
+                        <li class="arrow-prev"><</li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li class="arrow-next">></li>
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+            <!--Wrapper for sidebar-->
+            <div class="col col--4-of-12 sidebar">
+
+                <div class="widget quick-info">
+
+                    <header class="widget-header">
+
+                    </header>
+
+                    <section>
+
+                        <article>
+                            <h3>Heading</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, nesciunt.</p>
+                        </article>
+
+                        <article>
+                            <h3>Heading</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, nesciunt.</p>
+                        </article>
+
+                        <article>
+                            <h3>Heading</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, nesciunt.</p>
+                        </article>
+
+                    </section>
+
+                </div>
+
+                <div class="widget calendar">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="cls" style="clear: both"></div>
+
+    <div class="row main-footer">
+
+        <div class="row">
+
+            <div class="col col--1-of-2 col--centered">
+
+                <div class="row">
+
+                    <div class="col col--1-of-2 zhp-foot-logo">
+
+                    </div>
+
+                    <div class="col col--1-of-2 gwo-foot-logo">
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/nivo.js"></script>
+<script src="js/main.js"></script>
+
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+
+
+
+        });
+    });
+
+</script>
+
+
+</body>
+</html>

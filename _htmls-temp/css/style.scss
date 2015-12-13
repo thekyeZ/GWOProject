@@ -1,0 +1,186 @@
+@import "toast";
+@import "reset.css";
+@import "nivoslider.css";
+
+
+html, body,ul{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  min-height: 200px;
+}
+
+.container{
+
+  //docelowo
+  //min-height:inherit;
+  min-height: 100%;
+  position:relative;
+
+ // background: #e2e;
+  width: 100%;
+}
+
+//.content-container{
+//  max-width: 1000px;
+//}
+
+header{
+  background: blue;
+
+  .logo-box{
+    background: red;
+    height: 50px;
+  }
+  
+  nav.main-menu{
+    height: 40px;
+    background: darkblue;
+
+    
+    .menu-option{
+      text-align: center;
+      height: inherit;
+
+
+      a{
+        height: inherit;
+        position: relative;
+        top: 10px;
+        //padding-top: 20px;
+        color: white;
+      }
+      
+      .menu-option:hover{
+        background: red;
+      }
+
+    }
+  }
+
+}
+
+#slider{
+
+  max-height: 400px;
+  background: #d23;
+
+}
+
+.content-container{
+  max-width: 1000px;
+  min-height: 1000px;
+  margin: 0 auto;
+}
+
+
+.main-content{
+
+  .posts-row{
+    margin: 20px auto 20px auto;
+  }
+  
+  .double{
+    height: 200px;
+    //background: #333;
+  }
+  
+  .single{
+    height: 200px;
+    //background: red;
+  }
+
+  .full{
+    height: 200px;
+  }
+
+  .post-box{
+    height: 200px;
+
+    background: blue;
+  }
+
+
+  ul.pagi{
+
+    display: flex;
+    justify-content: center;
+
+    li{
+      display: inline;
+      margin: 20px;
+    }
+
+  }
+
+
+}
+
+.sidebar {
+
+  min-height: 200px;
+  background: lightgray;
+
+  .widget{
+    display: block;
+    width: 100%;
+    margin-bottom: 50px;
+    background: #232;
+    min-height: 100px;
+
+    header.widget-header{
+      height: 50px;
+      width: 100%;
+      background: blue;
+    }
+
+    section{
+
+      article{
+        padding: 10px 5px;
+      }
+
+    }
+
+  }
+
+
+
+}
+
+
+.main-footer{
+
+  display: block;
+  height: 200px;
+  background: blue;
+
+  .zhp-foot-logo{
+    height: 200px;
+    background: red;
+  }
+
+  .gwo-foot-logo{
+    height: 200px;
+    background: red;
+  }
+
+}
+
+
+//.main-content div, .sidebar div{
+//  height: 200px;
+//  background: #e3e3e3;
+//}
+//
+
+
+
+
+//.box{
+//  background: #e3e3e3;
+//  height: 30px;
+//  margin-bottom: 20px;
+//}
