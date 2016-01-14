@@ -1,1 +1,0 @@
-// TODO(jurek) Default file for angular <-ha ha nope BACKBONE code
