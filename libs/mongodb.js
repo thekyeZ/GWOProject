@@ -120,7 +120,7 @@ function insert(collection, call, arrayOfQuery) {
 function updateMulti(collection, call, filter, update) {
     // Catch error if call is not function
     if (typeof call !== "function" || (typeof collection !== "string") || (typeof filter !== "object" || filter === null) || (typeof update !== "object" || update === null)) {
-        errorHandle.emit("log", {id : 123, message : "'call' argument is not function ("+typeof call+") or 'collection' is not string ("+collection+") or 'filter', 'update' is not object ("+filter+", "+filter+")"});
+        errorHandle.emit("log", {id : 123, message : "'call' argument is not function ("+typeof call+") or 'collection' is not string ("+collection+") or 'filter', 'update' is not object ("+filter+", "+update+")"});
         return call(123, null);
     }
     // Catch error if dbHandle is invalid
@@ -129,19 +129,52 @@ function updateMulti(collection, call, filter, update) {
         return call(124, null);
     }
     // Make query
-    dbHandle.collection(collection).updateMany(filter, update, function(err, result) {
+    dbHandle.collection(collection).updateMany(filter, update, function(err, info) {
         if (err) {
             errorHandle.emit("log", {id : 125, message : err});
             return call(125, null);
         }
-        call(null, result);
+        call(null, info.result);
+    });
+}
+
+/**
+ * @description
+ * Function deleting documents
+ *
+ * @param collection {object}
+ * @param call {function}
+ * @param filter {object}
+ * @returns {function} with parameters:
+ *  1)Error code(if perform)
+ *  2)NULL value by expected data(or data)
+ */
+function deleteMany(collection, call, filter) {
+    // Catch error if call is not function
+    if (typeof call !== "function" || (typeof collection !== "string") || (typeof filter !== "object" || filter === null)) {
+        errorHandle.emit("log", {id : 133, message : "'call' argument is not function ("+typeof call+") or 'collection' is not string ("+collection+") or 'filter' is not object ("+filter+")"});
+        return call(133, null);
+    }
+    // Catch error if dbHandle is invalid
+    if (!dbHandle) {
+        errorHandle.emit("log", {id : 134, message : "Cannot find dbHandler ("+dbHandle+")"});
+        return call(134, null);
+    }
+    // Make query
+    dbHandle.collection(collection).deleteMany(filter, function(err, info) {
+        if (err) {
+            errorHandle.emit("log", {id : 135, message : err});
+            return call(135, null);
+        }
+        call(null, info.result);
     });
 }
 
 module.exports = {
     get : get,
     insert : insert,
-    update : updateMulti
+    update : updateMulti,
+    delete : deleteMany
 };
 
 
