@@ -29,7 +29,7 @@ try {
  * @description
  * Function finding data
  *
- * @param collection {object}
+ * @param collection {string}
  * @param call {function}
  * @param query [optional (if not == full collection)] {object}
  * @returns {function} with parameters:
@@ -61,7 +61,7 @@ function get(collection, call, query) {
  * @description
  * Function inserting data to collection
  *
- * @param collection {object}
+ * @param collection {string}
  * @param call {function}
  * @param arrayOfQuery {Array}
  * @returns {function} with parameters:
@@ -109,7 +109,7 @@ function insert(collection, call, arrayOfQuery) {
  * @description
  * Function updating multi document in collection
  *
- * @param collection {object}
+ * @param collection {string}
  * @param call {function}
  * @param filter {object}
  * @param update {object}
@@ -142,7 +142,7 @@ function updateMulti(collection, call, filter, update) {
  * @description
  * Function deleting documents
  *
- * @param collection {object}
+ * @param collection {string}
  * @param call {function}
  * @param filter {object}
  * @returns {function} with parameters:
@@ -171,10 +171,10 @@ function deleteMany(collection, call, filter) {
 }
 
 module.exports = {
-    get : get,
+    find : get,
     insert : insert,
     update : updateMulti,
-    delete : deleteMany
+    remove : deleteMany
 };
 
 
