@@ -36,7 +36,7 @@ try {
  *  1)Error code(if perform)
  *  2)NULL value by expected data(or data)
  */
-function get(collection, call, query) {
+function find(collection, call, query) {
     // Catch error if call is not function
     if (typeof call !== "function" || (typeof collection !== "string")) {
         errorHandle.emit("log", {id : 103, message : "'call' argument is not function ("+typeof call+") or 'collection' is not string ("+collection+")"});
@@ -171,7 +171,7 @@ function deleteMany(collection, call, filter) {
 }
 
 module.exports = {
-    find : get,
+    find : find,
     insert : insert,
     update : updateMulti,
     remove : deleteMany

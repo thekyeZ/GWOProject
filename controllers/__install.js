@@ -51,8 +51,8 @@ router.post('/', function(req, res) {
         synchronous.on("complete", function(id, err) {
             _completed.value += id;
             if (err) _completed.errors.push(err);
-            if (_completed.value === 3 && _completed.errors.length === 0) return res.send("<h1>Installation COMPLETE!</h1><p>Restart server!</p>");
-            if (_completed.value === 3 && _completed.errors.length !== 0) return res.send("<h1>Installation ERROR!</h1><p>"+_completed.errors+"</p>");
+            if (_completed.value === 6 && _completed.errors.length === 0) return res.send("<h1>Installation COMPLETE!</h1><p>Restart server!</p>");
+            if (_completed.value === 6 && _completed.errors.length !== 0) return res.send("<h1>Installation ERROR!</h1><p>"+_completed.errors+"</p>");
         });
 
         /**
