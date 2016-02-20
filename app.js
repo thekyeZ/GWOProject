@@ -26,7 +26,7 @@ app.use(parse.urlencoded({
 // Routers trace
 app.use(express.static("./public"));
 
-app.use('/', index);
+app.use('/index', index);
 app.use('/admin', admin);
 app.use('/page', page);
 app.use('/gallery', gallery);

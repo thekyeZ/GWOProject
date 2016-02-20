@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl" ng-app="gwo" ng-controller="main">
+<head>
+    <meta charset="UTF-8">
+    <title ng-bind="site.title"></title>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers/main.js"></script>
+    <script src="/app/controllers/home.js"></script>
+</head>
+<body>
+    <base href="/">
+    <!-- Header from main controller -->
+    <header></header>
+
+    <section ng-view></section>
+
+    <!-- Footer from main controller -->
+    <footer></footer>
+</body>
+</html>
