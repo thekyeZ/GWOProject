@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title ng-bind="site.title"></title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="/style/index.css">
+    <!-- Scripts -->
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
     <script src="/app/app.js"></script>
@@ -10,16 +13,30 @@
     <script src="/app/controllers/home.js"></script>
     <script src="/app/controllers/contact.js"></script>
 </head>
-<body>
+<body ng-cloak>
     <base href="/">
     <!-- Header from main controller -->
     <header>
-        Witaj na {{site.title}}
+        <a href="/" class="logo"></a>
+        <nav class="nav">
+            <ul ng-repeat="category in nav | orderBy:'pos'" ng-mouseover="animation[category.shortcut] = true" ng-mouseleave="animation[category.shortcut] = false">
+                <h4>{{category.name}}</h4>
+                <li ng-repeat="subMenu in category.subMenu | orderBy:'pos'" ng-class="{'show' : animation[category.shortcut]}">
+                    <a ng-href="/{{subMenu.category}}/{{subMenu.shortcut}}">{{subMenu.name}}</a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
-    <section ng-view></section>
+    <section ng-view class="content"></section>
 
     <!-- Footer from main controller -->
-    <footer></footer>
+    <footer>
+        <p>Social media</p>
+        <p>contact</p>
+        <p>contact form (textarea)</p>
+        <p>site map</p>
+        <p>copyright</p>
+    </footer>
 </body>
 </html>

@@ -1,4 +1,39 @@
 <section>
     <h1 ng-bind="title"></h1>
-    <a href="/contact">Non reload page Contact -> GO</a>
+    <ul>
+        <li ng-repeat="post in posts">
+            <h1>{{post.title}}</h1>
+            <small ng-repeat="category in category">{{category}},</small>
+            <div>Data: {{post.date}}</div>
+            <p>Data: {{post.content}}</p>
+        </li>
+    </ul>
+
+    <a ng-click="sortByDate(posts)">CLICK TO SORT BY DATE</a>
+
+    <hr>
+
+    <ul>
+        <h1>Kontakt</h1>
+        <li>Administrator: {{contact.admin}}</li>
+        <li>Telefon: {{contact.phone}}</li>
+        <li>Facebook: {{contact.facebook}}</li>
+        <li>Twitter: {{contact.twitter}}</li>
+    </ul>
+
+    <ul>
+        <h2>Dane do faktury:</h2>
+        <li>Numer konta: {{contact.facture.number}}</li>
+    </ul>
+
+    <ul>
+        <h2>Kalendarz wydarzeń:</h2>
+        <li ng-repeat="event in events">
+            <h5>{{event.title}}</h5>
+            <small>{{event.date}}</small>
+            <a ng-href="{{event.link}}">Idź do wydarzenia(LINK)</a>
+            <p>{{event.desc}}</p>
+        </li>
+    </ul>
+
 </section>
