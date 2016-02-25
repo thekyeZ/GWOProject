@@ -8,8 +8,7 @@ var express             = require("express"),
     parse               = require("body-parser");
 
 // Controllers
-var index = require("./controllers/index"),
-    admin = require("./controllers/admin"),
+var admin = require("./controllers/admin"),
     page = require("./controllers/page"),
     gallery =  require("./controllers/gallery"),
     blog = require("./controllers/blog"),
@@ -26,7 +25,6 @@ app.use(parse.urlencoded({
 // Routers trace
 app.use(express.static("./public"));
 
-app.use('/', index);
 app.use('/admin', admin);
 app.use('/page', page);
 app.use('/gallery', gallery);
