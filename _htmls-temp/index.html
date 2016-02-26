@@ -6,6 +6,9 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/semantic.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
 
@@ -13,17 +16,47 @@
 
     <div class="row">
 
-        <header>
+        <header class="main-header">
+
             <div class="col col--1-of-6 col--centered logo-box">
                 <!--<span class="logo"></span>-->
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
 
             <nav class="main-menu">
 
-                <div class="col col--1-of-4 menu-option"><a href="#">Menu</a></div>
-                <div class="col col--1-of-4 menu-option"><a href="#">Menu</a></div>
-                <div class="col col--1-of-4 menu-option"><a href="#">Menu</a></div>
-                <div class="col col--1-of-4 menu-option"><a href="#">Menu</a></div>
+                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
+                    <a href="/harcerz">Dla członków</a>
+                    <div class="drop-down dd-harcerz">
+                        <h2>Harcerz</h2>
+                    </div>
+
+                </div>
+                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
+                    <a href="/kadra">Dla kadry</a>
+                    <div class="drop-down dd-kadra">
+                        <h2>kadra</h2>
+                    </div>
+
+                </div>
+                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
+                    <a href="/rodzic">Dla rodziców</a>
+                    <div class="drop-down dd-rodzic">
+
+                    </div>
+
+                </div>
+                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
+                    <a href="bazy.html">Bazy hufca</a>
+                    <div class="drop-down dd-bazy">
+
+                    </div>
+
+                </div>
 
             </nav>
         </header>
@@ -43,53 +76,187 @@
         <div class="row">
 
             <!--Wrapper for posts-->
-            <div class="col col--8-of-12 main-content" style="height: 200px;">
+            <div class="col col--9-of-12 main-content" >
 
                 <div class="row posts-row">
 
-                    <div class="col col--2-of-3">
-                        <div class="post-box">
+                    <div class="col col--2-of-3 col--m-1-of-2 col--s-1-of-1">
+                        <!--<div class="post-box">-->
+                            <!--&lt;!&ndash;<div class="post-img" id="post-id-122"></div>&ndash;&gt;-->
+                            <!--<img src="images/deb1806-7454_19919458033_o@2x.png" alt="">-->
+                            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis dolorum minus nemo quas. Assumenda dolorum eveniet explicabo in, iusto modi nam quibusdam sint veniam! Accusantium animi commodi distinctio eum exercitationem explicabo harum impedit ipsa ipsum itaque magnam pariatur, quas, quasi quidem quod sint, tempora vel velit veritatis vitae? Dolor.</p>-->
+                        <!--</div>-->
 
+                        <div class="ui fluid card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
-                    <div class="col col--1-of-3">
-                        <div class="post-box">
+                    <div class="col col--1-of-3 col--m-1-of-2 col--s-1-of-1">
+                        <!--<div class="post-box">-->
+                            <!--&lt;!&ndash;<div class="post-img" id="post-id-123"></div>&ndash;&gt;-->
+                            <!--<img src="images/deb1806-7454_19919458033_o@2x.png" alt="">-->
+                            <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur dolore fuga nihil nisi ratione recusandae suscipit? Eveniet magnam nulla quod?</p>-->
+                        <!--</div>-->
 
+                        <div class="ui card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
                         </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="row posts-row">
+
+                    <div class="col col--1-of-3 col--m-1-of-2 col--s-1-of-1">
+                        <div class="ui card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col col--1-of-3 col--m-1-of-2 col--s-1-of-1">
+                        <div class="ui card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col col--1-of-3 col--m-1-of-2 col--s-1-of-1">
+                        <div class="ui card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row posts-row">
+
+                    <div class="col col--2-of-3 col--m-1-of-2 col--s-1-of-1">
+
+                        <div class="ui fluid card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col col--1-of-3 col--m-1-of-2 col--s-1-of-1">
+
+
+                        <div class="ui card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
 
                 <div class="row posts-row">
 
-                    <div class="col col--1-of-3">
-                        <div class="post-box">
-
+                    <div class="col col--1-of-3 col--m-1-of-2 col--s-1-of-1">
+                        <div class="ui card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
-                    <div class="col col--1-of-3">
-                        <div class="post-box">
-
+                    <div class="col col--1-of-3 col--m-1-of-2 col--s-1-of-1">
+                        <div class="ui card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
-                    <div class="col col--1-of-3">
-                        <div class="post-box">
-
+                    <div class="col col--1-of-3 col--m-1-of-2 col--s-1-of-1">
+                        <div class="ui card">
+                            <a class="image" href="#">
+                                <img src="images/deb1806-7454_19919458033_o@2x.png">
+                            </a>
+                            <div class="content">
+                                <a class="header" href="#">Steve Jobes</a>
+                                <div class="meta">
+                                    <a>Last Seen 2 days ago</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
-
-
-                <div class="row posts-row">
-
-                    <div class="col col--3-of-3">
-                        <div class="post-box">
-
-                        </div>
                     </div>
 
                 </div>
@@ -114,26 +281,29 @@
             </div>
 
             <!--Wrapper for sidebar-->
-            <div class="col col--4-of-12 sidebar">
+            <div class="col col--3-of-12 sidebar">
 
                 <div class="widget quick-info">
 
                     <header class="widget-header">
-
+                        <span class="widget-header-text">Ważne informacje: </span>
                     </header>
 
-                    <section>
+                    <section class="widget-main-content">
 
+                        <article>
+                            <h3>Komedant Hufca</h3>
+                            <p><strong>pwd. Ewa Deręgowska-Lewosz HO </strong><br>
+                                Tel. kom.: +48 515 102 733 <br>
+                                E-mail: komenda@gdanskwrzeszczoliwa.zhp.pl
+                            </p>
+                        </article>
+                        <div class="divider"></div>
                         <article>
                             <h3>Heading</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, nesciunt.</p>
                         </article>
-
-                        <article>
-                            <h3>Heading</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, nesciunt.</p>
-                        </article>
-
+                        <div class="divider"></div>
                         <article>
                             <h3>Heading</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, nesciunt.</p>
@@ -163,11 +333,12 @@
 
                 <div class="row">
 
-                    <div class="col col--1-of-2 zhp-foot-logo">
-
+                    <div class="col col--1-of-2 gwo-foot-logo">
+                        <!--<img src="images/logo_hufca_czarne.png"  alt="">-->
                     </div>
 
-                    <div class="col col--1-of-2 gwo-foot-logo">
+                    <div class="col col--1-of-2 zhp-foot-logo">
+                        <!--<img src="images/logo_zhp_ident.png" alt="">-->
 
                     </div>
 
@@ -186,14 +357,13 @@
 
 
 <script src="js/jquery.js"></script>
+<script src="js/semantic.js"></script>
 <script src="js/nivo.js"></script>
 <script src="js/main.js"></script>
 
 <script type="text/javascript">
     $(window).load(function() {
         $('#slider').nivoSlider({
-
-
 
         });
     });

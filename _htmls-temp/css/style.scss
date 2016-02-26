@@ -2,6 +2,9 @@
 @import "reset.css";
 @import "nivoslider.css";
 
+$main-color: #006CFF;
+$secondary-color: #1B60BE;
+
 
 html, body,ul{
   margin: 0;
@@ -10,6 +13,15 @@ html, body,ul{
 
 body{
   min-height: 200px;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.page-title{
+  padding-top: 20px;
+  font-size: 1.9em;
 }
 
 .container{
@@ -23,27 +35,59 @@ body{
   width: 100%;
 }
 
+.divider{
+  width: 90%;
+  height: 1px;
+  margin: 0 auto;
+  background: #1b1c1d;
+}
+
 //.content-container{
 //  max-width: 1000px;
 //}
 
-header{
-  background: blue;
-
+header.main-header{
+  background: $main-color;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
   .logo-box{
     background: red;
     height: 50px;
+    width: 108px;
+    background: url("../images/logo_hufca_czarne.png") no-repeat;
+    background-size: contain;
+    .burger{
+      width: 50px;
+      height: 50px;
+      //background: #0ea432;
+      //float: right;
+      display: none;
+      padding-top: 10px;
+      span{
+        display: block;
+        width: 80%;
+
+        height: 3px;
+        margin: 5px 0;
+        background: black;
+      }
+    }
   }
+
   
   nav.main-menu{
     height: 40px;
-    background: darkblue;
-
+    background: $main-color;
+    position: relative;
     
     .menu-option{
       text-align: center;
       height: inherit;
-
+      padding: 0 !important;
 
       a{
         height: inherit;
@@ -57,7 +101,36 @@ header{
         background: red;
       }
 
+      .drop-down{
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        left: -2000em;
+        top: 40px;
+        background: $secondary-color;
+        z-index: 999;
+
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -ms-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+
+      }
+
+
+
+
     }
+
+    .menu-option:hover{
+      background: $secondary-color !important;
+    }
+    
+    .menu-option:hover .drop-down{
+      left: auto;
+    }
+
   }
 
 }
@@ -70,9 +143,48 @@ header{
 }
 
 .content-container{
-  max-width: 1000px;
+  //max-width: 1000px;
   min-height: 1000px;
   margin: 0 auto;
+
+  .row.bases{
+      margin: 0;
+    //padding: 0 50/px;
+  }
+
+  .base{
+    
+    height: 80vh;
+    padding: 0 50px;
+    width: 95vw;
+    margin-top: 20px ;
+    //background: red;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    &#wygonin{
+      margin-bottom: 20px;
+      background: url("../images/355577.jpg");
+
+      background-size: cover;
+    }
+    &#morenka{
+      background: url("../images/morenka-bg.jpg");
+      background-size: cover;
+      margin-bottom: 20px;
+    }
+
+    .base-close{
+      margin: 50px 0;
+    }
+
+  }
+  
+
 }
 
 
@@ -80,6 +192,9 @@ header{
 
   .posts-row{
     margin: 20px auto 20px auto;
+    .col{
+      margin-bottom: 20px !important;
+    }
   }
   
   .double{
@@ -97,11 +212,17 @@ header{
   }
 
   .post-box{
+    position: relative;
     height: 200px;
+    padding: 0;
+    overflow: hidden;
+    //background: blue;
 
-    background: blue;
+    img{
+      height: 200px;
+    }
+
   }
-
 
   ul.pagi{
 
@@ -121,25 +242,56 @@ header{
 .sidebar {
 
   min-height: 200px;
-  background: lightgray;
+  //background: lightgray;
+  padding-right: 20px;
+  padding-top: 20px;
+  .quick-info {
+
+    border: 1px solid #6F706F;
+    border-radius: 3px;
+    -webkit-box-shadow: 1px 1px 2px 1px #9A9C9A;
+    box-shadow: 1px 1px 2px 1px #9A9C9A;
+  }
 
   .widget{
     display: block;
     width: 100%;
     margin-bottom: 50px;
-    background: #232;
+    //background: #232;
     min-height: 100px;
 
-    header.widget-header{
-      height: 50px;
-      width: 100%;
-      background: blue;
+    hr{
+      width: 90%;
     }
 
-    section{
+    .widget-header{
+      height: 50px;
+      width: 100%;
+      //background: blue;
+      display: flex;
+      justify-content: space-around;
+      span{
+        font-size: 18px;
+        top: 20px;
+        margin-left: 20px;
+        align-self: center;
+      }
+    }
 
+    .widget-main-content{
+      //background: pink;
+      padding: 10px;
       article{
         padding: 10px 5px;
+        text-wrap: normal;
+
+        h3{
+          margin: 0px !important;
+        }
+
+        p{
+          padding-left: 10px;
+        }
       }
 
     }
@@ -159,12 +311,56 @@ header{
 
   .zhp-foot-logo{
     height: 200px;
-    background: red;
+    background: url("../images/logo_zhp_ident.png");
   }
 
   .gwo-foot-logo{
     height: 200px;
-    background: red;
+    background: url("../images/logo_hufca_czarne.png") no-repeat;
+    background-size: contain;
+    margin-top: 20px;
+  }
+
+}
+
+@media (max-width: $toast-breakpoint-medium) {
+
+  .main-header{
+    height: 50px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .main-header.active{
+    min-height: 210px;
+
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .burger{
+    display: block !important;
+    position: absolute;
+    z-index: 999;
+    right: 20px;
+  }
+
+  .main-menu{
+    display: block;
+    //height: 200px !important;
+    .menu-option{
+      display: block;
+
+      .drop-down{
+        display: none;
+      }
+    }
   }
 
 }
@@ -184,3 +380,4 @@ header{
 //  height: 30px;
 //  margin-bottom: 20px;
 //}
+
