@@ -174,7 +174,8 @@ module.exports = {
     find : find,
     insert : insert,
     update : updateMulti,
-    remove : deleteMany
+    remove : deleteMany,
+    ObjectId : mongodb.ObjectId
 };
 
 

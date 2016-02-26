@@ -19,19 +19,6 @@ app.controller("home", ["$scope", function($scope) {
         }
     ];
 
-    $scope.contact = {
-        "admin" : "Imię i nazwisko",
-        "phone" : "test",
-        "mail" : "test",
-        "address" : "test",
-        "facebook" : "test",
-        "twitter" : "test",
-        "youtube" : "test",
-        "facture" : {
-            "number" : 234234234
-        }
-    };
-
     $scope.events = [
         {title : 'Event 1', desc : "Lorem ipsum", date : 1156354149985, link : "/blog/143"},
         {title : 'Event 2', desc : "Lorem ipsum", date : 1156354139985, link : "/blog/123"}

@@ -38,7 +38,7 @@ router.post('/', function(req, res) {
         return console.log("PROBLEM WITH INSTALL BUTTON");
     }
 
-    database.find("_admin", function(err, result) {
+    database.find("admin", function(err, result) {
         // Stop if already install
         if (result[0]) return res.send("<h1>System already installed!</h1><p>Restart server and remove '__install' controller!</p>");
 
@@ -51,8 +51,8 @@ router.post('/', function(req, res) {
         synchronous.on("complete", function(id, err) {
             _completed.value += id;
             if (err) _completed.errors.push(err);
-            if (_completed.value === 6 && _completed.errors.length === 0) return res.send("<h1>Installation COMPLETE!</h1><p>Restart server!</p>");
-            if (_completed.value === 6 && _completed.errors.length !== 0) return res.send("<h1>Installation ERROR!</h1><p>"+_completed.errors+"</p>");
+            if (_completed.value === 5 && _completed.errors.length === 0) return res.send("<h1>Installation COMPLETE!</h1><p>Restart server!</p>");
+            if (_completed.value === 5 && _completed.errors.length !== 0) return res.send("<h1>Installation ERROR!</h1><p>"+_completed.errors+"</p>");
         });
 
         /**
@@ -81,10 +81,14 @@ router.post('/', function(req, res) {
          * Create '_admin' collection
          * contain super-admin login and password
          */
-        database.insert("_admin", function(err) {
+        database.insert("admin", function(err) {
             if (err) return synchronous.emit("complete", 1 , err);
             synchronous.emit("complete", 1);
-        }, [{"admin" : sha3(req.body.pass)}]);
+        }, [{
+            "username" : "admin",
+            "permissions" : 7,
+            "password" : sha3(req.body.pass)
+        }]);
 
         /**
          * @description
@@ -122,19 +126,7 @@ router.post('/', function(req, res) {
             }, {"ini" : true});
         }, [{"ini" : true}]);
 
-        /**
-         * @description
-         * Create 'users' collection
-         * contain list of users
-         */
-        database.insert("users", function(err) {
-            database.remove("users", function(err) {
-                if (err) return synchronous.emit("complete", 1 , err);
-                synchronous.emit("complete", 1);
-            }, {"ini" : true});
-        }, [{"ini" : true}]);
-
-    }, {"admin" : {$exists : true}});
+    }, {"username" : {$exists : true}});
 });
 
 module.exports = router;
