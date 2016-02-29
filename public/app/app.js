@@ -1,4 +1,4 @@
-var app = angular.module("gwo", ['ngRoute']);
+var app = angular.module("gwo", ['ngRoute', 'ngResource']);
 
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
 

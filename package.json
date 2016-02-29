@@ -18,9 +18,13 @@
   "homepage": "https://github.com/thekyeZ/GWOProject#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.3",
+    "express-session": "^1.13.0",
     "express-stream": "^0.8.0",
     "js-sha3": "^0.5.1",
-    "mongodb": "^2.1.4"
+    "mongodb": "^2.1.4",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   }
 }
