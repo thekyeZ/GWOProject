@@ -3,12 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
+    <link rel="stylesheet" href="/admin/style/panel.css">
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/admin/app/adminPanel.js"></script>
     <script src="/admin/app/controllers/panel.js"></script>
 </head>
-<body ng-controller="login" ng-cloak>
-    <h1>Panel</h1>
+<body ng-controller="panel" ng-cloak>
+
+    <header>
+        <h1>GWO Website</h1>
+        <small>Admin panel</small>
+    </header>
+
+    <nav>
+        <a href="#">Strony</a>
+        <a href="#">Blog</a>
+        <a href="#">Galeria</a>
+        <a href="#">Użytkownicy</a>
+    </nav>
+
+    <section>
+        <!-- Sites -->
+        <aside class="sites">
+            <h1>Nawigacja</h1>
+            <form class="navigation">
+                <ul>
+                    <li>
+                        <p>Nazwa kategorii menu</p>
+                        <p>Kolejność w pasku nawigacji</p>
+                        <p>Lista menu</p>
+                    </li>
+                    <li ng-repeat="category in nav | orderBy:'pos'">
+                        <input type="text" value="{{category.name}}">
+                        <input type="text" value="{{category.pos}}">
+                        <input type="button" value="Rozwiń">
+                    </li>
+                    <li>
+                        <input type="button" value="Dodaj pozycję">
+                    </li>
+                </ul>
+            </form>
+            <p>Podgląd paska nawigacyjnego:</p>
+            <hr>
+            <h1>Dane kontaktowe</h1>
+            <form class="contact">
+                <ul>
+                    <li>
+                        <p>Nazwa</p><p>Wartość</p><p>Widoczność w "Ważne informacje"</p>
+                    </li>
+                    <li>
+                        <p>Administrator:</p><input type="text" value="{{contact.admin}}"><input type="checkbox">
+                    </li>
+                    <li>
+                        <p>Telefon:</p><input type="text" value="{{contact.phone}}"><input type="checkbox">
+                    </li>
+                    <li>
+                        <p>Mail:</p><input type="text" value="{{contact.mail}}"><input type="checkbox">
+                    </li>
+                    <li>
+                        <p>Adres:</p><input type="text" value="{{contact.address}}"><input type="checkbox">
+                    </li>
+                </ul>
+            </form>
+        </aside>
+        <!-- Blog -->
+        <aside></aside>
+        <!-- Gallery -->
+        <aside></aside>
+        <!-- Users -->
+        <aside></aside>
+    </section>
+
 </body>
 </html>

@@ -12,8 +12,6 @@ var mongo       = require("../libs/mongodb");
  */
 router.get('/', function(req, res) {
 
-    console.log(req.isAuthenticated());
-
     var template = "login.html";
     if (req.isAuthenticated()) template = "panel.html";
     res.sendFile(template, {
@@ -31,7 +29,7 @@ router.post('/login', function(req, res, next) {
     passport.authenticate('login', function(err, user, info) {
         if (err) next(err);
         if (!user) {
-            return res.json(info);
+            return res.redirect("/admin?message="+info.message);
         } else {
             req.login(user, function(err) {
                 if (err) return next(err);

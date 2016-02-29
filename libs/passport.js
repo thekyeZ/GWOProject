@@ -35,6 +35,6 @@ module.exports = function(passport) {
                 console.log("Wrong pass");
                 return done(null, false, { message : "Invalid password" });
             }
-        }, { "username" : username });
+        }, { "username" : username.toLowerCase() });
     }));
 };
