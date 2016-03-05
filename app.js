@@ -68,7 +68,6 @@ app.use(express.static("./public"));
 app.use('/index', index);
 app.use('/admin', admin);
 app.use('/page', page);
-app.use('/gallery', gallery);
 app.use('/blog', blog);
 
 
