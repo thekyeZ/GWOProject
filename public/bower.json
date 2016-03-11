@@ -1,0 +1,19 @@
+{
+  "name": "GWO",
+  "homepage": "https://github.com/thekyeZ/GWOProject",
+  "authors": [
+    "Jurek <pawel.j@henouser.pl>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular-resource": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6"
+  }
+}
