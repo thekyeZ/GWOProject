@@ -3,8 +3,6 @@ var express     = require("express"),
     passport    = require("passport"),
     router      = express.Router();
 
-// Libs
-var mongo       = require("../libs/mongodb");
 
 /**
  * @description
@@ -20,11 +18,14 @@ router.get('/', function(req, res) {
 
 });
 
+/**
+ * @description
+ * Authorization path
+ */
 router.post('/login', function(req, res, next) {
 
     if(req.isAuthenticated()) {
-        res.json(req.user);
-        return;
+        return res.send();
     }
     passport.authenticate('login', function(err, user, info) {
         if (err) next(err);
@@ -33,7 +34,7 @@ router.post('/login', function(req, res, next) {
         } else {
             req.login(user, function(err) {
                 if (err) return next(err);
-                res.redirect("/admin");
+                res.redirect("/admin?user="+user.username);
             });
         }
     })(req, res, next);

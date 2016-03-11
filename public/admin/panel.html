@@ -3,76 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link rel="stylesheet" href="/admin/style/panel.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/admin/app/adminPanel.js"></script>
     <script src="/admin/app/controllers/panel.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/style/panel.css">
 </head>
 <body ng-controller="panel" ng-cloak>
-
-    <header>
-        <h1>GWO Website</h1>
-        <small>Admin panel</small>
+    <header class="navbar navbar-inverse navbar-fixed-top">
+        <!-- Add users-->
+        <div class="container">
+            <aside class="navbar-header">
+                <a href="#" class="navbar-brand" ng-click="switchContent('dashboard')">Tablica</a>
+            </aside>
+            <ul class="navbar-nav nav">
+                <!--<li><a href="#">Tablica</a></li>-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" ng-click="switchContent('addPost')">Dodaj post</a></li>
+                        <li><a href="#" ng-click="switchContent('modPost')">Modyfikuj/usuń istniejące</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Strony statyczne<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" ng-click="switchContent('contactStatic')">Kontakt</a></li>
+                        <li><a href="#" ng-click="switchContent('baseHufiec')">Bazy Hufca</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav nav navbar-right">
+                <li class="navbar-right">
+                    <a href="#"><span class="glyphicon glyphicon-user user-space"></span>Wyloguj</a>
+                </li>
+            </ul>
+        </div>
     </header>
-
-    <nav>
-        <a href="#">Strony</a>
-        <a href="#">Blog</a>
-        <a href="#">Użytkownicy</a>
-    </nav>
-
-    <section>
-        <!-- Sites -->
-        <aside class="sites">
-            <h1>Nawigacja</h1>
-            <form class="navigation">
-                <ul>
-                    <li>
-                        <p>Nazwa kategorii menu</p>
-                        <p>Kolejność w pasku nawigacji</p>
-                        <p>Lista menu</p>
-                    </li>
-                    <li ng-repeat="category in nav | orderBy:'pos'">
-                        <input type="text" value="{{category.name}}">
-                        <input type="text" value="{{category.pos}}">
-                        <input type="button" value="Rozwiń">
-                    </li>
-                    <li>
-                        <input type="button" value="Dodaj pozycję">
-                    </li>
-                </ul>
-            </form>
-            <p>Podgląd paska nawigacyjnego:</p>
-            <hr>
-            <h1>Dane kontaktowe</h1>
-            <form class="contact">
-                <ul>
-                    <li>
-                        <p>Nazwa</p><p>Wartość</p><p>Widoczność w "Ważne informacje"</p>
-                    </li>
-                    <li>
-                        <p>Administrator:</p><input type="text" value="{{contact.admin}}"><input type="checkbox">
-                    </li>
-                    <li>
-                        <p>Telefon:</p><input type="text" value="{{contact.phone}}"><input type="checkbox">
-                    </li>
-                    <li>
-                        <p>Mail:</p><input type="text" value="{{contact.mail}}"><input type="checkbox">
-                    </li>
-                    <li>
-                        <p>Adres:</p><input type="text" value="{{contact.address}}"><input type="checkbox">
-                    </li>
-                </ul>
-            </form>
-        </aside>
-        <!-- Blog -->
-        <aside></aside>
-        <!-- Gallery -->
-        <aside></aside>
-        <!-- Users -->
-        <aside></aside>
+    <!-- Margin top-->
+    <div class="fixed-margin"></div>
+    <!-- Content-->
+    <!-- Dashboard -->
+    <section ng-class="animation.showdashboard" class="container">
+        <br>
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">Informacje na temat aplikacji GWO</div>
+            <table class="table">
+                <tr>
+                    <th>
+                        <h4>Funkcja</h4>
+                    </th>
+                    <th>
+                        <h4>Opis</h4>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Założenia ogólne</th>
+                    <th>
+                        <p>Zdjęcia można wysyłać wyłącznie metodą "przeciągnij/upuść"</p>
+                        <p>Zdjęcia można wysyłać w max rozdzielczości (2000x2000).</p>
+                        <p>Zdjęcia muszą być w formacie JPG lub PNG.</p>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Tablica</td>
+                    <td>
+                        <p>Wersja aplikacji, uaktualnienia, opis funkcjonalności</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dodaj post (Blog)</td>
+                    <td>
+                        <p>Post może zostać dodany jako: element w menu nawigacyjnym, zwykły post(widoczny na liście na stronie głównej), bądź oba na raz.</p>
+                        <p>Maksymalna ilość zdjęć w galerii to: 100.</p>
+                        <p>Dodanie postu wraz ze zdjęciami może zająć więcej czasu, w zależności od połącznia sieciowego, rozmiaru i ilości zdjęć.</p>
+                    </td>
+                </tr>
+            </table>
+            <div class="panel-footer text-center">GWO - ver. ALFA</div>
+        </div>
     </section>
+    <!-- Add post -->
+    <section ng-class="animation.showaddPost" class="container">
+        <h4 class="page-header">Blog / Dodaj post</h4>
+        <form class="row">
+            <section class="col-lg-6">
+                <!-- Title -->
+                <label for="title">Tytuł (wymagane)</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="title" placeholder="Tytuł posta">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </div>
+                </div>
+                <hr>
+                <!-- Background photo -->
+                <label for="background">Zdjęcie tła (opcjonalne)</label>
+                <div class="input-group col-lg-12">
+                    <!--<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">-->
+                    <div id="background" class="drag-drop-zone">
+                        <p class="text-center">Drag photo here</p>
+                    </div>
+                </div>
+                <hr>
+                <!-- Categories -->
+                <label for="category">Dodaj post do kategorii (wymagana co najmniej jedna kategoria)</label>
+                <div class="input-group">
+                    <select class="form-control" name="Kategorie" id="category">
+                        <option value="null">Wybierz kategorie</option>
+                        <option ng-repeat="tag in categories" value="{{tag}}">{{tag}}</option>
+                    </select>
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </div>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default">Dodaj post do wybranej kategorii</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="_newCategory" placeholder="Dodaj nową kategorię do listy dostępnych">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" ng-click="addCategory()">Dodaj do listy</button>
+                    </div>
+                </div>
+                <div class="alert alert-warning">Dodanie nowej kategorii do listy dostępnych dodaje wyłącznie kategorię do kategorii możliwych do wyboru na liście, nie dodaje jednocześnie aktualnego postu do wpisanej kategorii</div>
+                <hr>
+                <!-- Content -->
+                <label for="postContent">Treść postu (wymagane)</label>
+                <div class="input-group col-lg-12">
+                    <textarea name="Treść" id="postContent" class="form-control col-lg-12" placeholder="Treść" style="resize: none; height: 200px"></textarea>
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </div>
+                </div>
+                <br>
+            </section>
+            <section class="col-lg-5 col-lg-offset-1">
+                <!-- Add as menu link --->
+                <label for="postCheck">Dodaj do listy postów na stronie głównej</label>
+                <div class="input-group">
+                    <button type="button" class="form-control" id="postCheck">Włącz/Wyłącz</button>
+                    <div class="input-group-addon">
+                        <input type="checkbox">
+                    </div>
+                </div>
+                <hr>
+                <!-- Add as menu link --->
+                <label for="menuCheck">Dodaj do menu</label>
+                <div class="input-group">
+                    <button type="button" class="form-control" id="menuCheck">Włącz/Wyłącz</button>
+                    <div class="input-group-addon">
+                        <input type="checkbox">
+                    </div>
+                </div>
+                <hr>
+                <!-- Add gallery -->
+                <label for="addGallery">Dodaj galerię do postu</label>
+                <div class="input-group">
+                    <button type="button" class="form-control" id="addGallery" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Włącz/Wyłącz</button>
+                    <div class="input-group-addon">
+                        <input type="checkbox">
+                    </div>
+                </div>
+                <div class="collapse" id="collapseExample">
+                    <div class="well ">
+                        <!-- Gallery photos -->
+                        <div class="input-group col-lg-12">
+                            <!--<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">-->
+                            <div class="drag-drop-zone">
+                                <p class="text-center">Drag gallery photos here</p>
+                            </div>
+                        </div>
+                        <p class="page-header">Photos (0/100):</p>
+                        <!--photos-->
+                    </div>
+                </div>
+            </section>
+            <input type="button" class="form-control btn btn-primary send" value="Dodaj!" ng-click="blogAddPost()">
+        </form>
+        <br>
+    </section>
+    <section ng-class="animation.showmodPost" class="container">modpos</section>
+    <section ng-class="animation.showcontactStatic" class="container">conta</section>
+    <section ng-class="animation.showbaseHufiec" class="container">huf</section>
+    <!--<section>-->
+        <!--<aside class="post">-->
+            <!--<form class="post-add" ng-submit="blogAddPost()">-->
+                <!--<h2>Blog -> Dodaj post</h2>-->
+                <!--<hr>-->
 
+                <!--&lt;!&ndash; Title &ndash;&gt;-->
+                <!--<h4>Podaj tytuł (wymagane)</h4>-->
+                <!--<input type="text" placeholder="Tytuł..." ng-model="newPost.title" required>-->
+
+                <!--&lt;!&ndash; Wybierz tło (opcjonalne)&ndash;&gt;-->
+                <!--<h4>Wybierz tło (wymagane)</h4>-->
+                <!--<input type="file" accept="image/*">-->
+
+                <!--&lt;!&ndash; Dodaj kategorie (wymagane)&ndash;&gt;-->
+                <!--<h4>Podaj kategorie (wymagane)</h4>-->
+                <!--<select title="Kategorie" name="category" id="categorySelect" ng-model="_categorySelect">-->
+                    <!--<option value="rodzice">Rodzice</option>-->
+                    <!--<option value="baza">Baza</option>-->
+                <!--</select>-->
+                <!--<p ng-repeat="category in categories"></p>-->
+                <!--<input type="text" placeholder="Dodaj nową kategorię..." ng-model="_newCategory">-->
+                <!--<input type="button" value="Dodaj" ng-click="addCategory()">-->
+
+                <!--&lt;!&ndash; Treść &ndash;&gt;-->
+                <!--<h4>Podaj treść (wymagane)</h4>-->
+                <!--<textarea placeholder="Treść posta..." required ng-model="newPost.content"></textarea>-->
+
+                <!--&lt;!&ndash; Ustawienia posta &ndash;&gt;-->
+                <!--<h4>Ustawienia posta</h4>-->
+                <!--<label for="galleryPost">Dodaj galerię</label>-->
+                <!--<input type="checkbox" id="galleryPost">-->
+                <!--<input type="file" accept="image/*">-->
+                <!--<label for="typePost">Dodaj jako stronę:</label>-->
+                <!--<input type="checkbox" ng-model="newPost.site" id="typePost">-->
+
+                <!--&lt;!&ndash; Dodaj&ndash;&gt;-->
+                <!--<h1>Dodaj</h1>-->
+                <!--<input type="submit" value="Dodaj">-->
+
+            <!--</form>-->
+            <!--&lt;!&ndash; TODO(jurek) Modify post&ndash;&gt;-->
+        <!--</aside>-->
+        <!--&lt;!&ndash; Static site (contact, bazy hufca) &ndash;&gt;-->
+        <!--<aside></aside>-->
+        <!--&lt;!&ndash; Users &ndash;&gt;-->
+        <!--&lt;!&ndash;<aside></aside>&ndash;&gt;-->
+    <!--</section>-->
 </body>
 </html>

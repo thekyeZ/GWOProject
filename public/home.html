@@ -9,8 +9,6 @@
         </li>
     </ul>
 
-    <a ng-click="sortByDate(posts)">CLICK TO SORT BY DATE</a>
-
     <hr>
 
     <ul>
@@ -24,16 +22,6 @@
     <ul>
         <h2>Dane do faktury:</h2>
         <li>Numer konta: {{contact.facture.number}}</li>
-    </ul>
-
-    <ul>
-        <h2>Kalendarz wydarzeń:</h2>
-        <li ng-repeat="event in events">
-            <h5>{{event.title}}</h5>
-            <small>{{event.date}}</small>
-            <a ng-href="{{event.link}}">Idź do wydarzenia(LINK)</a>
-            <p>{{event.desc}}</p>
-        </li>
     </ul>
 
 </section>

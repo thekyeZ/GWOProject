@@ -19,7 +19,6 @@ var passportStrategies  = require('./libs/passport'),
 var index = require("./controllers/index"),
     admin = require("./controllers/admin"),
     page = require("./controllers/page"),
-    gallery =  require("./controllers/gallery"),
     blog = require("./controllers/blog"),
     __install = require('./controllers/__install');
 
@@ -34,6 +33,7 @@ app.use(parse.urlencoded({
 app.use(cookieParser());
 app.use(expressSession({
     secret : "kO-#do_1Pl_l-EdQ2gv",
+    //TODO(jurek) Test maxAge!
     cookie : { maxAge : 600000 },
     resave: true,
     saveUninitialized: true

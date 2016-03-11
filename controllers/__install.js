@@ -3,7 +3,6 @@
  * @description
  * Unique file for GWOProject
  */
-// TODO Install controller
 var express         = require("express"),
     router          = express.Router(),
     EventEmitter    = require("events").EventEmitter,
@@ -51,8 +50,8 @@ router.post('/', function(req, res) {
         synchronous.on("complete", function(id, err) {
             _completed.value += id;
             if (err) _completed.errors.push(err);
-            if (_completed.value === 5 && _completed.errors.length === 0) return res.send("<h1>Installation COMPLETE!</h1><p>Restart server!</p>");
-            if (_completed.value === 5 && _completed.errors.length !== 0) return res.send("<h1>Installation ERROR!</h1><p>"+_completed.errors+"</p>");
+            if (_completed.value === 4 && _completed.errors.length === 0) return res.send("<h1>Installation COMPLETE!</h1><p>Restart server!</p>");
+            if (_completed.value === 4 && _completed.errors.length !== 0) return res.send("<h1>Installation ERROR!</h1><p>"+_completed.errors+"</p>");
         });
 
         /**
@@ -73,7 +72,8 @@ router.post('/', function(req, res) {
                 "facebook" : null,
                 "twitter" : null,
                 "youtube" : null
-            }
+            },
+            tags : []
         }]);
 
         /**
@@ -107,12 +107,12 @@ router.post('/', function(req, res) {
          * Create 'galleries' collection
          * contain list of galleries
          */
-        database.insert("galleries", function(err) {
-            database.remove("galleries", function(err) {
-                if (err) return synchronous.emit("complete", 1 , err);
-                synchronous.emit("complete", 1);
-            }, {"ini" : true});
-        }, [{"ini" : true}]);
+        //database.insert("galleries", function(err) {
+        //    database.remove("galleries", function(err) {
+        //        if (err) return synchronous.emit("complete", 1 , err);
+        //        synchronous.emit("complete", 1);
+        //    }, {"ini" : true});
+        //}, [{"ini" : true}]);
 
         /**
          * @description
