@@ -13,17 +13,38 @@ body {
   width: 100%;
 }
 
-.drag-drop-zone {
+.whiteBackground {
   background-color: #fff;
+}
+
+.drag-drop-zone {
   font-size: 20px;
   border-radius: 5px;
   border: 2px dashed #3c3c3c;
   height: 200px;
+  &.droped {
+    height: 300px;
+    border: 0;
+  }
   * {
     margin-top: 80px;
   }
 }
 
-.send {
-  margin: 20px 0 25px 0;
+.tag-list {
+  width: 200px;
+}
+
+.active {
+  border: 2px dashed #ccc;
+  color: #ccc;
+}
+
+.imageBackground {
+  background: center no-repeat;
+  background-size: contain;
+}
+
+.white-space {
+  white-space: pre-line;
 }

@@ -9,11 +9,16 @@
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/admin/app/adminPanel.js"></script>
+    <script src="/admin/app/factories/utils.js"></script>
+    <script src="/admin/app/directives/dragAndDrop.js"></script>
+    <script src="/admin/app/directives/scrollFixed.js"></script>
     <script src="/admin/app/controllers/panel.js"></script>
+    <script src="/admin/app/controllers/addPost.js"></script>
+    <script src="/admin/app/controllers/modPost.js"></script>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/admin/style/panel.css">
 </head>
-<body ng-controller="panel" ng-cloak>
+<body ng-cloak ng-controller="panel">
     <header class="navbar navbar-inverse navbar-fixed-top">
         <!-- Add users-->
         <div class="container">
@@ -47,6 +52,20 @@
     <!-- Margin top-->
     <div class="fixed-margin"></div>
     <!-- Content-->
+    <!-- Modal -->
+    <section class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="mySmallModalLabel">Błąd</h4>
+                </div>
+                <div class="modal-body white-space"></div>
+            </div>
+        </div>
+    </section>
     <!-- Dashboard -->
     <section ng-class="animation.showdashboard" class="container">
         <br>
@@ -65,7 +84,7 @@
                     <th>Założenia ogólne</th>
                     <th>
                         <p>Zdjęcia można wysyłać wyłącznie metodą "przeciągnij/upuść"</p>
-                        <p>Zdjęcia można wysyłać w max rozdzielczości (2000x2000).</p>
+                        <p>Zdjęcia nie mogą przekroczyć być cięższe niż 2 MB.</p>
                         <p>Zdjęcia muszą być w formacie JPG lub PNG.</p>
                     </th>
                 </tr>
@@ -88,14 +107,14 @@
         </div>
     </section>
     <!-- Add post -->
-    <section ng-class="animation.showaddPost" class="container">
+    <section ng-class="animation.showaddPost" class="container" ng-controller="addPost">
         <h4 class="page-header">Blog / Dodaj post</h4>
         <form class="row">
-            <section class="col-lg-6">
+            <section class="col-lg-8">
                 <!-- Title -->
                 <label for="title">Tytuł (wymagane)</label>
                 <div class="input-group">
-                    <input class="form-control" type="text" id="title" placeholder="Tytuł posta">
+                    <input ng-model="newPost.title" class="form-control" type="text" id="title" placeholder="Tytuł posta">
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-info-sign"></span>
                     </div>
@@ -103,25 +122,26 @@
                 <hr>
                 <!-- Background photo -->
                 <label for="background">Zdjęcie tła (opcjonalne)</label>
-                <div class="input-group col-lg-12">
-                    <!--<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">-->
-                    <div id="background" class="drag-drop-zone">
-                        <p class="text-center">Drag photo here</p>
+                <div class="whiteBackground input-group col-lg-12">
+                    <div id="background" class="drag-drop-zone imageBackground" style="background-image: url('{{dragAndDrop.background.file}}')" drag-and-drop="1" ng-class="{'active' : dragAndDrop.background.effect, 'droped' : dragAndDrop.background.file}">
+                        <p class="text-center" ng-if="!dragAndDrop.background.file">Drag photo here</p>
                     </div>
                 </div>
+                <!-- Background display -->
+                <input type="button" class="form-control btn-danger" ng-if="dragAndDrop.background.file" value="Usuń" ng-click="dragAndDrop.background.file = null; newPost.background = null">
                 <hr>
                 <!-- Categories -->
                 <label for="category">Dodaj post do kategorii (wymagana co najmniej jedna kategoria)</label>
                 <div class="input-group">
-                    <select class="form-control" name="Kategorie" id="category">
-                        <option value="null">Wybierz kategorie</option>
+                    <select ng-model="_categorySelect" class="form-control" name="Kategorie" id="category">
+                        <option value="" selected>Wybierz kategorie</option>
                         <option ng-repeat="tag in categories" value="{{tag}}">{{tag}}</option>
                     </select>
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-info-sign"></span>
                     </div>
                     <div class="input-group-btn">
-                        <button class="btn btn-default">Dodaj post do wybranej kategorii</button>
+                        <button class="btn btn-default" ng-click="addCategoryPost()">Dodaj post do wybranej kategorii</button>
                     </div>
                 </div>
                 <div class="input-group">
@@ -131,42 +151,47 @@
                     </div>
                 </div>
                 <div class="alert alert-warning">Dodanie nowej kategorii do listy dostępnych dodaje wyłącznie kategorię do kategorii możliwych do wyboru na liście, nie dodaje jednocześnie aktualnego postu do wpisanej kategorii</div>
+                <div class="input-group col-lg-12" ng-repeat="tag in newPost.category">
+                    <div class="input-group-addon tag-list">{{tag}}</div>
+                    <button class="btn btn-danger btn-sm" ng-click="removeCategoryPost(tag)">Usuń</button>
+                </div>
                 <hr>
                 <!-- Content -->
                 <label for="postContent">Treść postu (wymagane)</label>
                 <div class="input-group col-lg-12">
-                    <textarea name="Treść" id="postContent" class="form-control col-lg-12" placeholder="Treść" style="resize: none; height: 200px"></textarea>
+                    <textarea ng-model="newPost.content" name="Treść" id="postContent" class="form-control col-lg-12" placeholder="Treść" style="resize: none; height: 200px"></textarea>
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-info-sign"></span>
                     </div>
                 </div>
-                <br>
-            </section>
-            <section class="col-lg-5 col-lg-offset-1">
+                <hr>
                 <!-- Add as menu link --->
                 <label for="postCheck">Dodaj do listy postów na stronie głównej</label>
                 <div class="input-group">
-                    <button type="button" class="form-control" id="postCheck">Włącz/Wyłącz</button>
+                    <button type="button" class="form-control" id="postCheck" ng-click="toggle('newPost.post')" ng-class="(newPost.post) ? 'btn-success' : 'btn-danger'">Włącz/Wyłącz</button>
                     <div class="input-group-addon">
-                        <input type="checkbox">
+                        <input type="checkbox"  ng-model="newPost.post">
                     </div>
                 </div>
-                <hr>
                 <!-- Add as menu link --->
                 <label for="menuCheck">Dodaj do menu</label>
                 <div class="input-group">
-                    <button type="button" class="form-control" id="menuCheck">Włącz/Wyłącz</button>
+                    <button type="button" class="form-control" id="menuCheck" ng-click="toggle('newPost.site')" ng-class="(newPost.site) ? 'btn-success' : 'btn-danger'">Włącz/Wyłącz</button>
                     <div class="input-group-addon">
-                        <input type="checkbox">
+                        <input type="checkbox" ng-model="newPost.site">
                     </div>
                 </div>
+                <div class="alert alert-danger" ng-if="!newPost.site && !newPost.post">
+                    Wymagana jest co najmniej jedna opcja z powyższych dwóch!
+                </div>
+                <!-- TODO(jurek) Add menu list edit well -->
                 <hr>
                 <!-- Add gallery -->
                 <label for="addGallery">Dodaj galerię do postu</label>
                 <div class="input-group">
-                    <button type="button" class="form-control" id="addGallery" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Włącz/Wyłącz</button>
+                    <button type="button" class="form-control" id="addGallery"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-click="toggle('_galleryOnOff')" ng-class="{'btn-success' : newPost.category.length > 0 && _galleryOnOff, 'btn-warning' : newPost.category.length === 0 && _galleryOnOff, 'btn-danger' : !_galleryOnOff}">Włącz/Wyłącz</button>
                     <div class="input-group-addon">
-                        <input type="checkbox">
+                        <input type="checkbox" ng-model="newPost.gallery">
                     </div>
                 </div>
                 <div class="collapse" id="collapseExample">
@@ -174,7 +199,7 @@
                         <!-- Gallery photos -->
                         <div class="input-group col-lg-12">
                             <!--<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">-->
-                            <div class="drag-drop-zone">
+                            <div class="drag-drop-zone" id="gallery">
                                 <p class="text-center">Drag gallery photos here</p>
                             </div>
                         </div>
@@ -183,11 +208,49 @@
                     </div>
                 </div>
             </section>
-            <input type="button" class="form-control btn btn-primary send" value="Dodaj!" ng-click="blogAddPost()">
+            <section class="col-lg-3 col-lg-offset-1">
+                <!-- Final settings summary -->
+                <div class="list-group" scroll-fixed="74">
+                    <div class="list-group-item small" ng-class="(newPost.title) ? 'list-group-item-success' : 'list-group-item-danger'">Tytuł</div>
+                    <div class="list-group-item small" ng-class="(newPost.background) ? 'list-group-item-success' : 'list-group-item-warning'">Tło</div>
+                    <div class="list-group-item small" ng-class="(newPost.category.length) ? 'list-group-item-success' : 'list-group-item-danger'">Kategorie</div>
+                    <div class="list-group-item small" ng-class="(newPost.content) ? 'list-group-item-success' : 'list-group-item-danger'">Treść</div>
+                    <div class="list-group-item small" ng-class="{'list-group-item-success' : newPost.post, 'list-group-item-warning' : newPost.site && !newPost.post, 'list-group-item-danger' : !newPost.site && !newPost.post}">Post</div>
+                    <div class="list-group-item small" ng-class="{'list-group-item-success' : newPost.site, 'list-group-item-warning' : newPost.post && !newPost.site, 'list-group-item-danger' : !newPost.site && !newPost.post}">Strona</div>
+                    <div class="list-group-item small" ng-class="(newPost.gallery) ? 'list-group-item-success' : 'list-group-item-warning'">Galeria</div>
+                </div>
+                <hr>
+                <!-- Add post -->
+                <input type="button" class="form-control btn btn-primary" value="Dodaj!" ng-click="blogAddPost()">
+                <!--<hr>-->
+                <!-- TODO(jurek) Posts list progress (feature) -->
+            </section>
         </form>
         <br>
     </section>
-    <section ng-class="animation.showmodPost" class="container">modpos</section>
+    <section ng-class="animation.showmodPost" class="container" ng-controller="modPost">
+        <h4 class="page-header">Blog / Modyfikuj, usuń istniejące</h4>
+        <table class="table">
+            <tr>
+                <th>Lp.</th>
+                <th>Tytuł</th>
+                <th>Autor</th>
+                <th>Data</th>
+                <th>Kategorie</th>
+                <th>Strona</th>
+                <th>Post</th>
+            </tr>
+            <tr ng-repeat="post in posts">
+                <th>{{$index+1}}.</th>
+                <td>{{post.title}}</td>
+                <td>{{post.author}}</td>
+                <td>{{post.date}}</td>
+                <td>{{post.category}}</td>
+                <td>{{post.site}}</td>
+                <td>{{post.post}}</td>
+            </tr>
+        </table>
+    </section>
     <section ng-class="animation.showcontactStatic" class="container">conta</section>
     <section ng-class="animation.showbaseHufiec" class="container">huf</section>
     <!--<section>-->
