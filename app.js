@@ -27,9 +27,7 @@ var index = require("./controllers/index"),
 var app = express();
 
 app.use(parse.json());
-app.use(parse.urlencoded({
-    "extended" : true
-}));
+app.use(parse.urlencoded({extended : true}));
 app.use(cookieParser());
 app.use(expressSession({
     secret : "kO-#do_1Pl_l-EdQ2gv",

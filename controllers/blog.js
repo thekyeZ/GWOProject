@@ -1,6 +1,9 @@
 "use strict";
 var express     = require("express"),
-    router      = express.Router();
+    router      = express.Router(),
+    fs          = require("fs-extra"),
+    formidable  = require("formidable"),
+    jimp        = require('jimp');
 
 /**
  * Libs
@@ -23,21 +26,28 @@ router.get('/post', function(req, res) {
  */
 router.post('/post', function(req, res) {
     if (req.isAuthenticated()) {
-        if (!req.body.category || !req.body.title || !req.body.author || !req.body.content || !req.body.date) {
-            return res.status(500).json({ message : "Some of forms are incorrect" });
-        }
-        if (req.body.site) {
-            // add as site
-        } else {
-            // add as post
-            delete req.body.message;
-            mongo.insert("posts", function(err, data) {
-                if (err) return res.status(500).json({ message : "Error with database("+err+"). Contact with manufacturer"});
-                return res.json({
-                    //id : data[0]._id
-                });
-            }, [req.body] );
-        }
+        var form = new formidable.IncomingForm();
+        form.uploadDir = './public/images/backgrounds';
+        form.keepExtensions = true;
+        form.parse(req, function(err, fields, file) {
+            // Validation
+            if (!fields.category || !fields.title || !fields.author || !fields.content || !fields.date) {
+                return res.status(500).json({ message : "Some of forms are incorrect" });
+            }
+
+            if (file) {
+                //fs.rename(file.path, String.prototype.replace(file.path, /upload_.*\./, "siema"), function() {
+                //
+                //});
+            } else {
+                mongo.insert("posts", function(err, data) {
+                    if (err) return res.status(500).json({ message : "Error with database("+err+"). Contact with manufacturer"});
+                    return res.json({
+                        id : data[0]._id
+                    });
+                }, [req.body] );
+            }
+        });
     }
 });
 
