@@ -1,0 +1,22 @@
+body {
+  background-color: #f8f8f8;
+  overflow-y: scroll; }
+
+.user-space {
+  margin-right: 5px; }
+
+.fixed-margin {
+  height: 50px;
+  width: 100%; }
+
+.drag-drop-zone {
+  background-color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 2px dashed #3c3c3c;
+  height: 200px; }
+  .drag-drop-zone * {
+    margin-top: 80px; }
+
+.send {
+  margin: 20px 0 25px 0; }
