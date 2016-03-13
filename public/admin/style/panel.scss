@@ -41,7 +41,8 @@ body {
 }
 
 .imageBackground {
-  background: center no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: contain;
 }
 

@@ -38,7 +38,27 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
      * @description
      * New post
      */
-    var NewPost = $resource("/blog/post");
+    var NewPost = $resource("/blog/post", {}, {
+        'save' : {
+            'transformRequest' : function(data) {
+                if (data === undefined) return data;
+
+                var form = new FormData();
+                angular.forEach(data, function(value, key) {
+                    if (value instanceof FileList) {
+                        if (value.length == 1) {
+                            form.append(key, value[0]);
+                        }
+                    } else {
+                        form.append(key, value);
+                    }
+                });
+                return form;
+                },
+            'method' : "POST",
+            'headers' : {"Content-Type" : undefined}
+        }
+    });
     $scope.newPost = new NewPost();
     $scope.newPost.category = [];
     $scope.newPost.site = false;
@@ -112,6 +132,7 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
             category.newTag = $scope._newCategory;
             category.$save(function() {
                 $scope.categories.push($scope._newCategory);
+                $scope._newCategory = null;
             });
         }
     };
