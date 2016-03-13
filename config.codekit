@@ -628,12 +628,67 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/public\/admin\/app\/controllers\/addPost.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/admin\/app\/controllers\/addPost.js",
+		"outputAbbreviatedPath": "\/public\/admin\/app\/controllers\/min\/addPost-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/admin\/app\/controllers\/modPost.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/admin\/app\/controllers\/modPost.js",
+		"outputAbbreviatedPath": "\/public\/admin\/app\/controllers\/min\/modPost-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/public\/admin\/app\/controllers\/panel.js": {
 		"fileType": 64,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/admin\/app\/controllers\/panel.js",
 		"outputAbbreviatedPath": "\/public\/admin\/app\/controllers\/min\/panel-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/admin\/app\/directives\/dragAndDrop.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/admin\/app\/directives\/dragAndDrop.js",
+		"outputAbbreviatedPath": "\/public\/admin\/app\/directives\/min\/dragAndDrop-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/admin\/app\/directives\/scrollFixed.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/admin\/app\/directives\/scrollFixed.js",
+		"outputAbbreviatedPath": "\/public\/admin\/app\/directives\/min\/scrollFixed-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/admin\/app\/factories\/utils.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/admin\/app\/factories\/utils.js",
+		"outputAbbreviatedPath": "\/public\/admin\/app\/factories\/min\/utils-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -674,9 +729,9 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/admin\/style\/panel.scss",
-		"outputAbbreviatedPath": "\/public\/admin\/style\/panel.css",
+		"outputAbbreviatedPath": "\/public\/admin\/css\/panel.css",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
+		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
@@ -725,6 +780,15 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/public\/bazy.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/bazy.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/public\/bower.json": {
 		"fileType": 524288,
@@ -3998,15 +4062,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/public\/css\/style.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/public\/css\/style.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/public\/home.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -4056,6 +4111,17 @@
 		"initialSize": 2.22744e+06,
 		"inputAbbreviatedPath": "\/public\/images\/A Kerndocumenten@3x.png",
 		"outputAbbreviatedPath": "\/public\/images\/A Kerndocumenten@3x.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/images\/bg1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2.29899e+06,
+		"inputAbbreviatedPath": "\/public\/images\/bg1.jpg",
+		"outputAbbreviatedPath": "\/public\/images\/bg1.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -4192,6 +4258,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/public\/images\/logo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5267,
+		"inputAbbreviatedPath": "\/public\/images\/logo.jpg",
+		"outputAbbreviatedPath": "\/public\/images\/logo.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/public\/images\/logo_hufca_czarne.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4302,6 +4379,26 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/public\/images\/zhp_logo.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 58022,
+		"inputAbbreviatedPath": "\/public\/images\/zhp_logo.png",
+		"outputAbbreviatedPath": "\/public\/images\/zhp_logo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/includes\/_header.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/includes\/_header.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/public\/index.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -4384,7 +4481,7 @@
 		},
 	"\/public\/style\/css\/style.css": {
 		"fileType": 16,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/style\/css\/style.css",
 		"outputAbbreviatedPath": "No Output Path",
@@ -4424,9 +4521,9 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/style\/style.scss",
-		"outputAbbreviatedPath": "\/public\/css\/style.css",
+		"outputAbbreviatedPath": "\/public\/style\/css\/style.css",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
+		"outputPathIsSetByUser": 1,
 		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,

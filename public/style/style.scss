@@ -1,6 +1,6 @@
 @import "toast";
-@import "css/reset.css";
-@import "css/nivoslider.css";
+@import "reset.css";
+
 
 $main-color: #006CFF;
 $secondary-color: #1B60BE;
@@ -24,16 +24,16 @@ body{
   font-size: 1.9em;
 }
 
-.container{
-
-  //docelowo
-  //min-height:inherit;
-  min-height: 100%;
-  position:relative;
-
- // background: #e2e;
-  width: 100%;
+.container-fluid{
+  padding: 0;
+  margin: 0;
+  max-width: 100vw;
 }
+
+.row{
+  margin: 0;
+}
+
 
 .divider{
   width: 90%;
@@ -53,7 +53,7 @@ header.main-header{
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  overflow: hidden;
+
   .logo-box{
     background: red;
     height: 50px;
@@ -77,6 +77,7 @@ header.main-header{
       }
     }
   }
+
 
   
   nav.main-menu{
@@ -102,50 +103,88 @@ header.main-header{
       }
 
       .drop-down{
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        height: 60px;
         position: absolute;
         left: -2000em;
         top: 40px;
-        background: $secondary-color;
+        background: red;
         z-index: 999;
 
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-
       }
-
-
-
 
     }
 
     .menu-option:hover{
       background: $secondary-color !important;
     }
-    
     .menu-option:hover .drop-down{
-      left: auto;
+      left: 0;
+
     }
 
   }
 
 }
 
-#slider{
+.carousel{
+  max-height: 400px !important;
+  //position: fixed;
+}
 
-  max-height: 400px;
-  background: #d23;
+.carousel-inner{
+  max-height: 80vh;
+  .item{
+    height: inherit;
+    img{
+      //height: 400px;
+      object-fit: cover;
+      -ms-transform: translate(0px,-50%); /* IE 9 */
+      -webkit-transform: translate(0px,-50%); /* Safari */
+      transform: translate(0px,-50%);
+    }
+  }
+}
+
+.important-info{
+  height: 50px;
+  background: $secondary-color;
+  margin-top: -2px;
+
+  .row{
+    .info-wrap{
+      text-align: center;
+
+      p{
+       line-height: 50px;
+        text-align: center;
+        color: white;
+        font-family: Avenir;
+        font-size: 0.9em;
+      }
+    }
+  }
 
 }
+
 
 .content-container{
   //max-width: 1000px;
   min-height: 1000px;
-  margin: 0 auto;
+  margin: 50px auto;
+
+  .post-wrapper{
+    min-height: 200px;
+
+    .post-body{
+      min-height: 180px;
+      padding: 20px;
+      background: crimson;
+    }
+
+  }
+
+
 
   .row.bases{
       margin: 0;
@@ -186,146 +225,6 @@ header.main-header{
   
 
 }
-
-
-.main-content{
-
-  .posts-row{
-    margin: 20px auto 20px auto;
-    .col{
-      margin-bottom: 20px !important;
-    }
-  }
-  
-  .double{
-    height: 200px;
-    //background: #333;
-  }
-  
-  .single{
-    height: 200px;
-    //background: red;
-  }
-
-  .full{
-    height: 200px;
-  }
-
-  .post-box{
-    position: relative;
-    height: 200px;
-    padding: 0;
-    overflow: hidden;
-    //background: blue;
-
-    img{
-      height: 200px;
-    }
-
-  }
-
-  ul.pagi{
-
-    display: flex;
-    justify-content: center;
-
-    li{
-      display: inline;
-      margin: 20px;
-    }
-
-  }
-
-
-}
-
-.sidebar {
-
-  min-height: 200px;
-  //background: lightgray;
-  padding-right: 20px;
-  padding-top: 20px;
-  .quick-info {
-
-    border: 1px solid #6F706F;
-    border-radius: 3px;
-    -webkit-box-shadow: 1px 1px 2px 1px #9A9C9A;
-    box-shadow: 1px 1px 2px 1px #9A9C9A;
-  }
-
-  .widget{
-    display: block;
-    width: 100%;
-    margin-bottom: 50px;
-    //background: #232;
-    min-height: 100px;
-
-    hr{
-      width: 90%;
-    }
-
-    .widget-header{
-      height: 50px;
-      width: 100%;
-      //background: blue;
-      display: flex;
-      justify-content: space-around;
-      span{
-        font-size: 18px;
-        top: 20px;
-        margin-left: 20px;
-        align-self: center;
-      }
-    }
-
-    .widget-main-content{
-      //background: pink;
-      padding: 10px;
-      article{
-        padding: 10px 5px;
-        text-wrap: normal;
-
-        h3{
-          margin: 0px !important;
-        }
-
-        p{
-          padding-left: 10px;
-        }
-      }
-
-    }
-
-  }
-
-
-}
-
-.site-content{
-  padding: 0 50px;
-  margin-top: 50px;
-}
-
-.head-img{
-  display: none;
-  img{
-    width: 100%;
-  }
-}
-
-.gallery{
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  //align-items: center;
-  justify-content: center;
-  img{
-    //width: 50%;
-    margin: 5px;
-  }
-
-}
-
 
 .main-footer{
   //TODO Add responsivnes for that
