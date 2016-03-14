@@ -1,4 +1,6 @@
-.idea
+## Directory-based project format:
+.idea/
+
 public/bower_components
 config
 node_modules
