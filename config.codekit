@@ -4115,6 +4115,72 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/public\/images\/backgrounds\/1457863535962117059.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.54029e+06,
+		"inputAbbreviatedPath": "\/public\/images\/backgrounds\/1457863535962117059.jpg",
+		"outputAbbreviatedPath": "\/public\/images\/backgrounds\/1457863535962117059.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/images\/backgrounds\/1457875810947978472.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 551318,
+		"inputAbbreviatedPath": "\/public\/images\/backgrounds\/1457875810947978472.jpg",
+		"outputAbbreviatedPath": "\/public\/images\/backgrounds\/1457875810947978472.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/images\/backgrounds\/1457876618248828250.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.13038e+06,
+		"inputAbbreviatedPath": "\/public\/images\/backgrounds\/1457876618248828250.jpg",
+		"outputAbbreviatedPath": "\/public\/images\/backgrounds\/1457876618248828250.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/images\/backgrounds\/1457877043347563869.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 237417,
+		"inputAbbreviatedPath": "\/public\/images\/backgrounds\/1457877043347563869.jpg",
+		"outputAbbreviatedPath": "\/public\/images\/backgrounds\/1457877043347563869.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/images\/backgrounds\/1457886274871716549.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 53494,
+		"inputAbbreviatedPath": "\/public\/images\/backgrounds\/1457886274871716549.jpg",
+		"outputAbbreviatedPath": "\/public\/images\/backgrounds\/1457886274871716549.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/images\/backgrounds\/1457887140424238423.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 53494,
+		"inputAbbreviatedPath": "\/public\/images\/backgrounds\/1457887140424238423.jpg",
+		"outputAbbreviatedPath": "\/public\/images\/backgrounds\/1457887140424238423.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/public\/images\/bg1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -4269,6 +4335,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/public\/images\/logo_hufca_biale.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 135625,
+		"inputAbbreviatedPath": "\/public\/images\/logo_hufca_biale.png",
+		"outputAbbreviatedPath": "\/public\/images\/logo_hufca_biale.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/public\/images\/logo_hufca_czarne.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -4408,6 +4485,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/public\/js\/jquery.dotdotdot.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/js\/jquery.dotdotdot.min.js",
+		"outputAbbreviatedPath": "\/public\/js\/min\/jquery.dotdotdot.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/public\/js\/jquery.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -4425,6 +4513,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/js\/main.js",
 		"outputAbbreviatedPath": "\/public\/js\/min\/main-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/js\/min\/main-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/js\/min\/main-min.js",
+		"outputAbbreviatedPath": "\/public\/js\/min\/min\/main-min-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -4451,6 +4550,15 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
+		},
+	"\/public\/single.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/single.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/public\/style\/css\/nivoslider.css": {
 		"fileType": 16,

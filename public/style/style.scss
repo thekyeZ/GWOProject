@@ -3,8 +3,13 @@
 
 
 $main-color: #006CFF;
-$secondary-color: #1B60BE;
+$secondary-color: lighten($main-color, 5);
 
+
+@font-face {
+  font-family: ""AvernirP" , Verdana, TahomaP";
+  src: url("../../fonts/Averir-Black.ttf") format("truetype");
+}
 
 html, body,ul{
   margin: 0;
@@ -20,8 +25,9 @@ body{
 }
 
 .page-title{
-  padding-top: 20px;
+  padding: 20px 0;
   font-size: 1.9em;
+  font-family: "AvernirP" , Verdana, Tahoma;
 }
 
 .container-fluid{
@@ -42,10 +48,6 @@ body{
   background: #1b1c1d;
 }
 
-//.content-container{
-//  max-width: 1000px;
-//}
-
 header.main-header{
   background: $main-color;
   -webkit-transition: all 0.3s ease-in-out;
@@ -53,12 +55,11 @@ header.main-header{
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-
   .logo-box{
     background: red;
     height: 50px;
     width: 108px;
-    background: url("../../images/logo_hufca_czarne.png") no-repeat;
+    //background: url("../../images/logo_hufca_biale.png") no-repeat;
     background-size: contain;
     .burger{
       width: 50px;
@@ -78,38 +79,79 @@ header.main-header{
     }
   }
 
-
-  
   nav.main-menu{
     height: 40px;
     background: $main-color;
     position: relative;
+    padding-top: 1px;
+
     
     .menu-option{
       text-align: center;
       height: inherit;
       padding: 0 !important;
 
-      a{
+
+      a.category{
         height: inherit;
+        //width: 100%;
         position: relative;
+        //display: block;
         top: 10px;
         //padding-top: 20px;
+        text-transform: uppercase;
+        font-family: "AvernirP" , Verdana, Tahoma;
+        font-size: 0.8em;
         color: white;
       }
-      
-      .menu-option:hover{
-        background: red;
+      a{
+        color: black;
       }
 
       .drop-down{
         width: 100%;
-        height: 60px;
+        height: 50px;
         position: absolute;
         left: -2000em;
-        top: 40px;
-        background: red;
+        top: 38px;
+        background: $secondary-color;
         z-index: 999;
+        display: flex;
+
+
+        .dd-item{
+          width: 50%;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          color: white;
+          text-transform: uppercase;
+          font-family: "AvernirP" , Verdana, Tahoma;
+          font-size: 0.8em;
+
+          .categories{
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            li{
+              &:hover{
+                background: lighten($secondary-color, 12);
+              }
+
+            }
+          }
+
+          &:hover{
+            background: lighten($secondary-color, 5);
+          }
+
+          &:hover .categories{
+            display: inline-flex;
+            background: lighten($secondary-color, 5);
+          }
+
+
+        }
 
       }
 
@@ -117,6 +159,7 @@ header.main-header{
 
     .menu-option:hover{
       background: $secondary-color !important;
+      height: 80px;
     }
     .menu-option:hover .drop-down{
       left: 0;
@@ -159,7 +202,7 @@ header.main-header{
        line-height: 50px;
         text-align: center;
         color: white;
-        font-family: Avenir;
+        font-family: "AvernirP" , Verdana, Tahoma;
         font-size: 0.9em;
       }
     }
@@ -170,49 +213,92 @@ header.main-header{
 
 .content-container{
   //max-width: 1000px;
-  min-height: 1000px;
-  margin: 50px auto;
+  min-height: 200px;
+  margin: 30px auto;
 
   .post-wrapper{
     min-height: 200px;
+    margin-bottom: 20px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    img{
+      position: absolute;
+      object-fit: cover;
+      height: 100%;
+      width: calc(100% - 30px);
+    }
 
     .post-body{
-      min-height: 180px;
+      height: 200px;
       padding: 20px;
-      background: crimson;
+      background: lighten(mix($main-color, $secondary-color), 8);
+      z-index: 33;
+      color: white;
+      font-family: "AvernirP" , Verdana, Tahoma;
+
+      .post-title{
+        font-size: 1.5em;
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+        font-family: "AvernirP" , Verdana, Tahoma;
+        position: relative;
+      }
+
+      .post-content{
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 10px;
+
+      }
+
+      .post-date{
+        position: absolute;
+        bottom: 5px;
+        right: 20px;
+        font-size: 0.7em;
+      }
+
     }
 
   }
 
 
 
-  .row.bases{
-      margin: 0;
-    //padding: 0 50/px;
-  }
-
   .base{
     
-    height: 80vh;
+    min-height: 80vh;
     padding: 0 50px;
-    width: 95vw;
-    margin-top: 20px ;
-    //background: red;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
+    font-family: "AvernirP" , Verdana, Tahoma;
+
+    h2{
+      font-size: 2.0em;
+      margin-bottom: 10px;
+    }
+    p.lead{
+      font-size: 1.1em;
+    }
+    label{
+      margin: 10px 0;
+    }
 
     &#wygonin{
       margin-bottom: 20px;
-      background: url("../images/355577.jpg");
+      background: url("../../images/355577.jpg");
 
       background-size: cover;
     }
     &#morenka{
-      background: url("../images/morenka-bg.jpg");
+      background: url("../../images/morenka-bg.jpg");
       background-size: cover;
       margin-bottom: 20px;
     }
@@ -222,55 +308,64 @@ header.main-header{
     }
 
   }
-  
+
+  .site-content{
+
+    p{
+      font-family: "AvernirP" , Verdana, Tahoma;
+      font-weight: 200;
+      line-height: 1.1em;
+
+
+    }
+
+  }
+
+  .gallery {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+    .gallery img {
+      margin: 5px;
+    }
+
 
 }
 
 .main-footer{
-  //TODO Add responsivnes for that
+  background: $main-color;
+  position: relative;
   height: 200px;
-  background: blue;
+  bottom: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
-  .logos{
-    width: 80%;
-    height: 100%;
+  .footer-item{
+    height: inherit;
     display: flex;
-    //flex-direction: column;
     justify-content: center;
     align-items: center;
-    div{
-      width: 50%;
-      display: flex;
-      justify-content: space-around;
 
+    img{
+      width: 300px;
     }
-  }
 
+  }
 }
+
+
 
 @media (max-width: $toast-breakpoint-medium) {
 
   .main-header{
     height: 50px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    overflow: hidden;
   }
 
   .main-header.active{
     min-height: 210px;
-
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    overflow: visible;
   }
 
   .burger{
@@ -282,15 +377,16 @@ header.main-header{
 
   .main-menu{
     display: block;
-    //height: 200px !important;
+
     .menu-option{
       display: block;
 
       .drop-down{
-        display: none;
+        display: none !important;
       }
     }
   }
+
 
 }
 

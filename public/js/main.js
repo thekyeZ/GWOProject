@@ -31,11 +31,17 @@
         var burger = document.querySelector('.burger');
         var menu = document.querySelector('.main-header');
         burger.addEventListener("click", function(){
-
             menu.classList.toggle('active');
 
-
         });
+
+        //var dd = document.querySelector('.menu-option');
+        //var menu = document.querySelector('.main-header');
+        //dd.addEventListener("click", function(){
+        //    menu.classList.add('dropdown');
+        //
+        //});
+        //
 
 
 
