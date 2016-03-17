@@ -1,1 +1,0 @@
-!function(){var e=$(window).height(),i=$(window).width(),t=$(".slider").height(),n=$(".slider-images li"),r=document.querySelector(".burger"),c=document.querySelector(".main-header");r.addEventListener("click",function(){c.classList.toggle("active")})}();

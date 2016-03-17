@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/bower_components/tinymce-dist/tinymce.js"></script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
@@ -15,8 +16,7 @@
     <script src="/admin/app/controllers/panel.js"></script>
     <script src="/admin/app/controllers/addPost.js"></script>
     <script src="/admin/app/controllers/modPost.js"></script>
-    <!--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>-->
-    <!--<script>tinymce.init({ selector:'#postContent' });</script>-->
+    <script src="/bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/admin/style/panel.css">
 </head>
@@ -28,7 +28,7 @@
                 <a href="#" class="navbar-brand" ng-click="switchContent('dashboard')">Tablica</a>
             </aside>
             <ul class="navbar-nav nav">
-                <!--<li><a href="#">Tablica</a></li>-->
+                <li><a href="#" ng-click="switchContent('menu')">Menu</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -108,6 +108,10 @@
             <div class="panel-footer text-center">GWO - ver. ALFA</div>
         </div>
     </section>
+    <!-- Menu -->
+    <section ng-class="animation.showmenu" class="container">
+
+    </section>
     <!-- Add post -->
     <section ng-class="animation.showaddPost" class="container" ng-controller="addPost">
         <h4 class="page-header">Blog / Dodaj post</h4>
@@ -160,8 +164,8 @@
                 <hr>
                 <!-- Content -->
                 <label for="postContent">Treść postu (wymagane)</label>
-                <div class="input-group col-lg-12">
-                    <textarea ng-model="newPost.content" name="Treść" id="postContent" class="form-control col-lg-12" placeholder="Treść" style="resize: none; height: 200px"></textarea>
+                <div class="input-group col-lg-12" id="postContent">
+                    <textarea ui-tinymce="tinymceOptions" ng-model="newPost.content" name="Treść" class="form-control col-lg-12" placeholder="Treść" style="resize: none; height: 200px"></textarea>
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-info-sign"></span>
                     </div>
@@ -255,53 +259,5 @@
     </section>
     <section ng-class="animation.showcontactStatic" class="container">conta</section>
     <section ng-class="animation.showbaseHufiec" class="container">huf</section>
-    <!--<section>-->
-        <!--<aside class="post">-->
-            <!--<form class="post-add" ng-submit="blogAddPost()">-->
-                <!--<h2>Blog -> Dodaj post</h2>-->
-                <!--<hr>-->
-
-                <!--&lt;!&ndash; Title &ndash;&gt;-->
-                <!--<h4>Podaj tytuł (wymagane)</h4>-->
-                <!--<input type="text" placeholder="Tytuł..." ng-model="newPost.title" required>-->
-
-                <!--&lt;!&ndash; Wybierz tło (opcjonalne)&ndash;&gt;-->
-                <!--<h4>Wybierz tło (wymagane)</h4>-->
-                <!--<input type="file" accept="image/*">-->
-
-                <!--&lt;!&ndash; Dodaj kategorie (wymagane)&ndash;&gt;-->
-                <!--<h4>Podaj kategorie (wymagane)</h4>-->
-                <!--<select title="Kategorie" name="category" id="categorySelect" ng-model="_categorySelect">-->
-                    <!--<option value="rodzice">Rodzice</option>-->
-                    <!--<option value="baza">Baza</option>-->
-                <!--</select>-->
-                <!--<p ng-repeat="category in categories"></p>-->
-                <!--<input type="text" placeholder="Dodaj nową kategorię..." ng-model="_newCategory">-->
-                <!--<input type="button" value="Dodaj" ng-click="addCategory()">-->
-
-                <!--&lt;!&ndash; Treść &ndash;&gt;-->
-                <!--<h4>Podaj treść (wymagane)</h4>-->
-                <!--<textarea placeholder="Treść posta..." required ng-model="newPost.content"></textarea>-->
-
-                <!--&lt;!&ndash; Ustawienia posta &ndash;&gt;-->
-                <!--<h4>Ustawienia posta</h4>-->
-                <!--<label for="galleryPost">Dodaj galerię</label>-->
-                <!--<input type="checkbox" id="galleryPost">-->
-                <!--<input type="file" accept="image/*">-->
-                <!--<label for="typePost">Dodaj jako stronę:</label>-->
-                <!--<input type="checkbox" ng-model="newPost.site" id="typePost">-->
-
-                <!--&lt;!&ndash; Dodaj&ndash;&gt;-->
-                <!--<h1>Dodaj</h1>-->
-                <!--<input type="submit" value="Dodaj">-->
-
-            <!--</form>-->
-            <!--&lt;!&ndash; TODO(jurek) Modify post&ndash;&gt;-->
-        <!--</aside>-->
-        <!--&lt;!&ndash; Static site (contact, bazy hufca) &ndash;&gt;-->
-        <!--<aside></aside>-->
-        <!--&lt;!&ndash; Users &ndash;&gt;-->
-        <!--&lt;!&ndash;<aside></aside>&ndash;&gt;-->
-    <!--</section>-->
 </body>
 </html>

@@ -8,7 +8,8 @@ var express             = require("express"),
     parse               = require("body-parser"),
     cookieParser        = require("cookie-parser"),
     expressSession      = require("express-session"),
-    passport            = require("passport");
+    passport            = require("passport"),
+    compression         = require("compression");
 
 
 // Libs
@@ -26,6 +27,7 @@ var index = require("./controllers/index"),
 //Express init and configuration
 var app = express();
 
+app.use(compression());
 app.use(parse.json());
 app.use(parse.urlencoded({extended : true}));
 app.use(cookieParser());

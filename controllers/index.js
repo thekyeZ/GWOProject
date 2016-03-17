@@ -9,39 +9,59 @@ var express     = require("express"),
 router.get('/nav', function(req, res) {
     res.send([
         {
-            name : 'Dla członków',
-            shortcut: 'dlaczłonków',
-            pos : 1,
-            subMenu : [
-                {name : '2', category : "blog", shortcut: '2', pos : 1},
-                {name : 'lorem', category : "gallery", shortcut: 'lorem', pos : 2}
+            title : 'Dla członków',
+            link : false,
+            menu : [
+                {title : '2', link: '2', menu : [
+                    {title : '1', link: '1'},
+                    {title : '2', link: '2'}
+                ]},
+                {title : 'lorem', link: 'lorem', menu : [
+                    {title : '1', link: '1'},
+                    {title : '2', link: '2'}
+                ]}
             ]
         },
         {
-            name : 'Dla kadry',
-            shortcut: 'dlakadry',
-            pos : 2,
-            subMenu : [
-                {name : 'lorem', category : "page", shortcut: 'lorem', pos : 1}
+            title : 'Dla kadry',
+            link : false,
+            menu : [
+                {title : 'lorem', link: 'lorem', menu : [
+                    {title : '1', link: '1'},
+                    {title : '2', link: '2'}
+                ]}
             ]
         },
         {
-            name : 'Dla rodziców',
-            shortcut: 'dlarodziców',
-            pos : 3,
-            subMenu : [
-                {name : '1', category : "blog", shortcut: '1', pos : 3},
-                {name : '2', category : "gallery", shortcut: '2', pos : 1},
-                {name : 'lorem', category : "page", shortcut: 'lorem', pos : 2}
+            title : 'Dla rodziców',
+            link : false,
+            menu : [
+                {title : '1', link: '1', menu : [
+                    {title : '1', link: '1'},
+                    {title : '2', link: '2'}
+                ]},
+                {title : '2', link: '2', menu : [
+                    {title : '1', link: '1'},
+                    {title : '2', link: '2'}
+                ]},
+                {title : 'lorem', link: 'lorem', menu : [
+                    {title : '1', link: '1'},
+                    {title : '2', link: '2'}
+                ]}
             ]
         },
         {
-            name : 'Bazy',
-            shortcut: 'bazy',
-            pos : 4,
-            subMenu : [
-                {name : '1', category : "page", shortcut: '1', pos : 2},
-                {name : '2', category : "page", shortcut: '2', pos : 1}
+            title : 'Bazy',
+            link : false,
+            menu : [
+                {title : '1', link: '1', menu : [
+                    {title : '1', link: '1'},
+                    {title : '2', link: '2'}
+                ]},
+                {title : '2', link: '2', menu : [
+                    {title : '1', link: '1'},
+                    {title : '2', link: '2'}
+                ]}
             ]
         }
     ]);

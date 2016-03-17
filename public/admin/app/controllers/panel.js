@@ -9,7 +9,8 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
         showaddPost : 'hide',
         showmodPost : 'hide',
         showcontactStatic : 'hide',
-        showbaseHufiec : 'hide'
+        showbaseHufiec : 'hide',
+        showmenu : 'hide'
     };
 
     /**
@@ -26,6 +27,19 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
                 }
             }
         }
+    };
+
+    /**
+     * @description
+     * TinyMCE configuration
+     * @type {{onChange: $scope.tinymceOptions.onChange, inline: boolean, plugins: string, skin: string, theme: string}}
+     */
+    $scope.tinymceOptions = {
+        inline: false,
+        menubar: "false",
+        statusbar: false,
+        skin: 'lightgray',
+        theme : 'modern'
     };
 
 }]);
