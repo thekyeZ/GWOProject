@@ -32,7 +32,6 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
     /**
      * @description
      * TinyMCE configuration
-     * @type {{onChange: $scope.tinymceOptions.onChange, inline: boolean, plugins: string, skin: string, theme: string}}
      */
     $scope.tinymceOptions = {
         inline: false,

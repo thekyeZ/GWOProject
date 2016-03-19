@@ -7,9 +7,7 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
      * Get menu structure
      */
     var Nav = $resource('/index/nav');
-    $scope.nav = Nav.query(function() {
-        console.log($scope.nav);
-    });
+    $scope.nav = Nav.query();
 
     /**
      * @description
@@ -31,25 +29,29 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
     $scope.toggleExpand = function(lvl, index) {
         var _lvl = 'lvl_'+lvl+'_index',
             title;
-            if (index === $scope.expanded[_lvl]) {
-                $scope.expanded[_lvl] = false;
-                $scope.expanded["lvl_"+lvl] = false;
-                if (lvl === 2) {
-                    $scope.expanded['lvl_3_index'] = false;
-                    $scope.expanded["lvl_3"] = false;
-                }
-            } else {
-                switch (lvl) {
-                    case 2:
-                        title = $scope.nav[index].title;
-                        break;
-                    case 3:
-                        title = $scope.nav[$scope.expanded.lvl_2_index].menu[index].title;
-                        break;
-                }
-                $scope.expanded[_lvl] = index;
-                $scope.expanded["lvl_"+lvl] = title;
+        if (index === $scope.expanded[_lvl]) {
+            $scope.expanded[_lvl] = null;
+            $scope.expanded["lvl_"+lvl] = false;
+            if (lvl === 2) {
+                $scope.expanded['lvl_3_index'] = null;
+                $scope.expanded["lvl_3"] = false;
             }
+        } else {
+            switch (lvl) {
+                case 2:
+                    title = $scope.nav[index].title;
+                    break;
+                case 3:
+                    title = $scope.nav[$scope.expanded.lvl_2_index].menu[index].title;
+                    break;
+            }
+            if (lvl === 2) {
+                $scope.expanded['lvl_3_index'] = null;
+                $scope.expanded["lvl_3"] = false;
+            }
+            $scope.expanded[_lvl] = index;
+            $scope.expanded["lvl_"+lvl] = title;
+        }
     };
 
     /**
@@ -61,8 +63,14 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
             switch (lvl) {
                 case 1:
                     $scope.nav.splice(index, 1);
-                    if ($scope.expanded.lvl_3_index === $scope.expanded.lvl_2_index) $scope.expanded.lvl_3_index = false;
-                    if ($scope.expanded.lvl_2_index === index) $scope.expanded.lvl_2_index = false;
+                    if ($scope.expanded.lvl_3_index === $scope.expanded.lvl_2_index) {
+                        $scope.expanded.lvl_3_index = null;
+                        $scope.expanded.lvl_3 = false;
+                    }
+                    if ($scope.expanded.lvl_2_index === index) {
+                        $scope.expanded.lvl_2_index = null;
+                        $scope.expanded.lvl_2 = false;
+                    }
                     $scope.$apply();
                     break;
                 case 2:
@@ -108,10 +116,52 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
         }
     };
 
+    /**
+     * @description
+     * Send update menu
+     */
     $scope.sendMenu = function() {
         var update = new Nav();
         update.nav = $scope.nav;
         update.$save();
-    }
+    };
+
+    /**
+     * @description
+     * Watching menus status in all nav object (if it should be empty or not)
+     */
+    // TODO(jurek) Optimal THIS!!!!!!!!!!!!!!!!!!!
+    $scope.$watch('nav', function() {
+        for (var i = 0; i <= 3; i+=1) {
+            if ($scope.nav[i]) {
+                if ($scope.nav[i].link !== "false") {
+                    if ($scope.expanded.lvl_2_index === i) {
+                        if ($scope.expanded.lvl_3_index === $scope.expanded.lvl_2_index) {
+                            $scope.expanded.lvl_3_index = null;
+                            $scope.expanded.lvl_3 = false;
+                        }
+                        $scope.expanded.lvl_2_index = null;
+                        $scope.expanded.lvl_2 = false;
+                    }
+                    delete $scope.nav[i].menu;
+                } else {
+                    for (var z = 0; z <= 5; z+=1) {
+                        if ($scope.nav[i].menu) {
+                            if ($scope.nav[i].menu[z]) {
+                                if ($scope.nav[i].menu[z].link !== "false") {
+                                    if ($scope.expanded.lvl_3_index === z) {
+                                        $scope.expanded.lvl_3_index = null;
+                                        $scope.expanded.lvl_3 = false;
+                                    }
+                                    delete $scope.nav[i].menu[z].menu;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        console.log($scope.nav);
+    }, true);
 
 }]);

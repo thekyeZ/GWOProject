@@ -54,7 +54,7 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
                     }
                 });
                 return form;
-                },
+            },
             'method' : "POST",
             'headers' : {"Content-Type" : undefined}
         }
