@@ -14,6 +14,7 @@
     <script src="/admin/app/directives/dragAndDrop.js"></script>
     <script src="/admin/app/directives/scrollFixed.js"></script>
     <script src="/admin/app/controllers/panel.js"></script>
+    <script src="/admin/app/controllers/menu.js"></script>
     <script src="/admin/app/controllers/addPost.js"></script>
     <script src="/admin/app/controllers/modPost.js"></script>
     <script src="/bower_components/angular-ui-tinymce/src/tinymce.js"></script>
@@ -68,49 +69,166 @@
             </div>
         </div>
     </section>
+    <!-- Modal Confirm -->
+    <section class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="confirmX">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="confirmX">Potwierdź</h4>
+                </div>
+                <div class="modal-body white-space" id="modal-body-confirm"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="deleteConfirm" data-dismiss="modal">Tak</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Nie</button>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Dashboard -->
     <section ng-class="animation.showdashboard" class="container">
         <br>
-        <div class="panel panel-primary">
-            <div class="panel-heading text-center">Informacje na temat aplikacji GWO</div>
-            <table class="table">
-                <tr>
-                    <th>
-                        <h4>Funkcja</h4>
-                    </th>
-                    <th>
-                        <h4>Opis</h4>
-                    </th>
-                </tr>
-                <tr>
-                    <th>Założenia ogólne</th>
-                    <th>
-                        <p>Zdjęcia można wysyłać wyłącznie metodą "przeciągnij/upuść"</p>
-                        <p>Zdjęcia nie mogą przekroczyć być cięższe niż 2 MB.</p>
-                        <p>Zdjęcia muszą być w formacie JPG lub PNG.</p>
-                    </th>
-                </tr>
-                <tr>
-                    <td>Tablica</td>
-                    <td>
-                        <p>Wersja aplikacji, uaktualnienia, opis funkcjonalności</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dodaj post (Blog)</td>
-                    <td>
-                        <p>Post może zostać dodany jako: element w menu nawigacyjnym, zwykły post(widoczny na liście na stronie głównej), bądź oba na raz.</p>
-                        <p>Maksymalna ilość zdjęć w galerii to: 100.</p>
-                        <p>Dodanie postu wraz ze zdjęciami może zająć więcej czasu, w zależności od połącznia sieciowego, rozmiaru i ilości zdjęć.</p>
-                    </td>
-                </tr>
-            </table>
-            <div class="panel-footer text-center">GWO - ver. ALFA</div>
-        </div>
+        <!-- Dashboard -->
+        <section class="col-lg-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading text-center">Informacje na temat aplikacji GWO</div>
+                <table class="table">
+                    <tr>
+                        <th>
+                            <h4>Funkcja</h4>
+                        </th>
+                        <th>
+                            <h4>Opis</h4>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Założenia ogólne</th>
+                        <th>
+                            <p>Zdjęcia można wysyłać wyłącznie metodą "przeciągnij/upuść"</p>
+                            <p>Zdjęcia nie mogą przekroczyć być cięższe niż 2 MB.</p>
+                            <p>Zdjęcia muszą być w formacie JPG lub PNG.</p>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>Tablica</td>
+                        <td>
+                            <p>Wersja aplikacji, uaktualnienia, opis funkcjonalności</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dodaj post (Blog)</td>
+                        <td>
+                            <p>Post może zostać dodany jako: element w menu nawigacyjnym, zwykły post(widoczny na liście na stronie głównej), bądź oba na raz.</p>
+                            <p>Maksymalna ilość zdjęć w galerii to: 100.</p>
+                            <p>Dodanie postu wraz ze zdjęciami może zająć więcej czasu, w zależności od połącznia sieciowego, rozmiaru i ilości zdjęć.</p>
+                        </td>
+                    </tr>
+                </table>
+                <!--<div class="panel-footer text-center">GWO - ver. ALFA</div>-->
+            </div>
+        </section>
+        <!-- Info -->
+        <section class="col-lg-3">
+            <!-- Contact -->
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">Kontakt</div>
+                <ul class="list-group">
+                    <li class="list-group-item">Wildcode.pl</li>
+                </ul>
+            </div>
+            <!-- Version-->
+            <div class="panel panel-default">
+                <!--<div class="panel-heading text-center">Strona 'GWO'</div>-->
+                <ul class="list-group">
+                    <li class="list-group-item text-center list-group-item-info">Ver. Alpha</li>
+                </ul>
+            </div>
+        </section>
     </section>
     <!-- Menu -->
-    <section ng-class="animation.showmenu" class="container">
-
+    <section ng-class="animation.showmenu" class="container" ng-controller="menu">
+        <h4 class="page-header">Menu</h4>
+        <div class="input-group col-lg-12">
+            <button class="form-control btn btn-primary" ng-click="sendMenu()">Zapisz!</button>
+        </div>
+        <br>
+        <!-- MENU LVL 1-->
+        <div class="panel panel-info">
+            <div class="panel-heading">Menu główne</div>
+            <div class="panel-body row">
+                <div ng-repeat="pos in nav" class="col-lg-{{(nav.length===4) ? 12/nav.length : 12/(nav.length+1)}}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
+                        <select class="form-control" ng-model="pos.link">
+                            <option value="false">Menu</option>
+                            <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="{{post._id}}">{{post.title}}</option>
+                        </select>
+                        <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(2, $index)">{{(expanded.lvl_2_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
+                        <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>
+                        <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.title}">Wprowadź tytuł, aby edytować!</div>
+                        <button class="form-control btn-danger" ng-click="removePosition(1, $index)">Usuń</button>
+                    </div>
+                </div>
+                <div class="col-lg-{{12/(nav.length+1)}} text-center" ng-if="nav.length < 4">
+                    <div class="input-group addMenuGroup">
+                        <button class="form-control btn addMenu" ng-click="addPosition(1)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MENU LVL 2-->
+        <div class="panel panel-info" ng-if="expanded.lvl_2 && nav[expanded.lvl_2_index].link === 'false'">
+            <div class="panel-heading ">{{expanded.lvl_2}}</div>
+            <div class="panel-body row">
+                <div ng-repeat="pos in nav[expanded.lvl_2_index].menu" class="col-lg-{{(nav[expanded.lvl_2_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu.length : 12/(nav[expanded.lvl_2_index].menu.length+1)}}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
+                        <select class="form-control" ng-model="pos.link">
+                            <option value="false">Menu</option>
+                            <option ng-repeat="post in posts" value="{{post._id}}">{{post.title}}</option>
+                        </select>
+                        <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(3, $index)">{{(expanded.lvl_3_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
+                        <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>
+                        <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.title}">Wprowadź tytuł, aby edytować!</div>
+                        <button class="form-control btn-danger" ng-click="removePosition(2, $index)">Usuń</button>
+                    </div>
+                </div>
+                <div class="col-lg-{{(nav[expanded.lvl_2_index].menu.length) ? (12/(nav[expanded.lvl_2_index].menu.length+1)) : 12}} text-center" ng-if="nav[expanded.lvl_2_index].menu.length < 4 || nav[expanded.lvl_2_index].menu === undefined">
+                    <div class="input-group addMenuGroup">
+                        <button class="form-control btn addMenu" ng-click="addPosition(2)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MENU LVL 3 -->
+        <div class="panel panel-info" ng-if="expanded.lvl_3 && nav[expanded.lvl_3_index].link === 'false'">
+            <div class="panel-heading ">{{expanded.lvl_3}}</div>
+            <div class="panel-body row">
+                <div ng-repeat="pos in nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu" class="col-lg-{{(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length : 12/(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length+1)}}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
+                        <select class="form-control" ng-model="pos.link">
+                            <option value="false">--Wybierz opcję--</option>
+                            <option ng-repeat="post in posts" value="{{post._id}}">{{post.title}}</option>
+                        </select>
+                        <button class="form-control btn-danger" ng-click="removePosition(3, $index)">Usuń</button>
+                    </div>
+                </div>
+                <div class="col-lg-{{(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length) ? (12/(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length+1)) : 12}} text-center" ng-if="nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length < 4 || nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu === undefined">
+                    <div class="input-group addMenuGroup">
+                        <button class="form-control btn addMenu" ng-click="addPosition(3)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- Add post -->
     <section ng-class="animation.showaddPost" class="container" ng-controller="addPost">

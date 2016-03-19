@@ -73,7 +73,8 @@ router.post('/', function(req, res) {
                 "twitter" : null,
                 "youtube" : null
             },
-            tags : []
+            tags : [],
+            menu : []
         }]);
 
         /**

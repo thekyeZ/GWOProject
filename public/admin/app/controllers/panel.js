@@ -36,10 +36,23 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
      */
     $scope.tinymceOptions = {
         inline: false,
-        menubar: "false",
+        menubar: false,
         statusbar: false,
         skin: 'lightgray',
         theme : 'modern'
     };
+
+    /**
+     * @description
+     * List of post
+     */
+    var Posts = $resource('/blog/post');
+    $scope.posts = Posts.query(function() {
+        // sort by newer
+        $scope.posts.sort(function(a, b) {
+            return a.date + b.date;
+        });
+    });
+
 
 }]);

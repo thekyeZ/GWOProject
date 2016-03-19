@@ -1,70 +1,27 @@
 "use strict";
 var express     = require("express"),
-    router      = express.Router();
+    router      = express.Router(),
+    mongo       = require('../libs/mongodb');
 
 /**
  * @description
  * Sending navigation list
  */
 router.get('/nav', function(req, res) {
-    res.send([
-        {
-            title : 'Dla członków',
-            link : false,
-            menu : [
-                {title : '2', link: '2', menu : [
-                    {title : '1', link: '1'},
-                    {title : '2', link: '2'}
-                ]},
-                {title : 'lorem', link: 'lorem', menu : [
-                    {title : '1', link: '1'},
-                    {title : '2', link: '2'}
-                ]}
-            ]
-        },
-        {
-            title : 'Dla kadry',
-            link : false,
-            menu : [
-                {title : 'lorem', link: 'lorem', menu : [
-                    {title : '1', link: '1'},
-                    {title : '2', link: '2'}
-                ]}
-            ]
-        },
-        {
-            title : 'Dla rodziców',
-            link : false,
-            menu : [
-                {title : '1', link: '1', menu : [
-                    {title : '1', link: '1'},
-                    {title : '2', link: '2'}
-                ]},
-                {title : '2', link: '2', menu : [
-                    {title : '1', link: '1'},
-                    {title : '2', link: '2'}
-                ]},
-                {title : 'lorem', link: 'lorem', menu : [
-                    {title : '1', link: '1'},
-                    {title : '2', link: '2'}
-                ]}
-            ]
-        },
-        {
-            title : 'Bazy',
-            link : false,
-            menu : [
-                {title : '1', link: '1', menu : [
-                    {title : '1', link: '1'},
-                    {title : '2', link: '2'}
-                ]},
-                {title : '2', link: '2', menu : [
-                    {title : '1', link: '1'},
-                    {title : '2', link: '2'}
-                ]}
-            ]
-        }
-    ]);
+    mongo.find('site', function(err, result) {
+        res.status(200).send(result[0].menu);
+    }, { title : { $exists : true}});
+});
+
+/**
+ * @description
+ * Save / update navigation list
+ */
+// TODO(jurek) Add error capture
+router.post('/nav', function(req, res) {
+    mongo.update('site', function(err, status) {
+        res.status(200).json({ message : "Save!" })
+    }, { title : {$exists : true}}, {$set : { menu : req.body.nav }});
 });
 
 /**

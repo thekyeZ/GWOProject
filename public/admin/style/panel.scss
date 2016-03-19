@@ -49,3 +49,21 @@ body {
 .white-space {
   white-space: pre-line;
 }
+
+.addMenuGroup {
+  width: 100% !important;
+}
+
+.addMenu {
+  height: 136px !important;
+  width: 100% !important;
+  box-shadow: none;
+  font-size: 30px;
+  &:hover {
+    box-shadow: 0 0 1px rgba(0,0,0,.5);
+  }
+}
+
+.menuIsOff {
+  padding-top: 5px !important;
+}

@@ -9,14 +9,47 @@ body {
   height: 50px;
   width: 100%; }
 
+.whiteBackground {
+  background-color: #fff; }
+
 .drag-drop-zone {
-  background-color: #fff;
   font-size: 20px;
   border-radius: 5px;
   border: 2px dashed #3c3c3c;
   height: 200px; }
+  .drag-drop-zone.droped {
+    height: 300px;
+    border: 0; }
   .drag-drop-zone * {
     margin-top: 80px; }
 
-.send {
-  margin: 20px 0 25px 0; }
+.tag-list {
+  width: 200px; }
+
+.active {
+  border: 2px dashed #ccc;
+  color: #ccc; }
+
+.imageBackground {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; }
+
+.white-space {
+  white-space: pre-line; }
+
+.addMenuGroup {
+  width: 100% !important; }
+
+.addMenu {
+  height: 136px !important;
+  width: 100% !important;
+  box-shadow: none;
+  font-size: 30px; }
+  .addMenu:hover {
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5); }
+
+.menuIsOff {
+  padding-top: 5px !important; }
+
+/*# sourceMappingURL=panel.css.map */
