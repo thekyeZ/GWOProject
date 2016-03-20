@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 
-<html lang="pl" ng-app="gwo">
+<html lang="pl" ng-app="gwo" ng-controller="main">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{site.title}}</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="style/css/style.css">
+    <link rel="stylesheet" href="/style/css/style.css">
     <!--<link rel="stylesheet" type="text/css" href="style/css/semantic.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
     <script src="/app/app.js"></script>
     <script src="/app/controllers/main.js"></script>
     <script src="/app/controllers/home.js"></script>
-    <script src="/app/controllers/contact.js"></script>
+    <script src="/app/controllers/post.js"></script>
 
 </head>
-<body ng-controller="home">
+<body>
 <base href="/">
     <div class="container-fluid">
         <header class="main-header">
@@ -37,7 +40,7 @@
 
             <nav class="main-menu">
 
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option" ng-repeat="item in nav">
+                <div class="col col--1-of-4 col--s-1-of-1 menu-option" ng-repeat="item in site.menu">
                     <a class="category" href="/">{{item.title}}</a>
 
 
@@ -57,13 +60,9 @@
 
             </nav>
         </header>
-
-    </div><!--container-fluid-->
+    </div>
 
     <div class="container-fluid important-info">
-
-
-
         <div class="row">
             <div class="col-md-6 col-xs-12 info-wrap">
                 <p>Komendant Hufca: 554-545-545, komenda@gwo.zhp.pl</p>
@@ -73,6 +72,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="container content-container">
         <div class="row">
@@ -119,6 +119,8 @@
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <script src="js/main.js"></script>
+
+    <section ng-view></section>
 
 </body>
 </html>

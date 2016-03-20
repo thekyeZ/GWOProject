@@ -440,14 +440,14 @@ body {
   background: #1b1c1d; }
 
 header.main-header {
-  background: #006CFF;
+  background: #1565C0;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
   header.main-header .logo-box {
-    background: red;
+    background: #cccccc;
     height: 50px;
     width: 108px;
     background-size: contain; }
@@ -464,7 +464,7 @@ header.main-header {
         background: black; }
   header.main-header nav.main-menu {
     height: 40px;
-    background: #006CFF;
+    background: #1565C0;
     position: relative;
     padding-top: 1px; }
     header.main-header nav.main-menu .menu-option {
@@ -487,7 +487,7 @@ header.main-header {
         position: absolute;
         left: -2000em;
         top: 38px;
-        background: #1a7bff;
+        background: #1976D2;
         z-index: 999;
         display: flex; }
         header.main-header nav.main-menu .menu-option .drop-down .dd-item {
@@ -504,14 +504,14 @@ header.main-header {
             flex-direction: column;
             width: 100%; }
             header.main-header nav.main-menu .menu-option .drop-down .dd-item .categories li:hover {
-              background: #579eff; }
+              background: #1976D2; }
           header.main-header nav.main-menu .menu-option .drop-down .dd-item:hover {
-            background: #3389ff; }
+            background: #1976D2; }
           header.main-header nav.main-menu .menu-option .drop-down .dd-item:hover .categories {
             display: inline-flex;
-            background: #3389ff; }
+            background: #1976D2; }
     header.main-header nav.main-menu .menu-option:hover {
-      background: #1a7bff !important;
+      background: #1976D2 !important;
       height: 80px; }
     header.main-header nav.main-menu .menu-option:hover .drop-down {
       left: 0; }
@@ -533,7 +533,7 @@ header.main-header {
 
 .important-info {
   height: 50px;
-  background: #1a7bff;
+  background: #1976D2;
   margin-top: -2px; }
   .important-info .row .info-wrap {
     text-align: center; }

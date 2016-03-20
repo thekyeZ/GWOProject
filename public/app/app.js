@@ -7,9 +7,9 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
             controller : "home",
             templateUrl : "home.html"
         }).
-        when('/contact', {
-            controller : "contact",
-            templateUrl : "contact.html"
+        when('/post/:post', {
+            controller : "post",
+            templateUrl : "post.html"
         });
 
     $locationProvider.html5Mode(true);
