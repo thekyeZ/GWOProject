@@ -22,7 +22,7 @@
 
 </head>
 <body ng-controller="home">
-
+<base href="/">
     <div class="container-fluid">
         <header class="main-header">
 
@@ -37,97 +37,20 @@
 
             <nav class="main-menu">
 
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
-                    <a class="category" href="/">Dla członków</a>
-                    <div class="drop-down dd-harcerz">
-                        <div class="dd-item">
-                            <a href="#">Finanse</a>
-                            <ul class="categories">
-                                <li>Dane do faktury</li>
-                                <li>1% dla harcerzy</li>
-                                <li>Składki członkowskie</li>
-                                <li>Dyżury skarbnika hufca</li>
+                <div class="col col--1-of-4 col--s-1-of-1 menu-option" ng-repeat="item in nav">
+                    <a class="category" href="/">{{item.title}}</a>
+
+
+                    <div class="drop-down dd-harcerz" ng-if="item.menu.length > 0">
+                        <div class="dd-item" ng-repeat="subitem in item.menu ">
+                            <a href="#">{{subitem.title}}</a>
+                            <ul class="categories" ng-if="subitem.menu.length > 0">
+                                <li ng-repeat="subsubitem in subitem.menu">
+                                    {{subsubitem.title}}
+                                </li>
                             </ul>
                         </div>
-                        <div class="dd-item">
-                            <a href="#">Jednostki</a>
-                            <ul class="categories">
-                                <li>Drużyny harcerskie</li>
-                                <li>Drużyny starszoharcerskie</li>
-                                <li>Namiestnictwo</li>
-                            </ul>
 
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">E-ZHP</a>
-                            <ul class="categories"></ul>
-
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Kształcenie</a>
-                            <ul class="categories"></ul>
-
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Wydarzenia</a>
-                            <ul class="categories">
-                                <li>Wdarzenia hufcowe</li>
-                                <li>Wydarzenia chorągwiane</li>
-                            </ul>
-
-                        </div>
-                        <!--<div class="dd-item"><a href="#">Składki członkowskie</a></div>-->
-                    </div>
-
-                </div>
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
-                    <a class="category" href="/kadra">Dla kadry</a>
-                    <div class="drop-down dd-kadra">
-                        <div class="dd-item"><a href="#">Namiestnictwa</a></div>
-                        <div class="dd-item"><a href="#">E-ZHP</a></div>
-                        <div class="dd-item"><a href="#">Składki instruktorskie</a></div>
-                        <div class="dd-item"><a href="#">Wydarzenia chorągwiane</a></div>
-                    </div>
-
-                </div>
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
-                    <a class="category" href="/rodzic">Dla rodziców</a>
-                    <div class="drop-down dd-rodzic">
-                        <div class="dd-item">
-                            <a href="#">Finanse</a>
-                            <ul class="categories">
-                                <li>Dane do faktury</li>
-                                <li>1% dla harcerzy</li>
-                                <li>Składki członkowskie</li>
-                                <li>Dyżury skarbnika hufca</li>
-                            </ul>
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Jak zapisać dziecko do ZHP</a>
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Jednostki</a>
-                            <ul class="categories">
-                                <li>Drużyny harcerskie</li>
-                                <li>Drużyny starszoharcerskie</li>
-                                <li>Namiestnictwo</li>
-                            </ul>
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Wydarzenia</a>
-                            <ul class="categories">
-                                <li>Wdarzenia hufcowe</li>
-                                <li>Wydarzenia chorągwiane</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
-                    <a class="category" href="bazy.html">Bazy hufca</a>
-                    <div class="drop-down dd-bazy">
-                        <div class="dd-item"><a href="#">Harcerska Baza Obozowa "Morena"</a></div>
-                        <div class="dd-item"><a href="#">Harcerska Baza Obozowa "Wygonin"</a></div>
                     </div>
 
                 </div>
@@ -138,6 +61,9 @@
     </div><!--container-fluid-->
 
     <div class="container-fluid important-info">
+
+
+
         <div class="row">
             <div class="col-md-6 col-xs-12 info-wrap">
                 <p>Komendant Hufca: 554-545-545, komenda@gwo.zhp.pl</p>
@@ -149,13 +75,9 @@
     </div>
 
     <div class="container content-container">
-
         <div class="row">
 
             <div ng-repeat="post in posts" class="col-xs-12 col-sm-4 col-md-4 post-wrapper">
-
-                <!--<div class="postbg" style="width: 100%; background: url("images/backgrounds{{post.background}}") "></div>-->
-                <!--<div class="no-padding">-->
 
                     <img ng-src="images/backgrounds/{{post.background}}" alt="">
                     <div class="post-body">
@@ -164,10 +86,9 @@
                         <small ng-repeat="category in category">{{category}}</small>
                         <div><p class="post-content"> {{post.content | limitTo: 100 }}{{post.content.length > 20 ? '' : ''}}</p></div>
 
-                        <div class="post-date">Data: {{post.date}}</div>
+                        <div class="post-date">Id: {{post._id}}Data: {{post.date}}</div>
 
                     </div>
-                <!--</div>-->
 
             </div>
 
