@@ -2,12 +2,11 @@ app.controller("main", ["$scope", '$resource', function($scope, $resource) {
 
     /**
      * @description
-     * Contact information object
+     * Site information
      */
-    var Contact = $resource('/index/contact');
-    $scope.contact = Contact.get();
+    var Site = $resource('/index');
+    $scope.site = Site.get();
 
-    // used for animation events in DOM
-    $scope.animation = {};
+    console.log($scope.site);
 
 }]);

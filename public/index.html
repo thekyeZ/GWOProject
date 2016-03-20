@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 
-<html lang="pl" ng-app="gwo">
+<html lang="pl" ng-app="gwo" ng-controller="main">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{site.title}}</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="style/css/style.css">
+    <link rel="stylesheet" href="/style/css/style.css">
     <!--<link rel="stylesheet" type="text/css" href="style/css/semantic.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
     <script src="/app/app.js"></script>
     <script src="/app/controllers/main.js"></script>
     <script src="/app/controllers/home.js"></script>
-    <script src="/app/controllers/contact.js"></script>
+    <script src="/app/controllers/post.js"></script>
 
 </head>
-<body ng-controller="home">
+<body>
 <base href="/">
     <div class="container-fluid">
         <header class="main-header">
@@ -37,7 +40,7 @@
 
             <nav class="main-menu">
 
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option" ng-repeat="item in nav">
+                <div class="col col--1-of-4 col--s-1-of-1 menu-option" ng-repeat="item in site.menu">
                     <a class="category" href="/">{{item.title}}</a>
 
 
@@ -57,13 +60,9 @@
 
             </nav>
         </header>
-
-    </div><!--container-fluid-->
+    </div>
 
     <div class="container-fluid important-info">
-
-
-
         <div class="row">
             <div class="col-md-6 col-xs-12 info-wrap">
                 <p>Komendant Hufca: 554-545-545, komenda@gwo.zhp.pl</p>
@@ -74,51 +73,7 @@
         </div>
     </div>
 
-    <div class="container content-container">
-        <div class="row">
-
-            <div ng-repeat="post in posts" class="col-xs-12 col-sm-4 col-md-4 post-wrapper">
-
-                    <img ng-src="images/backgrounds/{{post.background}}" alt="">
-                    <div class="post-body">
-                        <!--<a href="blog/{{post._id}}"><h1 class="post-title">{{post.title}}</h1></a>-->
-                        <a href="single.html"><h1 class="post-title">{{post.title}}</h1></a>
-                        <small ng-repeat="category in category">{{category}}</small>
-                        <div><p class="post-content"> {{post.content | limitTo: 100 }}{{post.content.length > 20 ? '' : ''}}</p></div>
-
-                        <div class="post-date">Id: {{post._id}}Data: {{post.date}}</div>
-
-                    </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-
-    <div class="container-fluid main-footer">
-        <div class="col-xs-12 col-md-6 footer-item">
-            <img src="images/logo_zhp_ident.png" alt=""  class="img-responsive">
-        </div>
-        <div class="col-xs-12 col-md-6 footer-item">
-            <img src="images/logo_hufca_biale.png" alt=""   class="img-responsive">
-        </div>
-    </div>
-
-
-
-
-
-
-
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <script src="js/main.js"></script>
+    <section ng-view></section>
 
 </body>
 </html>

@@ -2,8 +2,7 @@
 var express     = require("express"),
     router      = express.Router(),
     fs          = require("fs-extra"),
-    formidable  = require("formidable"),
-    jimp        = require('jimp');
+    formidable  = require("formidable");
 
 /**
  * Libs
@@ -20,6 +19,16 @@ router.get('/post', function(req, res) {
     });
 });
 
+/**
+ * @description
+ * Get one post
+ */
+router.get('/post/:id', function(req, res) {
+    mongo.find('posts', function(err, data) {
+        if (data.length !== 1) console.error("Wykryto POWTÓRZENIA ID");
+        res.status(200).json(data[0]);
+    }, { _id : mongo.ObjectId(req.params.id) });
+});
 /**
  * @description
  * Add new post

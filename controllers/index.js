@@ -26,21 +26,12 @@ router.post('/nav', function(req, res) {
 
 /**
  * @description
- * Sending contact information object
+ * Sending site information object
  */
-router.get('/contact', function(req, res) {
-    res.send({
-        "admin" : "Imię i nazwisko",
-        "phone" : "test",
-        "mail" : "test",
-        "address" : "test",
-        "facebook" : "test",
-        "twitter" : "test",
-        "youtube" : "test",
-        "facture" : {
-            "number" : 234234234
-        }
-    })
+router.get('/', function(req, res) {
+    mongo.find('site', function(err, data) {
+        res.status(200).json(data[0]);
+    }, {title : { $exists : true }});
 });
 
 module.exports = router;

@@ -9,13 +9,4 @@ app.controller("home", ["$scope", "$resource", function($scope, $resource) {
         console.dir($scope.posts);
     });
 
-    /**
-     * @description
-     * Navigation menu structure (array)
-     */
-    var Nav = $resource('/index/nav');
-    $scope.nav = Nav.query();
-
-    console.log($scope.nav);
-
 }]);

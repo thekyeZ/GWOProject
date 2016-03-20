@@ -65,6 +65,17 @@ passportStrategies(passport);
 
 // Routers trace
 app.use(express.static("./public"));
+
+/**
+ * @description
+ * Send post.html template
+ */
+app.get('/post/:id', function(req, res) {
+    res.sendFile('index.html', {
+        root : "./public"
+    });
+});
+
 app.use('/index', index);
 app.use('/admin', admin);
 app.use('/page', page);
