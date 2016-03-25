@@ -27,13 +27,7 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
      */
     var Nav = $resource('/index/nav');
     $scope.nav = Nav.query();
-
-    /**
-     * @description
-     */
-    var Categories = $resource('/blog/tags');
-    $scope.categories = Categories.query();
-
+    
     /**
      * @description
      * New post
@@ -119,23 +113,6 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
     // Category models
     $scope._categorySelect = null;
     $scope._newCategory = null;
-
-    /**
-     * @description
-     * Add category to categories array
-     */
-    $scope.addCategory = function() {
-        if ($scope._newCategory) {
-            // TODO(jurek) Chcek if writed category doesn't exist
-            var Category = $resource('/blog/tags');
-            var category = new Category();
-            category.newTag = $scope._newCategory;
-            category.$save(function() {
-                $scope.categories.push($scope._newCategory);
-                $scope._newCategory = null;
-            });
-        }
-    };
 
     /**
      * @description

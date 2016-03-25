@@ -28,6 +28,10 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
             }
         }
     };
+    // TODO(jurek) Implement router
+    if (location.hash) {
+        $scope.switchContent(location.hash.replace("#", ""));
+    }
 
     /**
      * @description
@@ -51,7 +55,32 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
         $scope.posts.sort(function(a, b) {
             return a.date + b.date;
         });
+        console.dir($scope.posts);
     });
 
+    /**
+     * @description
+     * Category list
+     */
+    var Categories = $resource('/blog/tags');
+    $scope.categories = Categories.query();
+
+    /**
+     * @description
+     * Add category to categories array
+     */
+    $scope.tag = {};
+    $scope.addCategory = function() {
+        if ($scope.tag.newCategory) {
+            // TODO(jurek) Chcek if writed category doesn't exist
+            var Category = $resource('/blog/tags');
+            var category = new Category();
+            category.newTag = $scope.tag.newCategory;
+            category.$save(function() {
+                $scope.categories.push($scope.tag.newCategory);
+                $scope.tag.newCategory = null;
+            });
+        }
+    };
 
 }]);
