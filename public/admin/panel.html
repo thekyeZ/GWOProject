@@ -311,26 +311,26 @@
             <!--</div>-->
             <!--<hr>-->
             <!-- Add gallery -->
-            <label for="addGallery">Dodaj galerię do postu</label>
-            <div class="input-group">
-                <button type="button" class="form-control" id="addGallery"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-click="toggle('_galleryOnOff')" ng-class="{'btn-success' : newPost.category.length > 0 && _galleryOnOff, 'btn-warning' : newPost.category.length === 0 && _galleryOnOff, 'btn-danger' : !_galleryOnOff}">Włącz/Wyłącz</button>
-                <div class="input-group-addon">
-                    <input type="checkbox" ng-model="newPost.gallery">
-                </div>
-            </div>
-            <div class="collapse" id="collapseExample">
-                <div class="well ">
-                    <!-- Gallery photos -->
-                    <div class="input-group col-lg-12">
-                        <!--<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">-->
-                        <div class="drag-drop-zone" id="gallery">
-                            <p class="text-center">Drag gallery photos here</p>
-                        </div>
-                    </div>
-                    <p class="page-header">Photos (0/100):</p>
-                    <!--photos-->
-                </div>
-            </div>
+            <!--<label for="addGallery">Dodaj galerię do postu</label>-->
+            <!--<div class="input-group">-->
+                <!--<button type="button" class="form-control" id="addGallery"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-click="toggle('_galleryOnOff')" ng-class="{'btn-success' : newPost.category.length > 0 && _galleryOnOff, 'btn-warning' : newPost.category.length === 0 && _galleryOnOff, 'btn-danger' : !_galleryOnOff}">Włącz/Wyłącz</button>-->
+                <!--<div class="input-group-addon">-->
+                    <!--<input type="checkbox" ng-model="newPost.gallery">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="collapse" id="collapseExample">-->
+                <!--<div class="well ">-->
+                    <!--&lt;!&ndash; Gallery photos &ndash;&gt;-->
+                    <!--<div class="input-group col-lg-12">-->
+                        <!--&lt;!&ndash;<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">&ndash;&gt;-->
+                        <!--<div class="drag-drop-zone" id="gallery">-->
+                            <!--<p class="text-center">Drag gallery photos here</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<p class="page-header">Photos (0/100):</p>-->
+                    <!--&lt;!&ndash;photos&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
         </section>
         <section class="col-lg-3 col-lg-offset-1">
             <!-- Final settings summary -->
@@ -385,7 +385,7 @@
                 <!-- Title -->
                 <label for="title_modPost">Tytuł</label>
                 <div class="input-group col-lg-12">
-                    <input type="text" class="form-control" id="title_modPost" value="{{post.title}}">
+                    <input type="text" class="form-control" id="title_modPost" ng-model="post.title">
                 </div>
                 <hr>
                 <!-- Categories -->
@@ -414,7 +414,7 @@
                     <button class="btn btn-danger btn-sm" ng-click="removeCategoryPost(tag, $parent.$index)">Usuń</button>
                 </div>
                 <hr>
-                <button class="col-lg-12 btn btn-primary">Zapisz zmiany!</button>
+                <button class="col-lg-12 btn btn-primary" ng-click="save_modPost($index)">Zapisz zmiany!</button>
             </div>
             <div class="col-lg-7">
                 <!-- Content -->
@@ -431,7 +431,8 @@
                     </div>
                 </div>
                 <!-- Background display -->
-                <input type="button" class="form-control btn-danger" ng-if="post.background" value="Usuń" ng-click="post.background = null">
+                <input type="button" class="form-control btn-danger" ng-if="post.background" value="Usuń" ng-click="post.oldBackground = post.background; post._oldBackground = post.background; post.background = null">
+                <input type="button" class="form-control btn-warning" ng-if="post.oldBackground" value="Przywróć aktualne" ng-click="returnDefaultBackground($index)">
                 <hr>
             </div>
         </aside>

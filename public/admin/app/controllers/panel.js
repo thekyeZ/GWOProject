@@ -49,7 +49,27 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
      * @description
      * List of post
      */
-    var Posts = $resource('/blog/post');
+    var Posts = $resource('/blog/post/:id', {id : '@_id'}, {
+        'save' : {
+            'transformRequest' : function(data) {
+                if (data === undefined) return data;
+
+                var form = new FormData();
+                angular.forEach(data, function(value, key) {
+                    if (value instanceof FileList) {
+                        if (value.length == 1) {
+                            form.append(key, value[0]);
+                        }
+                    } else {
+                        form.append(key, value);
+                    }
+                });
+                return form;
+            },
+            'method' : "POST",
+            'headers' : {"Content-Type" : undefined}
+        }
+    });
     $scope.posts = Posts.query(function() {
         // sort by newer
         $scope.posts.sort(function(a, b) {
