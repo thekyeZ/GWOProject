@@ -119,6 +119,7 @@ router.post('/post/:id', function(req, res) {
                 var _newName = fields.date+Math.round(Math.random()*1000000);
                 fs.rename(file.newBackground.path, file.newBackground.path.replace(/upload_.*\./, _newName+"."), function() {
                     fields.background = _newName+file.newBackground.path.match(/\..{3,4}$/)[0];
+                    // TODO(jurek) Optimal THIS!!!!!!
                     delete fields.newBackground;
                     delete fields.oldBackground;
                     delete fields._oldBackground;
@@ -135,7 +136,7 @@ router.post('/post/:id', function(req, res) {
             });
             // Save without photo
         } else {
-
+            // TODO(jurek) Optimal THIS!!!!!!
             delete fields.newBackground;
             delete fields.oldBackground;
             delete fields._oldBackground;

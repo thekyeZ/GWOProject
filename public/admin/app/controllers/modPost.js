@@ -1,13 +1,30 @@
 app.controller('modPost', ["$scope", "$resource", "utils", function($scope, $resource, utils) {
 
+    /**
+     * @description
+     * Remove post confirm
+     * @param index
+     */
     $scope.removePost = function(index) {
         utils.confirm("Czy na pewno chcesz usunąć wybrany post?", function() {
             console.log($scope.posts[index]);
         });
     };
 
+    /**
+     * @description
+     * Array that storage info about show/hide posts panels
+     * @type {Array}
+     */
     $scope.animationPost = [];
 
+    /**
+     * @description
+     * Just toggle boolean value in $scope
+     * Make for animationPost Array
+     * @param val
+     * @param index
+     */
     $scope.toggle = function(val, index) {
         if (!$scope[val][index]) {
             $scope[val][index] = true;
@@ -16,6 +33,11 @@ app.controller('modPost', ["$scope", "$resource", "utils", function($scope, $res
         }
     };
 
+    /**
+     * @description
+     * Storage selected category in <select> tag
+     * @type {{}}
+     */
     $scope.select = {};
 
     /**
@@ -38,6 +60,10 @@ app.controller('modPost', ["$scope", "$resource", "utils", function($scope, $res
         $scope.posts[index].category.splice(_index, 1);
     };
 
+    /**
+     * @description
+     * Prepare image to post model and view
+     */
     $scope.$on('upload_background_modPost', function(ev, files, index) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(files[0]);
@@ -52,16 +78,24 @@ app.controller('modPost', ["$scope", "$resource", "utils", function($scope, $res
         };
     });
 
+    /**
+     * @description
+     * Update post
+     * @param index
+     */
     $scope.save_modPost = function(index) {
-        // TODO(jurek) Remove 'background' field if newBackground is available
         if ($scope.posts[index].newBackground) {
             delete $scope.posts[index].background;
         }
-        $scope.posts[index].$save(function() {
-            console.log(arguments);
-        });
+        // TODO(jurek) Progress/finish alert
+        $scope.posts[index].$save();
     };
 
+    /**
+     * @description
+     * Restore original image
+     * @param index
+     */
     $scope.returnDefaultBackground = function(index) {
         $scope.posts[index].background = $scope.posts[index].oldBackground;
         delete $scope.posts[index].oldBackground;

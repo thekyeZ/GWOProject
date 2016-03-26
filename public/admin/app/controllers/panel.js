@@ -88,6 +88,11 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
             'headers' : {"Content-Type" : undefined}
         }
     });
+
+    /**
+     * @description
+     * Sort posts by new
+     */
     $scope.posts = Posts.query(function() {
         // sort by newer
         $scope.posts.sort(function(a, b) {

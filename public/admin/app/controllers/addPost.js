@@ -66,6 +66,7 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
         $scope.newPost.author = location.search.replace("?user=", "");
         delete $scope.newPost.message;
         delete $scope.newPost.id;
+        // TODO(jurek) Progress/finish alert
         $scope.newPost.$save(function() {
 
             $scope.newPost.category = [];
