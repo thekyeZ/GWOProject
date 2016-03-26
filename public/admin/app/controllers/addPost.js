@@ -2,21 +2,6 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
 
     /**
      * @description
-     * Drag and drop zone status (effect)
-     */
-    $scope.dragAndDrop = {
-        background : {
-            effect : false,
-            file : null
-        },
-        gallery : {
-            effect : false,
-            file : []
-        }
-    };
-
-    /**
-     * @description
      * Gallery on/off style
      */
     $scope._galleryOnOff = false;

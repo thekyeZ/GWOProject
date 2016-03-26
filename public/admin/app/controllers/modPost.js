@@ -38,21 +38,34 @@ app.controller('modPost', ["$scope", "$resource", "utils", function($scope, $res
         $scope.posts[index].category.splice(_index, 1);
     };
 
-    $scope.dragAndDrop = {
-        background_modPost : {
-            effect : false
-        }
-    };
-
     $scope.$on('upload_background_modPost', function(ev, files, index) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(files[0]);
-        console.log(arguments);
         fileReader.onload = function(e) {
+            if (!$scope.posts[index].oldBackground) {
+                $scope.posts[index].oldBackground = $scope.posts[index].background;
+                $scope.posts[index]._oldBackground = $scope.posts[index].background;
+            }
             $scope.posts[index].background = fileReader.result;
             $scope.posts[index].newBackground = files[0];
             $scope.$apply();
         };
     });
+
+    $scope.save_modPost = function(index) {
+        // TODO(jurek) Remove 'background' field if newBackground is available
+        if ($scope.posts[index].newBackground) {
+            delete $scope.posts[index].background;
+        }
+        $scope.posts[index].$save(function() {
+            console.log(arguments);
+        });
+    };
+
+    $scope.returnDefaultBackground = function(index) {
+        $scope.posts[index].background = $scope.posts[index].oldBackground;
+        delete $scope.posts[index].oldBackground;
+        delete $scope.posts[index].newBackground;
+    }
 
 }]);
