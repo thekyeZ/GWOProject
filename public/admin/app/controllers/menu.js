@@ -161,7 +161,6 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
                 }
             }
         }
-        console.log($scope.nav);
     }, true);
 
 }]);

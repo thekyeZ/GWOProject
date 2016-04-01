@@ -13,6 +13,7 @@
     <script src="/admin/app/factories/utils.js"></script>
     <script src="/admin/app/directives/dragAndDrop.js"></script>
     <script src="/admin/app/directives/scrollFixed.js"></script>
+    <script src="/app/directives/data.js"></script>
     <script src="/admin/app/controllers/panel.js"></script>
     <script src="/admin/app/controllers/menu.js"></script>
     <script src="/admin/app/controllers/addPost.js"></script>
@@ -29,25 +30,25 @@
             <a href="#" class="navbar-brand" ng-click="switchContent('dashboard')">Tablica</a>
         </aside>
         <ul class="navbar-nav nav">
-            <li><a href="#" ng-click="switchContent('menu')">Menu</a></li>
+            <li><a href="#menu" ng-click="switchContent('menu')">Menu</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" ng-click="switchContent('addPost')">Dodaj post</a></li>
-                    <li><a href="#" ng-click="switchContent('modPost')">Modyfikuj/usuń istniejące</a></li>
+                    <li><a href="#addPost" ng-click="switchContent('addPost')">Dodaj post</a></li>
+                    <li><a href="#modPost" ng-click="switchContent('modPost')">Modyfikuj/usuń istniejące</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Strony statyczne<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" ng-click="switchContent('contactStatic')">Kontakt</a></li>
-                    <li><a href="#" ng-click="switchContent('baseHufiec')">Bazy Hufca</a></li>
+                    <li><a href="#contactStatic" ng-click="switchContent('contactStatic')">Kontakt</a></li>
+                    <li><a href="#baseHufiec" ng-click="switchContent('baseHufiec')">Bazy Hufca</a></li>
                 </ul>
             </li>
         </ul>
         <ul class="navbar-nav nav navbar-right">
             <li class="navbar-right">
-                <a href="#"><span class="glyphicon glyphicon-user user-space"></span>Wyloguj</a>
+                <a href="/admin/logout"><span class="glyphicon glyphicon-user user-space"></span>Wyloguj</a>
             </li>
         </ul>
     </div>
@@ -290,47 +291,46 @@
             </div>
             <hr>
             <!-- Add as menu link --->
-            <label for="postCheck">Dodaj do listy postów na stronie głównej</label>
-            <div class="input-group">
-                <button type="button" class="form-control" id="postCheck" ng-click="toggle('newPost.post')" ng-class="(newPost.post) ? 'btn-success' : 'btn-danger'">Włącz/Wyłącz</button>
-                <div class="input-group-addon">
-                    <input type="checkbox"  ng-model="newPost.post">
-                </div>
-            </div>
-            <!-- Add as menu link --->
-            <label for="menuCheck">Dodaj do menu</label>
-            <div class="input-group">
-                <button type="button" class="form-control" id="menuCheck" ng-click="toggle('newPost.site')" ng-class="(newPost.site) ? 'btn-success' : 'btn-danger'">Włącz/Wyłącz</button>
-                <div class="input-group-addon">
-                    <input type="checkbox" ng-model="newPost.site">
-                </div>
-            </div>
-            <div class="alert alert-danger" ng-if="!newPost.site && !newPost.post">
-                Wymagana jest co najmniej jedna opcja z powyższych dwóch!
-            </div>
-            <!-- TODO(jurek) Add menu list edit well -->
-            <hr>
+            <!--<label for="postCheck">Dodaj do listy postów na stronie głównej</label>-->
+            <!--<div class="input-group">-->
+                <!--<button type="button" class="form-control" id="postCheck" ng-click="toggle('newPost.post')" ng-class="(newPost.post) ? 'btn-success' : 'btn-danger'">Włącz/Wyłącz</button>-->
+                <!--<div class="input-group-addon">-->
+                    <!--<input type="checkbox"  ng-model="newPost.post">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; Add as menu link -&ndash;&gt;-->
+            <!--<label for="menuCheck">Dodaj do menu</label>-->
+            <!--<div class="input-group">-->
+                <!--<button type="button" class="form-control" id="menuCheck" ng-click="toggle('newPost.site')" ng-class="(newPost.site) ? 'btn-success' : 'btn-danger'">Włącz/Wyłącz</button>-->
+                <!--<div class="input-group-addon">-->
+                    <!--<input type="checkbox" ng-model="newPost.site">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="alert alert-danger" ng-if="!newPost.site && !newPost.post">-->
+                <!--Wymagana jest co najmniej jedna opcja z powyższych dwóch!-->
+            <!--</div>-->
+            <!--<hr>-->
             <!-- Add gallery -->
-            <label for="addGallery">Dodaj galerię do postu</label>
-            <div class="input-group">
-                <button type="button" class="form-control" id="addGallery"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-click="toggle('_galleryOnOff')" ng-class="{'btn-success' : newPost.category.length > 0 && _galleryOnOff, 'btn-warning' : newPost.category.length === 0 && _galleryOnOff, 'btn-danger' : !_galleryOnOff}">Włącz/Wyłącz</button>
-                <div class="input-group-addon">
-                    <input type="checkbox" ng-model="newPost.gallery">
-                </div>
-            </div>
-            <div class="collapse" id="collapseExample">
-                <div class="well ">
-                    <!-- Gallery photos -->
-                    <div class="input-group col-lg-12">
-                        <!--<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">-->
-                        <div class="drag-drop-zone" id="gallery">
-                            <p class="text-center">Drag gallery photos here</p>
-                        </div>
-                    </div>
-                    <p class="page-header">Photos (0/100):</p>
-                    <!--photos-->
-                </div>
-            </div>
+            <!--<label for="addGallery">Dodaj galerię do postu</label>-->
+            <!--<div class="input-group">-->
+                <!--<button type="button" class="form-control" id="addGallery"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-click="toggle('_galleryOnOff')" ng-class="{'btn-success' : newPost.category.length > 0 && _galleryOnOff, 'btn-warning' : newPost.category.length === 0 && _galleryOnOff, 'btn-danger' : !_galleryOnOff}">Włącz/Wyłącz</button>-->
+                <!--<div class="input-group-addon">-->
+                    <!--<input type="checkbox" ng-model="newPost.gallery">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="collapse" id="collapseExample">-->
+                <!--<div class="well ">-->
+                    <!--&lt;!&ndash; Gallery photos &ndash;&gt;-->
+                    <!--<div class="input-group col-lg-12">-->
+                        <!--&lt;!&ndash;<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">&ndash;&gt;-->
+                        <!--<div class="drag-drop-zone" id="gallery">-->
+                            <!--<p class="text-center">Drag gallery photos here</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<p class="page-header">Photos (0/100):</p>-->
+                    <!--&lt;!&ndash;photos&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
         </section>
         <section class="col-lg-3 col-lg-offset-1">
             <!-- Final settings summary -->
@@ -339,8 +339,8 @@
                 <div class="list-group-item small" ng-class="(newPost.background) ? 'list-group-item-success' : 'list-group-item-warning'">Tło</div>
                 <div class="list-group-item small" ng-class="(newPost.category.length) ? 'list-group-item-success' : 'list-group-item-danger'">Kategorie</div>
                 <div class="list-group-item small" ng-class="(newPost.content) ? 'list-group-item-success' : 'list-group-item-danger'">Treść</div>
-                <div class="list-group-item small" ng-class="{'list-group-item-success' : newPost.post, 'list-group-item-warning' : newPost.site && !newPost.post, 'list-group-item-danger' : !newPost.site && !newPost.post}">Post</div>
-                <div class="list-group-item small" ng-class="{'list-group-item-success' : newPost.site, 'list-group-item-warning' : newPost.post && !newPost.site, 'list-group-item-danger' : !newPost.site && !newPost.post}">Strona</div>
+                <!--<div class="list-group-item small" ng-class="{'list-group-item-success' : newPost.post, 'list-group-item-warning' : newPost.site && !newPost.post, 'list-group-item-danger' : !newPost.site && !newPost.post}">Post</div>-->
+                <!--<div class="list-group-item small" ng-class="{'list-group-item-success' : newPost.site, 'list-group-item-warning' : newPost.post && !newPost.site, 'list-group-item-danger' : !newPost.site && !newPost.post}">Strona</div>-->
                 <div class="list-group-item small" ng-class="(newPost.gallery) ? 'list-group-item-success' : 'list-group-item-warning'">Galeria</div>
             </div>
             <hr>
@@ -352,30 +352,115 @@
     </form>
     <br>
 </section>
+<!-- Modify post -->
 <section ng-class="animation.showmodPost" class="container" ng-controller="modPost">
     <h4 class="page-header">Blog / Modyfikuj, usuń istniejące</h4>
-    <table class="table">
-        <tr>
-            <th>Lp.</th>
-            <th>Tytuł</th>
-            <th>Autor</th>
-            <th>Data</th>
-            <th>Kategorie</th>
-            <th>Strona</th>
-            <th>Post</th>
-        </tr>
-        <tr ng-repeat="post in posts">
-            <th>{{$index+1}}.</th>
-            <td>{{post.title}}</td>
-            <td>{{post.author}}</td>
-            <td>{{post.date}}</td>
-            <td>{{post.category}}</td>
-            <td>{{post.site}}</td>
-            <td>{{post.post}}</td>
-        </tr>
-    </table>
+    <div class="row text-muted">
+        <div class="col-lg-1">Lp.</div>
+        <div class="col-lg-4">Tytuł</div>
+        <div class="col-lg-1">Autor</div>
+        <div class="col-lg-2">Data</div>
+        <div class="col-lg-2">Kategorie</div>
+        <div class="col-lg-2">Modyfikuj</div>
+    </div>
+    <hr>
+    <div ng-repeat="post in posts">
+        <div class="row">
+            <div class="col-lg-1">{{$index+1}}.</div>
+            <div class="col-lg-4">{{post.title}}</div>
+            <div class="col-lg-1">{{post.author}}</div>
+            <div class="col-lg-2" number-format="{{post.date}}"></div>
+            <div class="col-lg-2">
+                <ul class="list-group">
+                    <li ng-repeat="tag in post.category">{{tag}}</li>
+                </ul>
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-default" ng-click="toggle('animationPost', $index)">{{(animationPost[$index])? "Zwiń" : "Rozwiń"}}</button>
+                <button class="btn btn-danger" ng-click="removePost($index)">Usuń</button>
+            </div>
+        </div>
+        <aside ng-if="animationPost[$index]" class="row well">
+            <div class="col-lg-5">
+                <!-- Title -->
+                <label for="title_modPost">Tytuł</label>
+                <div class="input-group col-lg-12">
+                    <input type="text" class="form-control" id="title_modPost" ng-model="post.title">
+                </div>
+                <hr>
+                <!-- Categories -->
+                <label for="category_modPost">Modyfikuj kategorię</label>
+                <div class="input-group">
+                    <select ng-model="select.categorySelectMod" class="form-control" name="Kategorie" id="category_modPost">
+                        <option value="" selected>Wybierz kategorie</option>
+                        <option ng-repeat="tag in categories" value="{{tag}}">{{tag}}</option>
+                    </select>
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                    </div>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" ng-click="addCategoryPostMod($index)">Dodaj post do wybranej kategorii</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="tag.newCategory" placeholder="Dodaj nową kategorię do listy dostępnych">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" ng-click="addCategory()">Dodaj do listy</button>
+                    </div>
+                </div>
+                <div class="alert alert-warning">Dodanie nowej kategorii do listy dostępnych dodaje wyłącznie kategorię do kategorii możliwych do wyboru na liście, nie dodaje jednocześnie aktualnego postu do wpisanej kategorii</div>
+                <div class="input-group col-lg-12" ng-repeat="tag in post.category">
+                    <div class="input-group-addon tag-list">{{tag}}</div>
+                    <button class="btn btn-danger btn-sm" ng-click="removeCategoryPost(tag, $parent.$index)">Usuń</button>
+                </div>
+                <hr>
+                <button class="col-lg-12 btn btn-primary" ng-click="save_modPost($index)">Zapisz zmiany!</button>
+            </div>
+            <div class="col-lg-7">
+                <!-- Content -->
+                <label for="postContent_modPost">Treść postu</label>
+                <div class="input-group col-lg-12" id="postContent_modPost">
+                    <textarea ui-tinymce="tinymceOptions" ng-model="post.content" name="Treść" class="form-control col-lg-12" placeholder="Treść" style="resize: none; height: 200px"></textarea>
+                </div>
+                <hr>
+                <!-- Background photo -->
+                <label for="background_modPost">Zdjęcie tła</label>
+                <div class="whiteBackground input-group col-lg-12">
+                    <div id="background_modPost" class="drag-drop-zone imageBackground" style="background-image: url('{{(post.background.indexOf('/') > 0) ? post.background : '/images/backgrounds/'+post.background}}')" drag-options="{{$index}}" drag-and-drop="1" ng-class="{'active' : dragAndDrop.background_modPost.effect, 'droped' : post.background}">
+                        <p class="text-center" ng-if="!post.background">Drag photo here</p>
+                    </div>
+                </div>
+                <!-- Background display -->
+                <input type="button" class="form-control btn-danger" ng-if="post.background" value="Usuń" ng-click="post.oldBackground = post.background; post._oldBackground = post.background; post.background = null">
+                <input type="button" class="form-control btn-warning" ng-if="post.oldBackground" value="Przywróć aktualne" ng-click="returnDefaultBackground($index)">
+                <hr>
+            </div>
+        </aside>
+        <hr>
+    </div>
 </section>
-<section ng-class="animation.showcontactStatic" class="container">conta</section>
-<section ng-class="animation.showbaseHufiec" class="container">huf</section>
+<!-- Contact -->
+<section ng-class="animation.showcontactStatic" class="container">
+    <h4 class="page-header">Strony statyczne / Kontakt</h4>
+    <from class="row">
+        <div class="col-lg-8">
+            deede
+        </div>
+        <div class="col-lg-3 col-lg-offset-1">
+            deded
+        </div>
+    </from>
+</section>
+<section ng-class="animation.showbaseHufiec" class="container">
+    <h4 class="page-header">Strony statyczne / Kontakt</h4>
+    <from class="row">
+        <div class="col-lg-8">
+            deede
+        </div>
+        <div class="col-lg-3 col-lg-offset-1">
+            deded
+        </div>
+    </from>
+</section>
 </body>
 </html>

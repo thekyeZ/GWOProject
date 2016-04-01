@@ -20,6 +20,17 @@ router.get('/', function(req, res) {
 
 /**
  * @description
+ * Logout
+ */
+router.get('/logout', function(req, res) {
+
+    req.logout();
+    return res.redirect("/admin");
+
+});
+
+/**
+ * @description
  * Authorization path
  */
 router.post('/login', function(req, res, next) {

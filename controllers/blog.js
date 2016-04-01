@@ -94,4 +94,63 @@ router.post('/tags', function(req, res) {
     }, { title : { $exists : true}}, { $push : { tags : req.body.newTag }});
 });
 
+/**
+ * @description
+ * Update each post
+ */
+router.post('/post/:id', function(req, res) {
+    var form = new formidable.IncomingForm();
+    form.keepExtensions = true;
+    form.uploadDir = './public/images/backgrounds';
+    form.parse(req, function(err, fields, file) {
+        var __id;
+        if (err) return res.status(500).json({ message : "Data transfer error"});
+        // Validation
+        if (!fields.category || !fields.title || !fields.author || !fields.content || !fields.date) {
+            return res.status(500).json({ message : "Some of forms are incorrect" });
+        }
+
+        // TODO(jurek) Check this
+        fields.category = fields.category.split(',');
+
+        // Save with photo
+        if (file.newBackground) {
+            fs.unlink('./public/images/backgrounds/'+fields._oldBackground, function() {
+                var _newName = fields.date+Math.round(Math.random()*1000000);
+                fs.rename(file.newBackground.path, file.newBackground.path.replace(/upload_.*\./, _newName+"."), function() {
+                    fields.background = _newName+file.newBackground.path.match(/\..{3,4}$/)[0];
+                    // TODO(jurek) Optimal THIS!!!!!!
+                    delete fields.newBackground;
+                    delete fields.oldBackground;
+                    delete fields._oldBackground;
+                    delete fields.$$hashKey;
+                    delete fields.$promise;
+                    __id = fields._id;
+                    delete fields._id;
+                    mongo.update("posts", function(err, result) {
+                        if (err) return res.status(500).json({ message : "Error with database("+err+"). Contact with manufacturer"});
+                        fields._id = __id;
+                        return res.status(200).json(fields);
+                    }, { _id : mongo.ObjectId(req.params.id) }, {$set : fields } );
+                });
+            });
+            // Save without photo
+        } else {
+            // TODO(jurek) Optimal THIS!!!!!!
+            delete fields.newBackground;
+            delete fields.oldBackground;
+            delete fields._oldBackground;
+            delete fields.$$hashKey;
+            delete fields.$promise;
+            __id = fields._id;
+            delete fields._id;
+            mongo.update("posts", function(err, result) {
+                if (err) return res.status(500).json({ message : "Error with database("+err+"). Contact with manufacturer"});
+                fields._id = __id;
+                return res.status(200).json(fields);
+            }, { _id : mongo.ObjectId(req.params.id) }, {$set : fields } );
+        }
+    });
+});
+
 module.exports = router;
