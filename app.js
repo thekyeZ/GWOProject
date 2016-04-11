@@ -75,6 +75,11 @@ app.get('/post/:id', function(req, res) {
         root : "./public"
     });
 });
+app.get('/category/:tag', function(req, res) {
+    res.sendFile('index.html', {
+        root : "./public"
+    });
+});
 
 app.use('/index', index);
 app.use('/admin', admin);

@@ -15,8 +15,18 @@ var mongo = require('../libs/mongodb');
  */
 router.get('/post', function(req, res) {
     mongo.find('posts', function(err, data) {
-       res.json(data);
+       res.send(data);
     });
+});
+
+/**
+ * @description
+ * Get category posts
+ */
+router.get('/post/category/:tag', function(req, res) {
+    mongo.find('posts', function(err, data) {
+        res.status(200).send(data);
+    }, { category : { $in : [req.params.tag]}});
 });
 
 /**

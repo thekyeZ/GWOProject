@@ -1,12 +1,24 @@
-app.controller("home", ["$scope", "$resource", function($scope, $resource) {
+app.controller("home", ["$scope", "$resource", "$routeParams", function($scope, $resource, $routeParams) {
 
-    var Posts = $resource("/blog/post");
+    var Posts,
+        sortPosts = function() {
+            // sort by newer
+            $scope.posts.sort(function(a, b) {
+                return a.date + b.date;
+            });
+            console.dir($scope.posts);
+        };
+
+    /**
+     * Requesting all / category posts
+     */
+    if ($routeParams.tag) {
+        Posts = $resource("/blog/post/category/"+$routeParams.tag);
+    } else {
+        Posts = $resource("/blog/post");
+    }
     $scope.posts = Posts.query(function() {
-        // sort by newer
-        $scope.posts.sort(function(a, b) {
-            return a.date + b.date;
-        });
-        console.dir($scope.posts);
+        sortPosts();
     });
 
 }]);
