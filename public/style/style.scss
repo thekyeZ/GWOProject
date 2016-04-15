@@ -56,10 +56,10 @@ header.main-header{
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   .logo-box{
-    background: red;
+    background: gray;
     height: 50px;
     width: 108px;
-    //background: url("../../images/logo_hufca_biale.png") no-repeat;
+    background: url("../../images/logo_hufca_biale.png") no-repeat;
     background-size: contain;
     .burger{
       width: 50px;
@@ -105,7 +105,7 @@ header.main-header{
         color: white;
       }
       a{
-        color: black;
+        color: white;
       }
 
       .drop-down{
@@ -324,6 +324,7 @@ header.main-header{
   .gallery {
     display: flex;
     width: 100%;
+    margin-top: 50px;
     flex-wrap: wrap;
     justify-content: center;
   }

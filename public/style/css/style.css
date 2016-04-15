@@ -440,16 +440,17 @@ body {
   background: #1b1c1d; }
 
 header.main-header {
-  background: #1565C0;
+  background: #006CFF;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out; }
   header.main-header .logo-box {
-    background: #cccccc;
+    background: gray;
     height: 50px;
     width: 108px;
+    background: url("../../images/logo_hufca_biale.png") no-repeat;
     background-size: contain; }
     header.main-header .logo-box .burger {
       width: 50px;
@@ -464,7 +465,7 @@ header.main-header {
         background: black; }
   header.main-header nav.main-menu {
     height: 40px;
-    background: #1565C0;
+    background: #006CFF;
     position: relative;
     padding-top: 1px; }
     header.main-header nav.main-menu .menu-option {
@@ -480,14 +481,14 @@ header.main-header {
         font-size: 0.8em;
         color: white; }
       header.main-header nav.main-menu .menu-option a {
-        color: black; }
+        color: white; }
       header.main-header nav.main-menu .menu-option .drop-down {
         width: 100%;
         height: 50px;
         position: absolute;
         left: -2000em;
         top: 38px;
-        background: #1976D2;
+        background: #1a7bff;
         z-index: 999;
         display: flex; }
         header.main-header nav.main-menu .menu-option .drop-down .dd-item {
@@ -504,14 +505,14 @@ header.main-header {
             flex-direction: column;
             width: 100%; }
             header.main-header nav.main-menu .menu-option .drop-down .dd-item .categories li:hover {
-              background: #1976D2; }
+              background: #579eff; }
           header.main-header nav.main-menu .menu-option .drop-down .dd-item:hover {
-            background: #1976D2; }
+            background: #3389ff; }
           header.main-header nav.main-menu .menu-option .drop-down .dd-item:hover .categories {
             display: inline-flex;
-            background: #1976D2; }
+            background: #3389ff; }
     header.main-header nav.main-menu .menu-option:hover {
-      background: #1976D2 !important;
+      background: #1a7bff !important;
       height: 80px; }
     header.main-header nav.main-menu .menu-option:hover .drop-down {
       left: 0; }
@@ -533,7 +534,7 @@ header.main-header {
 
 .important-info {
   height: 50px;
-  background: #1976D2;
+  background: #1a7bff;
   margin-top: -2px; }
   .important-info .row .info-wrap {
     text-align: center; }
@@ -616,6 +617,7 @@ header.main-header {
   .content-container .gallery {
     display: flex;
     width: 100%;
+    margin-top: 50px;
     flex-wrap: wrap;
     justify-content: center; }
   .content-container .gallery img {
