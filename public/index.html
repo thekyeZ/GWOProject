@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="/style/css/style.css">
+    <link rel="stylesheet" href="/style/css/magific-popup.css">
     <!--<link rel="stylesheet" type="text/css" href="style/css/semantic.css">-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -41,17 +42,26 @@
             <nav class="main-menu">
 
                 <div class="col col--1-of-4 col--s-1-of-1 menu-option" ng-repeat="item in site.menu">
+                  <!--TODO NOT DONE. Finish menu links-->
+                    <!--<a class="category" href="{{item.link}}">{{item.title}}</a>-->
                     <a class="category" href="/">{{item.title}}</a>
 
 
+
                     <div class="drop-down dd-harcerz" ng-if="item.menu.length > 0">
+
                         <div class="dd-item" ng-repeat="subitem in item.menu ">
-                            <a href="#">{{subitem.title}}</a>
+
+
+                            <a href="/post/{{subitem.link}}">{{subitem.title}}</a>
+
+
                             <ul class="categories" ng-if="subitem.menu.length > 0">
                                 <li ng-repeat="subsubitem in subitem.menu">
-                                    {{subsubitem.title}}
+                                    <a href="post/{{isExists(subsubitem.link) && subsubitem.link || '#' }}">{{subsubitem.title}}</a>
                                 </li>
                             </ul>
+
                         </div>
 
                     </div>
@@ -102,6 +112,7 @@
 
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+    <script src="js/jquery.magnific-popup.js"></script>
     <script src="js/main.js"></script>
 
 
