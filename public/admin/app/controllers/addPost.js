@@ -10,7 +10,7 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
      * @description
      * Navigation menu structure (array)
      */
-    var Nav = $resource('/index/nav');
+    var Nav = $resource('/page/nav');
     $scope.nav = Nav.query();
     
     /**
