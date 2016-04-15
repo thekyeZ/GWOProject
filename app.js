@@ -17,7 +17,7 @@ var passportStrategies  = require('./libs/passport'),
     mongodb             = require('./libs/mongodb');
 
 // Controllers
-var index = require("./controllers/index"),
+var site = require("./controllers/site"),
     admin = require("./controllers/admin"),
     page = require("./controllers/page"),
     blog = require("./controllers/blog"),
@@ -81,7 +81,7 @@ app.get('/category/:tag', function(req, res) {
     });
 });
 
-app.use('/index', index);
+app.use('/site', site);
 app.use('/admin', admin);
 app.use('/page', page);
 app.use('/blog', blog);

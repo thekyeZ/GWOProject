@@ -5,6 +5,15 @@ var express     = require("express"),
 
 /**
  * @description
+ * Sending site information object
+ */
+router.get('/', function(req, res) {
+    mongo.find('site', function(err, data) {
+        res.status(200).json(data[0]);
+    }, {title : { $exists : true }});
+});
+/**
+ * @description
  * Sending navigation list
  */
 router.get('/nav', function(req, res) {
@@ -24,14 +33,5 @@ router.post('/nav', function(req, res) {
     }, { title : {$exists : true}}, {$set : { menu : req.body.nav }});
 });
 
-/**
- * @description
- * Sending site information object
- */
-router.get('/', function(req, res) {
-    mongo.find('site', function(err, data) {
-        res.status(200).json(data[0]);
-    }, {title : { $exists : true }});
-});
 
 module.exports = router;

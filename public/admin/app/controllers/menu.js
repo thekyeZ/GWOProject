@@ -6,7 +6,7 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
      * @description
      * Get menu structure
      */
-    var Nav = $resource('/index/nav');
+    var Nav = $resource('/site/nav');
     $scope.nav = Nav.query();
 
     /**
