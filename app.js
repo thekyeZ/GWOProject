@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(expressSession({
     secret : "kO-#do_1Pl_l-EdQ2gv",
     //TODO(jurek) Test maxAge!
-    cookie : { maxAge : 600000 },
+    //cookie : { maxAge : 600000 },
     resave: true,
     saveUninitialized: true
 }));
