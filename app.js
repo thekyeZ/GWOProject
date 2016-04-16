@@ -39,7 +39,6 @@ app.use(expressSession({
     saveUninitialized: true
 }));
 
-
 // Passport ini
 app.use(passport.initialize());
 app.use(passport.session());
@@ -86,6 +85,12 @@ app.use('/admin', admin);
 app.use('/page', page);
 app.use('/blog', blog);
 
+// '404' Error
+app.use(function(req, res) {
+    res.status(404).sendFile('404.html', {
+        root : "./public"
+    });
+});
 
 // Comment after installation
 app.use('/install', __install);
