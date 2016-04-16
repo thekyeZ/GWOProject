@@ -7,7 +7,11 @@ app.controller('modPost', ["$scope", "$resource", "utils", function($scope, $res
      */
     $scope.removePost = function(index) {
         utils.confirm("Czy na pewno chcesz usunąć wybrany post?", function() {
+            console.log($scope.posts);
             console.log($scope.posts[index]);
+            $scope.posts[index].$delete(function() {
+                $scope.posts.splice(index, 1);
+            });
         });
     };
 

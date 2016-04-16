@@ -1,4 +1,4 @@
-app.controller("home", ["$scope", "$resource", "$routeParams", function($scope, $resource, $routeParams) {
+app.controller("home", ["$scope", "$resource", "$routeParams", "$sce", function($scope, $resource, $routeParams, $sce) {
 
     var Posts,
         sortPosts = function() {
@@ -19,6 +19,9 @@ app.controller("home", ["$scope", "$resource", "$routeParams", function($scope, 
     }
     $scope.posts = Posts.query(function() {
         sortPosts();
+        $scope.posts.forEach(function(elem, index) {
+            $scope.posts[index].content = $sce.trustAsHtml($scope.posts[index].content);
+        });
     });
 
 }]);

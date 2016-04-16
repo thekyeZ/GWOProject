@@ -163,4 +163,22 @@ router.post('/post/:id', function(req, res) {
     });
 });
 
+/**
+ * @description
+ * Remove post
+ */
+router.delete("/post/:id", function(req, res) {
+    if (req.body.background !== "null") {
+        fs.unlink('./public/images/backgrounds/'+req.body.background, function() {
+            mongo.remove('posts', function(err, data) {
+                res.status(200).json({message : "Success"});
+            }, { _id : mongo.ObjectId(req.params.id)});
+        });
+    } else {
+        mongo.remove('posts', function(err, data) {
+            res.status(200).json({message : "Success"});
+        }, { _id : mongo.ObjectId(req.params.id)});
+    }
+});
+
 module.exports = router;
