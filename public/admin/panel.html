@@ -95,38 +95,9 @@
     <section class="col-lg-9">
         <div class="panel panel-primary">
             <div class="panel-heading text-center">Informacje na temat aplikacji GWO</div>
-            <table class="table">
-                <tr>
-                    <th>
-                        <h4>Funkcja</h4>
-                    </th>
-                    <th>
-                        <h4>Opis</h4>
-                    </th>
-                </tr>
-                <tr>
-                    <th>Założenia ogólne</th>
-                    <th>
-                        <p>Zdjęcia można wysyłać wyłącznie metodą "przeciągnij/upuść"</p>
-                        <p>Zdjęcia nie mogą przekroczyć być cięższe niż 2 MB.</p>
-                        <p>Zdjęcia muszą być w formacie JPG lub PNG.</p>
-                    </th>
-                </tr>
-                <tr>
-                    <td>Tablica</td>
-                    <td>
-                        <p>Wersja aplikacji, uaktualnienia, opis funkcjonalności</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Dodaj post (Blog)</td>
-                    <td>
-                        <p>Post może zostać dodany jako: element w menu nawigacyjnym, zwykły post(widoczny na liście na stronie głównej), bądź oba na raz.</p>
-                        <p>Maksymalna ilość zdjęć w galerii to: 100.</p>
-                        <p>Dodanie postu wraz ze zdjęciami może zająć więcej czasu, w zależności od połącznia sieciowego, rozmiaru i ilości zdjęć.</p>
-                    </td>
-                </tr>
-            </table>
+            <div class="panel-body">
+                APLIKACJA: Hufiec ZHP Gdańsk-Wrzeszcz-Oliwa - VER. ALPHA
+            </div>
             <!--<div class="panel-footer text-center">GWO - ver. ALFA</div>-->
         </div>
     </section>
@@ -164,7 +135,8 @@
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
                     <select class="form-control" ng-model="pos.link">
                         <option value="false">Menu</option>
-                        <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="{{post._id}}">{{post.title}}</option>
+                        <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
+                        <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
                     <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(2, $index)">{{(expanded.lvl_2_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
                     <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>
@@ -190,7 +162,8 @@
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
                     <select class="form-control" ng-model="pos.link">
                         <option value="false">Menu</option>
-                        <option ng-repeat="post in posts" value="{{post._id}}">{{post.title}}</option>
+                        <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
+                        <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
                     <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(3, $index)">{{(expanded.lvl_3_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
                     <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>
@@ -216,7 +189,8 @@
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
                     <select class="form-control" ng-model="pos.link">
                         <option value="false">--Wybierz opcję--</option>
-                        <option ng-repeat="post in posts" value="{{post._id}}">{{post.title}}</option>
+                        <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
+                        <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
                     <button class="form-control btn-danger" ng-click="removePosition(3, $index)">Usuń</button>
                 </div>
@@ -290,47 +264,6 @@
                 </div>
             </div>
             <hr>
-            <!-- Add as menu link --->
-            <!--<label for="postCheck">Dodaj do listy postów na stronie głównej</label>-->
-            <!--<div class="input-group">-->
-                <!--<button type="button" class="form-control" id="postCheck" ng-click="toggle('newPost.post')" ng-class="(newPost.post) ? 'btn-success' : 'btn-danger'">Włącz/Wyłącz</button>-->
-                <!--<div class="input-group-addon">-->
-                    <!--<input type="checkbox"  ng-model="newPost.post">-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; Add as menu link -&ndash;&gt;-->
-            <!--<label for="menuCheck">Dodaj do menu</label>-->
-            <!--<div class="input-group">-->
-                <!--<button type="button" class="form-control" id="menuCheck" ng-click="toggle('newPost.site')" ng-class="(newPost.site) ? 'btn-success' : 'btn-danger'">Włącz/Wyłącz</button>-->
-                <!--<div class="input-group-addon">-->
-                    <!--<input type="checkbox" ng-model="newPost.site">-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="alert alert-danger" ng-if="!newPost.site && !newPost.post">-->
-                <!--Wymagana jest co najmniej jedna opcja z powyższych dwóch!-->
-            <!--</div>-->
-            <!--<hr>-->
-            <!-- Add gallery -->
-            <!--<label for="addGallery">Dodaj galerię do postu</label>-->
-            <!--<div class="input-group">-->
-                <!--<button type="button" class="form-control" id="addGallery"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" ng-click="toggle('_galleryOnOff')" ng-class="{'btn-success' : newPost.category.length > 0 && _galleryOnOff, 'btn-warning' : newPost.category.length === 0 && _galleryOnOff, 'btn-danger' : !_galleryOnOff}">Włącz/Wyłącz</button>-->
-                <!--<div class="input-group-addon">-->
-                    <!--<input type="checkbox" ng-model="newPost.gallery">-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="collapse" id="collapseExample">-->
-                <!--<div class="well ">-->
-                    <!--&lt;!&ndash; Gallery photos &ndash;&gt;-->
-                    <!--<div class="input-group col-lg-12">-->
-                        <!--&lt;!&ndash;<input class="form-control" type="file" id="background" placeholder="Zdjęcie tła">&ndash;&gt;-->
-                        <!--<div class="drag-drop-zone" id="gallery">-->
-                            <!--<p class="text-center">Drag gallery photos here</p>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<p class="page-header">Photos (0/100):</p>-->
-                    <!--&lt;!&ndash;photos&ndash;&gt;-->
-                <!--</div>-->
-            <!--</div>-->
         </section>
         <section class="col-lg-3 col-lg-offset-1">
             <!-- Final settings summary -->
