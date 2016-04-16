@@ -4,7 +4,10 @@ app.factory('utils', function() {
      * @description
      * Modal popup
      */
-    var _message = function(message, call) {
+    var _message = function(message, call, title) {
+        if (title) {
+            $(".modal-title").text(title);
+        }
         $('.modal-body').text(message);
         $('.bs-example-modal-sm').modal('show');
         if (call) call();

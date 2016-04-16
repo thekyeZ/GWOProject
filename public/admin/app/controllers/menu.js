@@ -123,9 +123,12 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
      * Send update menu
      */
     $scope.sendMenu = function() {
+        utils.message("Czekaj! Trwa zapisywanie zmian...", false, "Admin panel");
         var update = new Nav();
         update.nav = $scope.nav;
-        update.$save();
+        update.$save(function(req) {
+            $(".modal-body").text(req.message);
+        });
     };
 
     /**

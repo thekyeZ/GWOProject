@@ -61,6 +61,8 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
             });
         }
 
+        utils.message("Czekaj! Trwa zapisywanie zmian...", false, "Admin panel");
+
         $scope.newPost.date = Date.now();
         // TODO(jurek) Rebuild user object
         $scope.newPost.author = location.search.replace("?user=", "");
@@ -68,6 +70,9 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
         delete $scope.newPost.id;
         // TODO(jurek) Progress/finish alert
         $scope.newPost.$save(function() {
+
+            console.log(arguments);
+            $(".modal-body").text("Dodano!");
 
             $scope.newPost.category = [];
             $scope.newPost.post = true;
@@ -91,8 +96,6 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
                     file : []
                 }
             };
-        }, function() {
-            console.log(arguments);
         });
     };
 

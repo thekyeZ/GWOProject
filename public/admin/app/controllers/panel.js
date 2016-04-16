@@ -1,4 +1,4 @@
-app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
+app.controller("panel", ["$scope", "$resource", "utils", function($scope, $resource, utils) {
 
     /**
      * @description
@@ -114,6 +114,7 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
      */
     $scope.tag = {};
     $scope.addCategory = function() {
+        utils.message("Czekaj! Trwa dodawanie...", false, "Admin panel");
         if ($scope.tag.newCategory) {
             // TODO(jurek) Chcek if writed category doesn't exist
             var Category = $resource('/blog/tags');
@@ -121,6 +122,7 @@ app.controller("panel", ["$scope", "$resource", function($scope, $resource) {
             category.newTag = $scope.tag.newCategory;
             category.$save(function() {
                 $scope.categories.push($scope.tag.newCategory);
+                $(".modal-body").text("Dodano kategorię: "+$scope.tag.newCategory);
                 $scope.tag.newCategory = null;
             });
         }
