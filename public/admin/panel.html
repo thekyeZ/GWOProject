@@ -133,15 +133,34 @@
             <div ng-repeat="pos in nav" class="col-lg-{{(nav.length===4) ? 12/nav.length : 12/(nav.length+1)}}">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
-                    <select class="form-control" ng-model="pos.link">
-                        <option value="false">Menu</option>
-                        <!--<option value="false">&#45;&#45; Wybierz post &#45;&#45;</option>-->
+                    <!-- Select link type -->
+                    <div class="btn-group select-link-type" data-toggle="buttons">
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('false') === 0}" ng-click="pos.link = 'false'">
+                            <input type="radio" id="lvl_1_menu" autocomplete="off"> Menu
+                        </label>
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('/post') === 0}" ng-click="pos.link = '/post'">
+                            <input type="radio" id="lvl_1_post" autocomplete="off"> Posty
+                        </label>
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('/category') === 0}" ng-click="pos.link = '/category'">
+                            <input type="radio" id="lvl_1_category" autocomplete="off"> Kategorie
+                        </label>
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('http') === 0}" ng-click="pos.link = ''">
+                            <input type="radio" id="lvl_1_link" autocomplete="off"> Link
+                        </label>
+                    </div>
+                    <!-- Menu -->
+                    <button class="form-control btn-default" ng-if="pos.link === 'false'" ng-click="toggleExpand(2, $index); pos.link = 'false'">{{(expanded.lvl_2_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
+                    <!-- Posts select-->
+                    <select class="form-control" ng-model="pos.link" ng-if="pos.link.indexOf('/post') === 0">
                         <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
-                        <!--<option value="false">&#45;&#45; Wybierz kategorię &#45;&#45;</option>-->
+                    </select>
+                    <!-- Category select -->
+                    <select class="form-control" ng-model="pos.link" ng-if="pos.link.indexOf('/category') === 0">
                         <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
-                    <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(2, $index)">{{(expanded.lvl_2_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
-                    <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>
+                    <!-- Link -->
+                    <input type="text" class="form-control" ng-model="pos.link" ng-if="(pos.link.indexOf('/') !== 0) && pos.link !== 'false'">
+                    <!--<div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>-->
                     <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.title}">Wprowadź tytuł, aby edytować!</div>
                     <button class="form-control btn-danger" ng-click="removePosition(1, $index)">Usuń</button>
                 </div>
@@ -162,15 +181,34 @@
             <div ng-repeat="pos in nav[expanded.lvl_2_index].menu" class="col-lg-{{(nav[expanded.lvl_2_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu.length : 12/(nav[expanded.lvl_2_index].menu.length+1)}}">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
-                    <select class="form-control" ng-model="pos.link">
-                        <option value="false">Menu</option>
-                        <!--<option value="false">&#45;&#45; Wybierz post &#45;&#45;</option>-->
+                    <!-- Select link type -->
+                    <div class="btn-group select-link-type" data-toggle="buttons">
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('false') === 0}" ng-click="pos.link = 'false'">
+                            <input type="radio" id="lvl_2_menu" autocomplete="off"> Menu
+                        </label>
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('/post') === 0}" ng-click="pos.link = '/post'">
+                            <input type="radio" id="lvl_2_post" autocomplete="off"> Posty
+                        </label>
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('/category') === 0}" ng-click="pos.link = '/category'">
+                            <input type="radio" id="lvl_2_category" autocomplete="off"> Kategorie
+                        </label>
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('http') === 0}" ng-click="pos.link = ''">
+                            <input type="radio" id="lvl_2_link" autocomplete="off"> Link
+                        </label>
+                    </div>
+                    <!-- Menu -->
+                    <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(3, $index)">{{(expanded.lvl_3_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
+                    <!-- Posts select-->
+                    <select class="form-control" ng-model="pos.link" ng-if="pos.link.indexOf('/post') === 0">
                         <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
-                        <!--<option value="false">&#45;&#45; Wybierz kategorię &#45;&#45;</option>-->
+                    </select>
+                    <!-- Category select -->
+                    <select class="form-control" ng-model="pos.link" ng-if="pos.link.indexOf('/category') === 0">
                         <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
-                    <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(3, $index)">{{(expanded.lvl_3_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
-                    <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>
+                    <!-- Link -->
+                    <input type="text" class="form-control" ng-model="pos.link" ng-if="(pos.link.indexOf('/') !== 0) && pos.link !== 'false'">
+                    <!--<div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>-->
                     <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.title}">Wprowadź tytuł, aby edytować!</div>
                     <button class="form-control btn-danger" ng-click="removePosition(2, $index)">Usuń</button>
                 </div>
@@ -191,13 +229,30 @@
             <div ng-repeat="pos in nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu" class="col-lg-{{(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length : 12/(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length+1)}}">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
-                    <select class="form-control" ng-model="pos.link">
-                        <option value="false">-- Wybierz opcję --</option>
-                        <!--<option value="false">&#45;&#45; Wybierz post &#45;&#45;</option>-->
+                    <!-- Select link type -->
+                    <div class="btn-group select-link-type" data-toggle="buttons">
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('/post') === 0}" ng-click="pos.link = '/post'">
+                            <input type="radio" id="lvl_3_post" autocomplete="off"> Posty
+                        </label>
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('/category') === 0}" ng-click="pos.link = '/category'">
+                            <input type="radio" id="lvl_3_category" autocomplete="off"> Kategorie
+                        </label>
+                        <label class="btn btn-default" ng-class="{'active' : pos.link.indexOf('http') === 0}" ng-click="pos.link = ''">
+                            <input type="radio" id="lvl_3_link" autocomplete="off"> Link
+                        </label>
+                    </div>
+                    <!-- Posts select-->
+                    <select class="form-control" ng-model="pos.link" ng-if="pos.link.indexOf('/post') === 0">
                         <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
-                        <!--<option value="false">&#45;&#45; Wybierz kategorię &#45;&#45;</option>-->
+                    </select>
+                    <!-- Category select -->
+                    <select class="form-control" ng-model="pos.link" ng-if="pos.link.indexOf('/category') === 0">
                         <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
+                    <!-- Link -->
+                    <input type="text" class="form-control" ng-model="pos.link" ng-if="(pos.link.indexOf('/') !== 0) && pos.link !== 'false'">
+                    <!--<div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.link === 'false' || !pos.title}">Menu jest wyłączone</div>-->
+                    <div class="alert alert-warning text-center form-control menuIsOff" ng-class="{'hide' : pos.title}">Wprowadź tytuł, aby edytować!</div>
                     <button class="form-control btn-danger" ng-click="removePosition(3, $index)">Usuń</button>
                 </div>
             </div>
@@ -228,7 +283,7 @@
             <!-- Background photo -->
             <label for="background">Zdjęcie tła (opcjonalne)</label>
             <div class="whiteBackground input-group col-lg-12">
-                <div id="background" class="drag-drop-zone imageBackground" style="background-image: url('{{dragAndDrop.background.file}}')" drag-and-drop="1" ng-class="{'active' : dragAndDrop.background.effect, 'droped' : dragAndDrop.background.file}">
+                <div id="background" class="drag-drop-zone imageBackground" style="background-image: url('{{dragAndDrop.background.file}}')" drag-and-drop="1" ng-class="{'active-dad' : dragAndDrop.background.effect, 'droped' : dragAndDrop.background.file}">
                     <p class="text-center" ng-if="!dragAndDrop.background.file">Drag photo here</p>
                 </div>
             </div>
@@ -365,7 +420,7 @@
                 <!-- Background photo -->
                 <label for="background_modPost">Zdjęcie tła</label>
                 <div class="whiteBackground input-group col-lg-12">
-                    <div id="background_modPost" class="drag-drop-zone imageBackground" style="background-image: url('{{(post.background.indexOf('/') > 0) ? post.background : '/images/backgrounds/'+post.background}}')" drag-options="{{$index}}" drag-and-drop="1" ng-class="{'active' : dragAndDrop.background_modPost.effect, 'droped' : post.background}">
+                    <div id="background_modPost" class="drag-drop-zone imageBackground" style="background-image: url('{{(post.background.indexOf('/') > 0) ? post.background : '/images/backgrounds/'+post.background}}')" drag-options="{{$index}}" drag-and-drop="1" ng-class="{'active-dad' : dragAndDrop.background_modPost.effect, 'droped' : post.background}">
                         <p class="text-center" ng-if="!post.background">Drag photo here</p>
                     </div>
                 </div>
