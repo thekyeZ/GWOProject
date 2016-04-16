@@ -52,6 +52,8 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
             $scope.expanded[_lvl] = index;
             $scope.expanded["lvl_"+lvl] = title;
         }
+        console.log($scope.nav);
+        console.log($scope.expanded);
     };
 
     /**

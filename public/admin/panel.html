@@ -135,7 +135,9 @@
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
                     <select class="form-control" ng-model="pos.link">
                         <option value="false">Menu</option>
+                        <!--<option value="false">&#45;&#45; Wybierz post &#45;&#45;</option>-->
                         <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
+                        <!--<option value="false">&#45;&#45; Wybierz kategorię &#45;&#45;</option>-->
                         <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
                     <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(2, $index)">{{(expanded.lvl_2_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
@@ -162,7 +164,9 @@
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
                     <select class="form-control" ng-model="pos.link">
                         <option value="false">Menu</option>
+                        <!--<option value="false">&#45;&#45; Wybierz post &#45;&#45;</option>-->
                         <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
+                        <!--<option value="false">&#45;&#45; Wybierz kategorię &#45;&#45;</option>-->
                         <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
                     <button class="form-control btn-default" ng-class="{'hide' : pos.link !== 'false' || !pos.title}" ng-click="toggleExpand(3, $index)">{{(expanded.lvl_3_index === $index) ? "Zwiń" : "Rozwiń"}}</button>
@@ -181,15 +185,17 @@
         </div>
     </div>
     <!-- MENU LVL 3 -->
-    <div class="panel panel-info" ng-if="expanded.lvl_3 && nav[expanded.lvl_3_index].link === 'false'">
+    <div class="panel panel-info" ng-if="expanded.lvl_3 && nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].link === 'false'">
         <div class="panel-heading ">{{expanded.lvl_3}}</div>
         <div class="panel-body row">
             <div ng-repeat="pos in nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu" class="col-lg-{{(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length : 12/(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length+1)}}">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
                     <select class="form-control" ng-model="pos.link">
-                        <option value="false">--Wybierz opcję--</option>
+                        <option value="false">-- Wybierz opcję --</option>
+                        <!--<option value="false">&#45;&#45; Wybierz post &#45;&#45;</option>-->
                         <option defaultselect="{{pos.link}}" ng-repeat="post in posts" value="/post/{{post._id}}">{{post.title}}</option>
+                        <!--<option value="false">&#45;&#45; Wybierz kategorię &#45;&#45;</option>-->
                         <option defaultselect="{{pos.link}}" ng-repeat="category in categories" value="/category/{{category}}">{{category}}</option>
                     </select>
                     <button class="form-control btn-danger" ng-click="removePosition(3, $index)">Usuń</button>

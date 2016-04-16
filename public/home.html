@@ -22,12 +22,11 @@
 
         <img ng-src="images/backgrounds/{{post.background}}" alt="">
         <div class="post-body">
-            <!--<a href="blog/{{post._id}}"><h1 class="post-title">{{post.title}}</h1></a>-->
             <a ng-href="/post/{{post._id}}"><h1 class="post-title">{{post.title}}</h1></a>
             <small ng-repeat="category in category">{{category}}</small>
             <div><p class="post-content"> {{post.content | limitTo: 100 }}{{post.content.length > 20 ? '' : ''}}</p></div>
 
-            <div class="post-date">Data: <div number-format="{{post.date}}"></div></div>
+            <div class="post-date" number-format="{{post.date}}"></div>
 
         </div>
 
