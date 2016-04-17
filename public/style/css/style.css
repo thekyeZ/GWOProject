@@ -452,6 +452,10 @@ header.main-header {
     width: 108px;
     background: url("../../images/logo_hufca_biale.png") no-repeat;
     background-size: contain; }
+    header.main-header .logo-box a {
+      display: block;
+      width: 100%;
+      height: 100%; }
     header.main-header .logo-box .burger {
       width: 50px;
       height: 50px;
@@ -643,7 +647,7 @@ header.main-header {
     overflow: hidden; }
 
   .main-header.active {
-    min-height: 210px;
+    min-height: 260px;
     overflow: visible; }
 
   .burger {
@@ -655,6 +659,4 @@ header.main-header {
   .main-menu {
     display: block; }
     .main-menu .menu-option {
-      display: block; }
-      .main-menu .menu-option .drop-down {
-        display: none !important; } }
+      display: block; } }

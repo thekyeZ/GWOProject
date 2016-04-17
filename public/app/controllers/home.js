@@ -24,4 +24,16 @@ app.controller("home", ["$scope", "$resource", "$routeParams", "$sce", function(
         });
     });
 
+
+
+
 }]);
+
+app.filter('ellipsis', function () {
+    return function (text, length) {
+        if (text.length > length) {
+            return text.substr(0, length) + "<a href='#'>...</a>";
+        }
+        return text;
+    }
+});
