@@ -175,10 +175,11 @@
         </div>
     </div>
     <!-- MENU LVL 2-->
-    <div class="panel panel-info" ng-if="expanded.lvl_2 && nav[expanded.lvl_2_index].link === 'false'">
+    <div class="panel panel-info" ng-if="expanded.lvl_2">
         <div class="panel-heading ">{{expanded.lvl_2}}</div>
         <div class="panel-body row">
-            <div ng-repeat="pos in nav[expanded.lvl_2_index].menu" class="col-lg-{{(nav[expanded.lvl_2_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu.length : 12/(nav[expanded.lvl_2_index].menu.length+1)}}">
+            <!--{{(nav[expanded.lvl_2_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu.length : 12/(nav[expanded.lvl_2_index].menu.length+1)}}-->
+            <div ng-repeat="pos in nav[expanded.lvl_2_index].menu" class="col-lg-3">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
                     <!-- Select link type -->
@@ -213,7 +214,7 @@
                     <button class="form-control btn-danger" ng-click="removePosition(2, $index)">Usuń</button>
                 </div>
             </div>
-            <div class="col-lg-{{(nav[expanded.lvl_2_index].menu.length) ? (12/(nav[expanded.lvl_2_index].menu.length+1)) : 12}} text-center" ng-if="nav[expanded.lvl_2_index].menu.length < 4 || nav[expanded.lvl_2_index].menu === undefined">
+            <div class="col-lg-3 text-center" ng-if="nav[expanded.lvl_2_index].menu.length < 8 || nav[expanded.lvl_2_index].menu === undefined">
                 <div class="input-group addMenuGroup">
                     <button class="form-control btn addMenu" ng-click="addPosition(2)">
                         <span class="glyphicon glyphicon-plus"></span>
@@ -223,10 +224,11 @@
         </div>
     </div>
     <!-- MENU LVL 3 -->
-    <div class="panel panel-info" ng-if="expanded.lvl_3 && nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].link === 'false'">
+    <div class="panel panel-info" ng-if="expanded.lvl_3">
         <div class="panel-heading ">{{expanded.lvl_3}}</div>
         <div class="panel-body row">
-            <div ng-repeat="pos in nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu" class="col-lg-{{(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length : 12/(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length+1)}}">
+            <!--{{(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length===4) ? 12/nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length : 12/(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length+1)}}-->
+            <div ng-repeat="pos in nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu" class="col-lg-3">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Tytuł w menu" ng-model="pos.title">
                     <!-- Select link type -->
@@ -256,7 +258,7 @@
                     <button class="form-control btn-danger" ng-click="removePosition(3, $index)">Usuń</button>
                 </div>
             </div>
-            <div class="col-lg-{{(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length) ? (12/(nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length+1)) : 12}} text-center" ng-if="nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length < 4 || nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu === undefined">
+            <div class="col-lg-3 text-center" ng-if="nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu.length < 12 || nav[expanded.lvl_2_index].menu[expanded.lvl_3_index].menu === undefined">
                 <div class="input-group addMenuGroup">
                     <button class="form-control btn addMenu" ng-click="addPosition(3)">
                         <span class="glyphicon glyphicon-plus"></span>

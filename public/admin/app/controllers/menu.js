@@ -52,8 +52,6 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
             $scope.expanded[_lvl] = index;
             $scope.expanded["lvl_"+lvl] = title;
         }
-        console.log($scope.nav);
-        console.log($scope.expanded);
     };
 
     /**
@@ -150,16 +148,14 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
                     }
                     delete $scope.nav[i].menu;
                 } else {
-                    for (var z = 0; z <= 5; z+=1) {
-                        if ($scope.nav[i].menu) {
-                            if ($scope.nav[i].menu[z]) {
-                                if ($scope.nav[i].menu[z].link !== "false") {
-                                    if ($scope.expanded.lvl_3_index === z) {
-                                        $scope.expanded.lvl_3_index = null;
-                                        $scope.expanded.lvl_3 = false;
-                                    }
-                                    delete $scope.nav[i].menu[z].menu;
+                    for (var z = 0; z <= 7; z+=1) {
+                        if ($scope.nav[i].menu[z]) {
+                            if ($scope.nav[i].menu[z].link !== "false") {
+                                if ($scope.expanded.lvl_2_index === i && $scope.expanded.lvl_3_index === z) {
+                                    $scope.expanded.lvl_3_index = null;
+                                    $scope.expanded.lvl_3 = false;
                                 }
+                                delete $scope.nav[i].menu[z].menu;
                             }
                         }
                     }
@@ -167,5 +163,4 @@ app.controller('menu', ["$scope", "$resource", "utils", function($scope, $resour
             }
         }
     }, true);
-
 }]);
