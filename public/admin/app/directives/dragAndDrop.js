@@ -42,7 +42,6 @@ app.directive('dragAndDrop', ["utils", function(utils) {
                     return utils.message("Wykryto zbyt duże zdjęcie (zdjęcie nie może być cięższe niż 2 MB)")
                 }
                 var options = attributes.dragOptions || null;
-                console.log(options);
                 scope.$emit('upload_'+elem.id, files, options);
             });
         });

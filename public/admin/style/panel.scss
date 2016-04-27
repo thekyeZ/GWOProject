@@ -64,6 +64,18 @@ body {
   }
 }
 
+.addContact {
+  height: 136px !important;
+  width: 100% !important;
+  box-shadow: none;
+  font-size: 30px;
+  background-color: #f8f8f8;
+  border: 1px dashed #ddd;
+  &:hover {
+    border: 1px solid #aaa;
+  }
+}
+
 .menuIsOff {
   padding-top: 5px !important;
 }

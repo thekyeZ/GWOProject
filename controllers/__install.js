@@ -64,15 +64,6 @@ router.post('/', function(req, res) {
             synchronous.emit("complete", 1);
         }, [{
             "title" : "Tytuł strony",
-            "contact" : {
-                "admin" : null,
-                "phone" : null,
-                "mail" : null,
-                "address" : null,
-                "facebook" : null,
-                "twitter" : null,
-                "youtube" : null
-            },
             tags : [],
             menu : []
         }]);
@@ -121,11 +112,34 @@ router.post('/', function(req, res) {
          * contain list of static pages
          */
         database.insert("pages", function(err) {
-            database.remove("pages", function(err) {
-                if (err) return synchronous.emit("complete", 1 , err);
-                synchronous.emit("complete", 1);
-            }, {"ini" : true});
-        }, [{"ini" : true}]);
+            if (err) return synchronous.emit("complete", 1 , err);
+            synchronous.emit("complete", 1);
+        }, [{
+            "contact" : [
+                {
+                    name : "Email",
+                    value : "some@example.pl",
+                    header : false,
+                    footer : false,
+                    form : true
+                }
+            ],
+            form : {
+                onOff : false,
+                mail : ""
+            }
+        }, {
+            "bazy" : [
+                {
+                    "title" : "",
+                    "description" : ""
+                },
+                {
+                    "title" : "",
+                    "description" : ""
+                }
+            ]
+        }]);
 
     }, {"username" : {$exists : true}});
 });

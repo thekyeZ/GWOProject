@@ -18,6 +18,8 @@
     <script src="/admin/app/controllers/menu.js"></script>
     <script src="/admin/app/controllers/addPost.js"></script>
     <script src="/admin/app/controllers/modPost.js"></script>
+    <script src="/admin/app/controllers/staticPages.js"></script>
+    <script src="/admin/app/controllers/categories.js"></script>
     <script src="/bower_components/angular-ui-tinymce/src/tinymce.js"></script>
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/admin/style/panel.css">
@@ -45,6 +47,7 @@
                     <li><a href="#baseHufiec" ng-click="switchContent('baseHufiec')">Bazy Hufca</a></li>
                 </ul>
             </li>
+            <li><a href="#categories" ng-click="switchContent('categories')">Kategorie</a></li>
         </ul>
         <ul class="navbar-nav nav navbar-right">
             <li class="navbar-right">
@@ -436,27 +439,98 @@
     </div>
 </section>
 <!-- Contact -->
-<section ng-class="animation.showcontactStatic" class="container">
+<section ng-class="animation.showcontactStatic" class="container" ng-controller="staticPages">
     <h4 class="page-header">Strony statyczne / Kontakt</h4>
-    <from class="row">
-        <div class="col-lg-8">
-            deede
+    <div class="input-group col-lg-12">
+        <button class="form-control btn btn-primary" ng-click="sendContact();">Zapisz!</button>
+    </div>
+    <hr>
+    <!-- Contact form -->
+    <div class="col-lg-6">
+        <h3>Formularz kontaktowy</h3>
+        <div class="btn-group select-link-type" data-toggle="buttons">
+            <label class="btn btn-default col-lg-6" ng-class="{'active' : contact.form.onOff}" ng-click="contact.form.onOff = true">
+                <input type="radio" autocomplete="off"> Włączony
+            </label>
+            <label class="btn btn-default col-lg-6" ng-class="{'active' : !contact.form.onOff}" ng-click="contact.form.onOff = false">
+                <input type="radio" autocomplete="off"> Wyłączony
+            </label>
         </div>
-        <div class="col-lg-3 col-lg-offset-1">
-            deded
+        <div class="input-group col-lg-12">
+            <input class="form-control col-lg-12" type="email" placeholder="Email formularza" ng-model="contact.form.mail">
         </div>
-    </from>
+    </div>
+    <!-- Information data -->
+    <div class="col-lg-5 col-lg-offset-1">
+        <h3>Dane kontaktowe</h3>
+        <div class="col-lg-12" ng-repeat="pos in contact.contact">
+            <div class="input-group input-group-sm col-lg-12">
+                <input class="form-control" type="text" placeholder="Tytuł" ng-model="pos.name">
+                <input class="form-control" type="text" placeholder="Treść" ng-model="pos.value">
+                <!--<input class="form-control" type="checkbox" placeholder="Widoczność w stópce" value="{{pos.footer}}">-->
+            </div>
+            <small class="col-lg-12 text-center">Widoczność danych kontaktowych w nagłówku:</small>
+            <div class="btn-group btn-group-sm select-link-type" data-toggle="buttons">
+                <label class="btn btn-default col-lg-6" ng-class="{'active' : pos.header}" ng-click="pos.header = true">
+                    <input type="radio" autocomplete="off"> Widoczny
+                </label>
+                <label class="btn btn-default col-lg-6" ng-class="{'active' : !pos.header}" ng-click="pos.header = false">
+                    <input type="radio" autocomplete="off"> Wyłączony
+                </label>
+            </div>
+            <div class="input-group input-group-sm col-lg-12">
+                <input class="form-control btn-danger" type="button" value="Usuń!" ng-click="deleteContact($index)">
+            </div>
+            <hr>
+        </div>
+        <div class="input-group col-lg-12">
+            <button class="form-control btn addContact" ng-click="addContact()">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+    </div>
 </section>
-<section ng-class="animation.showbaseHufiec" class="container">
+<!-- Hufiec base -->
+<section ng-class="animation.showbaseHufiec" class="container" ng-controller="staticPages">
     <h4 class="page-header">Strony statyczne / Kontakt</h4>
-    <from class="row">
-        <div class="col-lg-8">
-            deede
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" ng-repeat="base in bases">
+            <div class="panel-heading" role="tab" id="base-{{$index}}">
+                <h4 class="panel-title">
+                    <div class="input-group col-lg-12">
+                        <input type="text" ng-model="base.title" class="form-control" placeholder="Tytuł">
+                        <input type="button" class="form-control collapsed btn" role="button" data-toggle="collapse" data-parent="#accordion" href="#baseContent-{{$index}}" aria-expanded="true" aria-controls="base-{{$index}}" value="Zwiń / Rozwiń treść">
+                        <input type="button" class="form-control btn btn-danger" value="Usuń" ng-click="deleteBase($index)">
+                        <input type="button" class="form-control btn btn-default" value="Zapisz bazę!" ng-click="sendBase($index)">
+                    </div>
+                </h4>
+            </div>
+            <div id="baseContent-{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="base-{{$index}}">
+                <div class="panel-body">
+                    <h4>Treść</h4>
+                    <textarea ui-tinymce="tinymceOptions" ng-model="base.description"></textarea>
+                    <hr>
+                    <h4>Background</h4>
+                    <div class="whiteBackground input-group col-lg-12">
+                        <div id="background_base" class="drag-drop-zone imageBackground" style="background-image: url('{{(base.background.indexOf('/') > 0) ? base.background : '/images/bases/'+base.background}}')" drag-options="{{$index}}" drag-and-drop="1" ng-class="{'active-dad' : dragAndDrop.background_base.effect, 'droped' : base.background}">
+                            <p class="text-center" ng-if="!base.background">Drag photo here</p>
+                        </div>
+                        <input type="button" class="form-control btn-danger" ng-if="base.background" value="Usuń" ng-click="base.oldBackground = base.background; base._oldBackground = base.background; base.background = null">
+                        <input type="button" class="form-control btn-warning" ng-if="base.oldBackground" value="Przywróć aktualne" ng-click="returnDefaultBackground($index)">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-3 col-lg-offset-1">
-            deded
-        </div>
-    </from>
+    </div>
+    <div class="input-group col-lg-12">
+        <button class="form-control btn addContact" ng-click="addBase()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+</section>
+<!-- Categories -->
+<section ng-class="animation.showcategories" class="container" ng-controller="categories">
+    <h4 class="page-header">Kategorie</h4>
 </section>
 </body>
 </html>

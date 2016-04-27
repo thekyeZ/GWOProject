@@ -135,6 +135,7 @@ router.post('/post/:id', function(req, res) {
                     delete fields._oldBackground;
                     delete fields.$$hashKey;
                     delete fields.$promise;
+                    delete fields.$resolved;
                     __id = fields._id;
                     delete fields._id;
                     mongo.update("posts", function(err, result) {

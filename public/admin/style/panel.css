@@ -49,6 +49,16 @@ body {
   .addMenu:hover {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.5); }
 
+.addContact {
+  height: 136px !important;
+  width: 100% !important;
+  box-shadow: none;
+  font-size: 30px;
+  background-color: #f8f8f8;
+  border: 1px dashed #ddd; }
+  .addContact:hover {
+    border: 1px solid #aaa; }
+
 .menuIsOff {
   padding-top: 5px !important; }
 

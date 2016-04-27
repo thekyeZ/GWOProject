@@ -10,7 +10,8 @@ app.controller("panel", ["$scope", "$resource", "utils", function($scope, $resou
         showmodPost : 'hide',
         showcontactStatic : 'hide',
         showbaseHufiec : 'hide',
-        showmenu : 'hide'
+        showmenu : 'hide',
+        showcategories : 'hide'
     };
 
     /**
@@ -60,6 +61,9 @@ app.controller("panel", ["$scope", "$resource", "utils", function($scope, $resou
         },
         background_modPost : {
             effect : false
+        },
+        background_base : {
+            effect : false
         }
     };
 
@@ -74,13 +78,7 @@ app.controller("panel", ["$scope", "$resource", "utils", function($scope, $resou
 
                 var form = new FormData();
                 angular.forEach(data, function(value, key) {
-                    if (value instanceof FileList) {
-                        if (value.length == 1) {
-                            form.append(key, value[0]);
-                        }
-                    } else {
-                        form.append(key, value);
-                    }
+                    form.append(key, value);
                 });
                 return form;
             },
