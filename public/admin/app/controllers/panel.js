@@ -112,18 +112,17 @@ app.controller("panel", ["$scope", "$resource", "utils", function($scope, $resou
      */
     $scope.tag = {};
     $scope.addCategory = function() {
+        if (!$scope.tag.newCategory) return utils.message("Nie wpisano kategorii!", false);
         utils.message("Czekaj! Trwa dodawanie...", false, "Admin panel");
-        if ($scope.tag.newCategory) {
-            // TODO(jurek) Chcek if writed category doesn't exist
-            var Category = $resource('/blog/tags');
-            var category = new Category();
-            category.newTag = $scope.tag.newCategory;
-            category.$save(function() {
-                $scope.categories.push($scope.tag.newCategory);
-                $(".modal-body").text("Dodano kategorię: "+$scope.tag.newCategory);
-                $scope.tag.newCategory = null;
-            });
-        }
+        if ($scope.categories.indexOf($scope.tag.newCategory) >= 0) return utils.message("Podana kategoria już istnieje!", false);
+        var Category = $resource('/blog/tags');
+        var category = new Category();
+        category.newTag = $scope.tag.newCategory;
+        category.$save(function() {
+            $scope.categories.push($scope.tag.newCategory);
+            $(".modal-body").text("Dodano kategorię: "+$scope.tag.newCategory);
+            $scope.tag.newCategory = null;
+        });
     };
 
 }]);

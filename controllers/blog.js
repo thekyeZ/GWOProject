@@ -53,6 +53,9 @@ router.post('/post', function(req, res) {
         form.keepExtensions = true;
         form.parse(req, function(err, fields, file) {
             console.log(fields);
+            delete fields.$$hashKey;
+            delete fields.$promise;
+            delete fields.$resolved;
             if (err) return res.status(500).json({ message : "Data transfer error"});
             // Validation
             if (!fields.category || !fields.title || !fields.author || !fields.content || !fields.date) {
@@ -115,6 +118,9 @@ router.delete('/tags/:name', function(req, res) {
     mongo.update('site', function(err, data) {
         res.send();
     }, { title : { $exists : true}}, { $pull : { tags : req.params.name }});
+    mongo.update('posts', function(err, data) {
+        res.send();
+    }, { category : { $exists : true}}, { $pull : { category : req.params.name }});
 });
 
 /**
