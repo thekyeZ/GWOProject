@@ -35,7 +35,10 @@ router.get('/post/category/:tag', function(req, res) {
  */
 router.get('/post/:id', function(req, res) {
     mongo.find('posts', function(err, data) {
-        if (data.length !== 1) console.error("Wykryto POWTÓRZENIA ID");
+        if (data.length !== 1) {
+            console.error("Wykryto POWTÓRZENIA ID");
+            console.error(data);
+        }
         res.status(200).json(data[0]);
     }, { _id : mongo.ObjectId(req.params.id) });
 });
@@ -102,6 +105,16 @@ router.post('/tags', function(req, res) {
     mongo.update('site', function(err, data) {
         res.send(data);
     }, { title : { $exists : true}}, { $push : { tags : req.body.newTag }});
+});
+
+/**
+ * @description
+ * Remove tag
+ */
+router.delete('/tags/:name', function(req, res) {
+    mongo.update('site', function(err, data) {
+        res.send();
+    }, { title : { $exists : true}}, { $pull : { tags : req.params.name }});
 });
 
 /**

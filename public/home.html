@@ -24,7 +24,7 @@
         <div class="post-body">
             <a ng-href="/post/{{post._id}}"><h1 class="post-title">{{post.title}}</h1></a>
             <small ng-repeat="category in category">{{category}}</small>
-            <div><p class="post-content" ng-bind-html="post.content | ellipsis: 50"></p></div>
+            <div><p class="post-content" ng-bind-html="post.content"></p></div>
 
             <div class="post-date" number-format="{{post.date}}"></div>
 

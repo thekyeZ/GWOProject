@@ -531,6 +531,27 @@
 <!-- Categories -->
 <section ng-class="animation.showcategories" class="container" ng-controller="categories">
     <h4 class="page-header">Kategorie</h4>
+    <div class="col-lg-6">
+        <h5>Dodaj nową kategorie</h5>
+        <div class="input-group col-lg-12">
+            <input class="form-control category-list-name" type="text" ng-model="tag.newCategory" placeholder="Nazwa nowej kategorii">
+            <div class="input-group-addon">
+                <input class="btn btn-primary btn-sm" type="button" value="Dodaj" ng-click="addCategory()">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 col-lg-offset-1">
+        <h5>Edytuj istniejące kategorie ({{categories.length}})</h5>
+        <div ng-repeat="category in categories">
+            <div class="input-group input-group col-lg-12">
+                <input class="form-control category-list-name disabled" type="text" ng-model="category" disabled>
+                <div class="input-group-addon">
+                    <input class="btn btn-danger btn-sm" type="button" ng-click="deleteTags(category)" value="Usuń">
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
 </section>
 </body>
 </html>

@@ -11,11 +11,11 @@
     var imageContainer = $('.slider-images li');
 
 
-    var burger = document.querySelector('.burger');
-    var menu = document.querySelector('.main-header');
-    burger.addEventListener("click", function(){
-        menu.classList.toggle('active');
-
-    });
+    // var burger = document.querySelector('.burger');
+    // var menu = document.querySelector('.main-header');
+    // burger.addEventListener("click", function(){
+    //     menu.classList.toggle('active');
+    //
+    // });
 
 })();
