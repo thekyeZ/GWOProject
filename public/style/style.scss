@@ -20,6 +20,11 @@ body{
   min-height: 200px;
 }
 
+.main{
+  min-height: 70vh;
+}
+
+
 .text-center{
   text-align: center;
 }
@@ -363,6 +368,7 @@ header.main-header{
 
 
 
+
 @media (max-width: $toast-breakpoint-medium) {
 
   .main-header{
@@ -396,6 +402,20 @@ header.main-header{
 
 
 }
+
+
+.contact-page{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .contact-info, .contact-form{
+    width: 50%;
+  }
+}
+
+
 
 
 //.main-content div, .sidebar div{

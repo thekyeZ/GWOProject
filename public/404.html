@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="pl" ng-app="gwo" ng-controller="main">
 <head>
     <meta charset="UTF-8">
-    <title>Error</title>
+    <title>{{site.title}}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/style/css/style.css">
+    <link rel="stylesheet" href="/style/css/magific-popup.css">
+    <!--<link rel="stylesheet" type="text/css" href="style/css/semantic.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers/main.js"></script>
+    <script src="/app/controllers/home.js"></script>
+    <script src="/app/controllers/post.js"></script>
+    <script src="/app/directives/data.js"></script>
+
 </head>
 <body>
-    <h1>Nie można znaleźć strony!</h1>
+<base href="/">
+    <div class="container-fluid">
+        <header class="main-header">
+
+            <div class="col col--1-of-6 col--centered logo-box">
+                <a href="/"><span class="logo"></span></a>
+                <div class="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="main-menu">
+
+                <div class="col col--1-of-4 col--s-1-of-1 menu-option" ng-repeat="item in site.menu">
+                    <a ng-if="item.link !== 'false'" class="category" ng-href="{{item.link}}">{{item.title}}</a>
+                    <a ng-if="item.link === 'false'" class="category">{{item.title}}</a>
+                    <div class="drop-down dd-harcerz" ng-if="item.menu.length > 0">
+                        <div class="dd-item" ng-repeat="subitem in item.menu ">
+                            <a ng-if="subitem.link !== 'false'" ng-href="{{subitem.link}}">{{subitem.title}}</a>
+                            <a ng-if="subitem.link === 'false'">{{subitem.title}}</a>
+                            <ul class="categories" ng-if="subitem.menu.length > 0">
+                                <li ng-repeat="subsubitem in subitem.menu">
+                                    <a ng-href="{{subsubitem.link}}">{{subsubitem.title}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+        </header>
+    </div>
+
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.magnific-popup.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+
 </body>
 </html>

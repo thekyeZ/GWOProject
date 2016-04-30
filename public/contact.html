@@ -1,3 +1,170 @@
-<section>
-    <p ng-bind="title"></p>
-</section>
+<!DOCTYPE html>
+
+<html lang="pl" ng-app="gwo" ng-controller="main">
+<head>
+    <meta charset="UTF-8">
+    <title>{{site.title}}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/style/css/style.css">
+    <link rel="stylesheet" href="/style/css/magific-popup.css">
+    <!--<link rel="stylesheet" type="text/css" href="style/css/semantic.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers/main.js"></script>
+    <script src="/app/controllers/home.js"></script>
+    <script src="/app/controllers/post.js"></script>
+    <script src="/app/directives/data.js"></script>
+
+</head>
+<body>
+<base href="/">
+<div class="container-fluid">
+    <header class="main-header">
+
+        <div class="col col--1-of-6 col--centered logo-box">
+            <a href="/"><span class="logo"></span></a>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <nav class="main-menu">
+
+            <div class="col col--1-of-4 col--s-1-of-1 menu-option" ng-repeat="item in site.menu">
+                <a ng-if="item.link !== 'false'" class="category" ng-href="{{item.link}}">{{item.title}}</a>
+                <a ng-if="item.link === 'false'" class="category">{{item.title}}</a>
+                <div class="drop-down dd-harcerz" ng-if="item.menu.length > 0">
+                    <div class="dd-item" ng-repeat="subitem in item.menu ">
+                        <a ng-if="subitem.link !== 'false'" ng-href="{{subitem.link}}">{{subitem.title}}</a>
+                        <a ng-if="subitem.link === 'false'">{{subitem.title}}</a>
+                        <ul class="categories" ng-if="subitem.menu.length > 0">
+                            <li ng-repeat="subsubitem in subitem.menu">
+                                <a ng-href="{{subsubitem.link}}">{{subsubitem.title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+</div>
+<div class="container-fluid important-info">
+    <div class="row">
+        <div class="col-md-6 col-xs-12 info-wrap">
+            <p>Komendant Hufca: 554-545-545, komenda@gwo.zhp.pl</p>
+        </div>
+        <div class="col-md-6 col-xs-12 info-wrap">
+            <p>Termin płatności składek: 20-12-2016</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="container content-container">
+
+    <section class="main" >
+
+        <div class="contact-page">
+
+            <div class="contact-info">
+
+                <p>
+                    <strong>
+                        Związek Harccerstwa Polskiego
+                        Chorągiew Gdańska
+                        Hufiec Gdańsk Wrzeszcz Oliwa
+                    </strong>
+
+                    <address>
+                        ul. Jaśkowa Dolina 77, 80-284 Gdańsk
+                        KRS: 0000273799
+                        REGON: 220377562
+                        nr konta: 09 1240 5400 1111 0010 6445 0224 (Bank PeKaO SA o/Gdansk)
+
+                        Kontakt telefoniczny:
+                        Komendantka Hufca	515-102-733 (pwd. Ewa Deręgowska-Lewosz)
+                        HBO „Morena”	511-014-209 (phm. Robert Pasymowski)
+                        HBO „Wygonin”	607-830-062 (pwd. Marcin Wasilewski)
+                        e-mail: gdanskwrzeszczoliwa@zhp.pl
+                    </address>
+                </p>
+
+            </div>
+
+            <div class="contact-form">
+
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile">
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Check me out
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<div class="container-fluid main-footer">
+    <div class="col-xs-12 col-md-4 footer-item">
+        <img src="images/logo_zhp_ident.png" alt=""class="img-responsive">
+    </div>
+    <div class="col-xs-12 col-md-4 footer-item">
+        <img src="images/logo_hufca_biale.png" alt="" class="img-responsive">
+    </div>
+
+    <div class="col-xs-12 col-md-4 footer-item">
+        <img src="images/identyfikator_choragiew_biala.svg" alt="" class="img-responsive">
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="js/jquery.magnific-popup.js"></script>
+<script src="js/main.js"></script>
+
+
+
+</body>
+</html>

@@ -22,6 +22,7 @@ router.get('/', function(req, res) {
  * @description
  * Logout
  */
+
 router.get('/logout', function(req, res) {
 
     req.logout();
