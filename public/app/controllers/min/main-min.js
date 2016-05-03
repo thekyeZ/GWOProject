@@ -1,0 +1,1 @@
+app.controller("main",["$scope","$resource",function(e,t){var n=t("/site");e.site=n.get(),console.log(e.site)}]),app.filter("ellipsis",function(){return function(e,t){return e.length>t?e.substr(0,t)+"<a href='#'>...</a>":e}});
