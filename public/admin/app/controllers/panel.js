@@ -1,6 +1,12 @@
 app.controller("panel", ["$scope", "$resource", "utils", function($scope, $resource, utils) {
 
     /**
+     * Account
+     */
+    var Account = $resource("/admin/name");
+    $scope._admin = Account.get();
+
+    /**
      * @description
      * Animation scope
      */

@@ -20,6 +20,16 @@ router.get('/', function(req, res) {
 
 /**
  * @description
+ * Send admin name
+ */
+router.get('/name', function(req, res) {
+    if (req.isAuthenticated()) {
+        res.json({ name : req.user[0].username });
+    }
+});
+
+/**
+ * @description
  * Logout
  */
 
@@ -46,7 +56,7 @@ router.post('/login', function(req, res, next) {
         } else {
             req.login(user, function(err) {
                 if (err) return next(err);
-                res.redirect("/admin?user="+user.username);
+                res.redirect("/admin");
             });
         }
     })(req, res, next);

@@ -65,7 +65,8 @@ app.controller("addPost", ["$scope", "$resource", "utils", function($scope, $res
 
         $scope.newPost.date = Date.now();
         // TODO(jurek) Rebuild user object
-        $scope.newPost.author = location.search.replace("?user=", "");
+        console.log($scope._admin);
+        $scope.newPost.author = $scope._admin.name;
         delete $scope.newPost.message;
         delete $scope.newPost.id;
         // TODO(jurek) Progress/finish alert
