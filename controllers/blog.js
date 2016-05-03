@@ -21,12 +21,32 @@ router.get('/post', function(req, res) {
 
 /**
  * @description
+ * Get 12 post
+ */
+router.get('/posts/:start', function(req, res) {
+    mongo.find('posts', function(err, data) {
+        res.send(data);
+    }, null, { limit : 12 , skip : req.params.start , sort : { "date" : -1 }});
+});
+
+/**
+ * @description
  * Get category posts
  */
 router.get('/post/category/:tag', function(req, res) {
     mongo.find('posts', function(err, data) {
         res.status(200).send(data);
     }, { category : { $in : [req.params.tag]}});
+});
+
+/**
+ * @description
+ * Get category 12 posts
+ */
+router.get('/post/category/:tag/:start', function(req, res) {
+    mongo.find('posts', function(err, data) {
+        res.status(200).send(data);
+    }, { category : { $in : [req.params.tag]}}, { limit : 12 , skip : req.params.start , sort : { "date" : -1 }});
 });
 
 /**
@@ -42,6 +62,7 @@ router.get('/post/:id', function(req, res) {
         res.status(200).json(data[0]);
     }, { _id : mongo.ObjectId(req.params.id) });
 });
+
 /**
  * @description
  * Add new post

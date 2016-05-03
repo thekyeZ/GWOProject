@@ -32,11 +32,12 @@ try {
  * @param collection {string}
  * @param call {function}
  * @param query [optional (if not == full collection)] {object}
+ * @param options {object} - optional
  * @returns {function} with parameters:
  *  1)Error code(if perform)
  *  2)NULL value by expected data(or data)
  */
-function find(collection, call, query) {
+function find(collection, call, query, options) {
     // Catch error if call is not function
     if (typeof call !== "function" || (typeof collection !== "string")) {
         errorHandle.emit("log", {id : 103, message : "'call' argument is not function ("+typeof call+") or 'collection' is not string ("+collection+")"});
@@ -48,7 +49,7 @@ function find(collection, call, query) {
         return call(104, null);
     }
     // Make query
-    dbHandle.collection(collection).find(query).toArray(function(err, arrayData) {
+    dbHandle.collection(collection).find(query, options).toArray(function(err, arrayData) {
         if (err) {
             errorHandle.emit("log", {id : 105, message : err});
             return call(105, null);

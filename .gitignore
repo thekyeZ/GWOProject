@@ -41,3 +41,4 @@ public/bower_components
 config
 node_modules
 *.log
+/NOWA_config
