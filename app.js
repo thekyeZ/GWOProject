@@ -67,8 +67,18 @@ app.use(express.static("./public"));
 
 /**
  * @description
- * Send post.html template
+ * Send index.html template
  */
+app.get('/kontakt', function(req, res) {
+    res.sendFile('index.html', {
+        root : "./public"
+    });
+});
+app.get('/bazy', function(req, res) {
+    res.sendFile('index.html', {
+        root : "./public"
+    });
+});
 app.get('/post/:id', function(req, res) {
     res.sendFile('index.html', {
         root : "./public"

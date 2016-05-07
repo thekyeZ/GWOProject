@@ -1,214 +1,45 @@
-<!DOCTYPE html>
+<h3 class="text-center page-title">Bazy hufca</h3>
 
-<html lang="pl" ng-app="gwo">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<div class="row bases">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <div class="col-xs-12 base" id="morenka">
 
+        <h2>Harcerska baza obozowa "Morena"</h2>
 
-    <link rel="stylesheet" href="style/css/style.css">
-    <!--<link rel="stylesheet" type="text/css" href="style/css/semantic.css">-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <p class="lead">Harcerska baza obozowa "Morena" położona jest przy ulicy Jaśkowa Dolina 77 w Gdańsku. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A autem consectetur consequuntur distinctio eaque expedita laboriosam necessitatibus quas rem ut? </p>
 
-    <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-route/angular-route.min.js"></script>
-    <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
-    <script src="/app/app.js"></script>
-    <script src="/app/controllers/main.js"></script>
-    <script src="/app/controllers/home.js"></script>
-    <script src="/app/controllers/contact.js"></script>
+        <label for="morenka-offer">Oferujemy:</label>
+        <ul id="morenka-offer" class="base-offer">
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+        </ul>
 
-</head>
-<body ng-controller="home">
-
-    <div class="container-fluid">
-        <header class="main-header">
-
-            <div class="col col--1-of-6 col--centered logo-box">
-                <!--<span class="logo"></span>-->
-                <div class="burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-
-            <nav class="main-menu">
-
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
-                    <a class="category" href="/">Dla członków</a>
-                    <div class="drop-down dd-harcerz">
-                        <div class="dd-item">
-                            <a href="#">Finanse</a>
-                            <ul class="categories">
-                                <li>Dane do faktury</li>
-                                <li>1% dla harcerzy</li>
-                                <li>Składki członkowskie</li>
-                                <li>Dyżury skarbnika hufca</li>
-                            </ul>
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Jednostki</a>
-                            <ul class="categories">
-                                <li>Drużyny harcerskie</li>
-                                <li>Drużyny starszoharcerskie</li>
-                                <li>Namiestnictwo</li>
-                            </ul>
-
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">E-ZHP</a>
-                            <ul class="categories"></ul>
-
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Kształcenie</a>
-                            <ul class="categories"></ul>
-
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Wydarzenia</a>
-                            <ul class="categories">
-                                <li>Wdarzenia hufcowe</li>
-                                <li>Wydarzenia chorągwiane</li>
-                            </ul>
-
-                        </div>
-                        <!--<div class="dd-item"><a href="#">Składki członkowskie</a></div>-->
-                    </div>
-
-                </div>
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
-                    <a class="category" href="/kadra">Dla kadry</a>
-                    <div class="drop-down dd-kadra">
-                        <div class="dd-item"><a href="#">Namiestnictwa</a></div>
-                        <div class="dd-item"><a href="#">E-ZHP</a></div>
-                        <div class="dd-item"><a href="#">Składki instruktorskie</a></div>
-                        <div class="dd-item"><a href="#">Wydarzenia chorągwiane</a></div>
-                    </div>
-
-                </div>
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
-                    <a class="category" href="/rodzic">Dla rodziców</a>
-                    <div class="drop-down dd-rodzic">
-                        <div class="dd-item">
-                            <a href="#">Finanse</a>
-                            <ul class="categories">
-                                <li>Dane do faktury</li>
-                                <li>1% dla harcerzy</li>
-                                <li>Składki członkowskie</li>
-                                <li>Dyżury skarbnika hufca</li>
-                            </ul>
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Jak zapisać dziecko do ZHP</a>
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Jednostki</a>
-                            <ul class="categories">
-                                <li>Drużyny harcerskie</li>
-                                <li>Drużyny starszoharcerskie</li>
-                                <li>Namiestnictwo</li>
-                            </ul>
-                        </div>
-                        <div class="dd-item">
-                            <a href="#">Wydarzenia</a>
-                            <ul class="categories">
-                                <li>Wdarzenia hufcowe</li>
-                                <li>Wydarzenia chorągwiane</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col col--1-of-4 col--s-1-of-1 menu-option">
-                    <a class="category" href="bazy.html">Bazy hufca</a>
-                    <div class="drop-down dd-bazy">
-                        <div class="dd-item"><a href="#">Harcerska Baza Obozowa "Morena"</a></div>
-                        <div class="dd-item"><a href="#">Harcerska Baza Obozowa "Wygonin"</a></div>
-                    </div>
-
-                </div>
-
-            </nav>
-        </header>
+        <p class="base-close">Serdecznie zapraszamy do zapoznania się z pełną ofertą bazy tutaj: <a href="www.morenka.zhp.pl">www.morenka.zhp.pl</a></p>
 
     </div>
 
+    <div class="col-xs-12 base" id="wygonin">
 
-    <div class="content-container container">
+        <h2>Harcerska baza obozowa "Wygonin"</h2>
 
-        <h3 class="text-center page-title">Bazy hufca</h3>
-
-        <div class="row bases">
-
-            <div class="col-xs-12 base" id="morenka">
-
-                <h2>Harcerska baza obozowa "Morena"</h2>
-
-                <p class="lead">Harcerska baza obozowa "Morena" położona jest przy ulicy Jaśkowa Dolina 77 w Gdańsku. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A autem consectetur consequuntur distinctio eaque expedita laboriosam necessitatibus quas rem ut? </p>
-
-                <label for="morenka-offer">Oferujemy:</label>
-                <ul id="morenka-offer" class="base-offer">
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                </ul>
-
-                <p class="base-close">Serdecznie zapraszamy do zapoznania się z pełną ofertą bazy tutaj: <a href="www.morenka.zhp.pl">www.morenka.zhp.pl</a></p>
-
-            </div>
-
-            <div class="col-xs-12 base" id="wygonin">
-
-                <h2>Harcerska baza obozowa "Wygonin"</h2>
-
-                <p class="lead">Harcerska baza obozowa "Morena" położona jest na ulicy Jaśkowa Dolina 77 w Gdańsku. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A autem consectetur consequuntur distinctio eaque expedita laboriosam necessitatibus quas rem ut? </p>
+        <p class="lead">Harcerska baza obozowa "Morena" położona jest na ulicy Jaśkowa Dolina 77 w Gdańsku. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A autem consectetur consequuntur distinctio eaque expedita laboriosam necessitatibus quas rem ut? </p>
 
 
-                <ul class="base-offer">
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                </ul>
+        <ul class="base-offer">
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Lorem ipsum dolor sit amet.</li>
+        </ul>
 
-                <p class="base-close">Serdecznie zapraszamy do zapoznania się z pełną ofertą bazy tutaj: <a href="www.morenka.zhp.pl">www.morenka.zhp.pl</a></p>
+        <p class="base-close">Serdecznie zapraszamy do zapoznania się z pełną ofertą bazy tutaj: <a href="www.morenka.zhp.pl">www.morenka.zhp.pl</a></p>
 
-            </div>
-
-            </div>
-
-        </div>
-
-
-
-    <div class="cls" style="clear: both"></div>
-
-    <div class="container-fluid main-footer">
-        <div class="col-xs-12 col-md-6 footer-item">
-            <img src="images/logo_zhp_ident.png" alt=""  class="img-responsive">
-        </div>
-        <div class="col-xs-12 col-md-6 footer-item">
-            <img src="images/logo_hufca_biale.png" alt=""   class="img-responsive">
-        </div>
     </div>
 
+</div>
 
-
-<script src="js/jquery.js"></script>
-<!--<script src="js/semantic.js"></script>-->
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-<script src="js/main.js"></script>
-
-</body>
-</html>
+</div>

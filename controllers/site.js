@@ -28,9 +28,11 @@ router.get('/nav', function(req, res) {
  */
 // TODO(jurek) Add error capture
 router.post('/nav', function(req, res) {
-    mongo.update('site', function(err, status) {
-        res.status(200).json({ message : "Save!" })
-    }, { title : {$exists : true}}, {$set : { menu : req.body.nav }});
+    if (req.isAuthenticated()) {
+        mongo.update('site', function(err, status) {
+            res.status(200).json({ message : "Save!" })
+        }, { title : {$exists : true}}, {$set : { menu : req.body.nav }});
+    }
 });
 
 

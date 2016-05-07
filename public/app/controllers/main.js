@@ -6,7 +6,8 @@ app.controller("main", ["$scope", '$resource', function($scope, $resource) {
      */
     var Site = $resource('/site');
     $scope.site = Site.get();
-
-    console.log($scope.site);
+    
+    var Contact = $resource('/page/contact');
+    $scope.contact = Contact.get();
 
 }]);
