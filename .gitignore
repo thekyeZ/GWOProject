@@ -42,3 +42,12 @@ config
 node_modules
 *.log
 /NOWA_config
+.idea/GWOProject.iml
+
+.idea/GWOProject.iml
+
+.idea/workspace.xml
+
+config.codekit
+
+.idea/GWOProject.iml
